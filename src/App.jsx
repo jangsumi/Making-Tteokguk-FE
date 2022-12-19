@@ -4,11 +4,23 @@ import Main from "./pages/Main/Main";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main />} />
-      </Routes>
-    </BrowserRouter>
+    <div
+      className="App"
+      style={{
+        maxWidth: "430px",
+        margin: "0 auto",
+        minHeight: "100%",
+        width: "auto",
+        position: "relative",
+        wordBreak: "keep-all",
+      }}
+    >
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Main />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 };
 

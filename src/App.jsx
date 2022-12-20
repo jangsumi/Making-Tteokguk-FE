@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main/Main";
+import MyInfo from "./pages/MyInfo/MyInfo";
 import * as styled from "./styles";
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Main />} />
+            <Route path="/myinfo" element={<MyInfo />} />
           </Routes>
         </BrowserRouter>
       </div>

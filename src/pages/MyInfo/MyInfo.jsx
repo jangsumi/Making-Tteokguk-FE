@@ -2,6 +2,20 @@ import React, { useState } from "react";
 import TopBar from "../../components/TopBar/TopBar";
 import * as styled from "./styles";
 
+const Cooked = () => {
+  return (
+    <styled.FlexBox>
+      <styled.GridContainer>
+        <styled.Tteokguk />
+        <styled.Tteokguk />
+        <styled.Tteokguk />
+        <styled.Tteokguk />
+        <styled.Tteokguk />
+      </styled.GridContainer>
+    </styled.FlexBox>
+  );
+};
+
 const MyInfo = () => {
   const [currPage, setCurrPage] = useState(0);
 
@@ -26,6 +40,7 @@ const MyInfo = () => {
           받은 덕담
         </styled.NaviItem>
       </styled.FlexBox>
+      {currPage === 0 && <Cooked />}
     </styled.FlexBox>
   );
 };

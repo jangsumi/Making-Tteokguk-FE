@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Main from "./pages/Main/Main";
 import * as styled from "./styles";
+import Main from "./pages/Main/Main";
+import SelectIngredient from "./pages/SelectIngredient/SelectIngredient.jsx";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Main />} />
+            <Route path="/selectIngredient" element={<SelectIngredient/>} />
           </Routes>
         </BrowserRouter>
       </div>

@@ -37,6 +37,55 @@ export const menu = styled.img`
     margin-bottom:29px;
 `;
 
+export const background = styled.div`
+    background: rgba(0, 0, 0, 0.3);
+    width: 100vw;
+    height: 100vh;
+    position:absolute;
+    right: calc(240px - 50vw);
+    z-index:4;
+    top:-40px;
+    @media only screen and (max-width: 480px) {
+        left: 0;
+    }
+`;
+
+export const menuBar = styled.div`
+    width:238px;
+    height:100%;
+    background-color:#ffffff;
+    z-index:5;
+    position:absolute;
+    margin-left:122px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px 0px 0px 10px;
+    .xButton{
+        width:16px;
+        height:16px;
+        margin-bottom:17px;
+        margin-top:20px;
+        margin-left:auto;
+        display:block;
+        margin-right:20px;
+        background-color:transparent;
+    }
+`;
+
+export const menuButton = styled.div`
+    font-size:16px;
+    width:100%;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:20px;
+    background-color:transparent;
+    height:23px;
+    line-heigjt:23px;
+    text-align:left;
+    display: inline-block;
+`;
+
+
 export const Title = styled.div`
     font-size:26px;
     text-align:center;

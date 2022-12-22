@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import * as styled from "./styles";
+import Menu from "./menu.jsx"
 import closeRefrigerator from '../../images/refrigerator.png'
 import openRefrigerator from '../../images/openRefrigerator.png'
 import menu from '../../images/menu.png'
@@ -13,6 +14,11 @@ const Refrigerator = () => {
     const [openOrClose, setOpenOrClose] = useState("close")
     const [buttonText, setButtonText] = useState("냉장고 열어보기")
     const [canMake, setCanMake] = useState(true)
+    const [menuOpen, setMenuOpen] = useState(false)
+
+    const openMenu = () => {
+        setMenuOpen(true)
+    }
 
     const openTheDoor = (e) => {
         if(openOrClose=="open"){
@@ -31,8 +37,9 @@ const Refrigerator = () => {
     if(userSelf){
         return (
             <styled.container>
+                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 <styled.floor></styled.floor>
-                <styled.menu src={menu}/>
+                <styled.menu src={menu} onClick={openMenu}/>
                 <styled.Title>{userName} 님의 냉장고</styled.Title>
                 <styled.refri className={openOrClose=="open"?'open':''} src={refrigeratorImg}/>
                 {openOrClose=="open"?

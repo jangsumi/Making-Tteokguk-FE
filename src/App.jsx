@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import * as styled from "./styles";
 import Main from "./pages/Main/Main";
 import SelectIngredient from "./pages/SelectIngredient/SelectIngredient.jsx";
+import Refrigerator from "./pages/Refrigerator/Refrigerator.jsx"
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/selectIngredient" element={<SelectIngredient/>} />
+            <Route path="/refrigerator" element={<Refrigerator/>} />
           </Routes>
         </BrowserRouter>
       </div>

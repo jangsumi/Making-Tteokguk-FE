@@ -6,6 +6,7 @@ import SelectIngredient from "./pages/SelectIngredient/SelectIngredient.jsx";
 import Refrigerator from "./pages/Refrigerator/Refrigerator.jsx"
 import Making from "./pages/Result/Making.jsx";
 import Result from "./pages/Result/Result.jsx";
+import ModalExample from "./components/Modal/ModalExample.jsx";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/refrigerator" element={<Refrigerator/>} />
             <Route path="/making" element={<Making/>} />
             <Route path="/result" element={<Result/>} />
+            <Route path="/modal" element={<ModalExample/>} />
           </Routes>
         </BrowserRouter>
       </div>

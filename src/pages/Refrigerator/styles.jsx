@@ -54,38 +54,47 @@ export const background = styled.div`
 `;
 
 export const menuBar = styled.div`
-    width:238px;
-    height:100%;
+    width:264px;
+    height:390px;
     background-color:#ffffff;
     z-index:5;
     position:absolute;
-    margin-left:122px;
+    top:165px;
+    @media only screen and (max-width: 480px) {
+        left: calc(50vw - 132px)
+    }
+    left:108px;
     border: 1px solid #000000;
     box-sizing: border-box;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px 10px 10px 10px;
     .xButton{
         width:16px;
         height:16px;
-        margin-bottom:17px;
-        margin-top:20px;
+        margin-bottom:10px;
+        margin-top:22px;
         margin-left:auto;
         display:block;
-        margin-right:20px;
+        margin-right:22px;
         background-color:transparent;
     }
 `;
 
 export const menuButton = styled.div`
     font-size:16px;
+    height:20px;
     width:100%;
-    margin-top:10px;
-    margin-bottom:10px;
-    margin-left:20px;
+    margin-top:13px;
+    margin-bottom:13px;
     background-color:transparent;
-    height:23px;
-    line-heigjt:23px;
     text-align:left;
     display: inline-block;
+    img{
+      width:12px;
+      height:15px;
+      margin-left:34px;
+      margin-right:21px;
+      background-color:transparent;
+    }
 `;
 
 
@@ -106,6 +115,13 @@ export const refri = styled.img`
     padding-right:80px;
     background-color:transparent;
     display:block;
+`;
+
+export const ingredient = styled.img`
+    width:44px;
+    height:44px;
+    z-index:4;
+    position:absolute;
 `;
 
 export const customButton = styled.button`

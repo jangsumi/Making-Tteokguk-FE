@@ -38,6 +38,7 @@ export const menu = styled.img`
     margin-right:20px;
     margin-left:auto;
     margin-bottom:29px;
+    cursor: pointer;
 `;
 
 export const background = styled.div`
@@ -76,6 +77,7 @@ export const menuBar = styled.div`
         display:block;
         margin-right:22px;
         background-color:transparent;
+        cursor: pointer;
     }
 `;
 
@@ -118,13 +120,6 @@ export const refri = styled.img`
     display:block;
 `;
 
-export const ingredient = styled.img`
-    width:44px;
-    height:44px;
-    z-index:4;
-    position:absolute;
-`;
-
 export const customButton = styled.button`
   width:320px;
   height:50px;
@@ -138,6 +133,7 @@ export const customButton = styled.button`
   position:relative;
   z-index:3;
   display:inline-block;
+  cursor: pointer;
   :disabled{
     background-color:#CCAFAC;
     color:#666666;

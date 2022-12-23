@@ -39,7 +39,7 @@ const Refrigerator = () => {
         return (
             <styled.container>
                 {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
-                <styled.floor></styled.floor>
+                <styled.floor/>
                 <styled.menu src={menu} onClick={openMenu}/>
                 <styled.Title>{userName} 님의 냉장고</styled.Title>
                 <styled.refri className={openOrClose=="open"?'open':''} src={refrigeratorImg}/>                
@@ -62,8 +62,8 @@ const Refrigerator = () => {
         return(
             <styled.container>
                 {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
-                <styled.floor></styled.floor>
-                <styled.menu src={menu}  onClick={openMenu}/>
+                <styled.floor/>
+                <styled.menu src={menu} onClick={openMenu}/>
                 <styled.Title>{userName} 님의 냉장고</styled.Title>
                 <styled.refri className={openOrClose=="open"?'open':''} src={refrigeratorImg}/>
                 <styled.customButton onClick={openTheDoor} disabled={!userOpen}>

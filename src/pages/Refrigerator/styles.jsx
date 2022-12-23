@@ -83,11 +83,12 @@ export const menuButton = styled.div`
     font-size:16px;
     height:20px;
     width:100%;
-    margin-top:13px;
-    margin-bottom:13px;
+    padding-top:13px;
+    padding-bottom:13px;
     background-color:transparent;
     text-align:left;
     display: inline-block;
+    cursor: pointer;
     img{
       width:12px;
       height:15px;

@@ -3,7 +3,7 @@ import ResultModal from '../../components/Modal/ResultModal.jsx';
 import CreateRefModal from '../../components/Modal/CreateRefModal.jsx';
 import LoginModal from '../../components/Modal/LoginModal.jsx';
 import MessageModal from '../../components/Modal/MessageModal.jsx';
-import InfoModal from './MenualModal.jsx';
+import MenualModal from '../../components/Modal/MenualModal.jsx';
 import RecipeModal from '../../components/Modal/RecipeModal.jsx';
 
 const ModalExample = () => {

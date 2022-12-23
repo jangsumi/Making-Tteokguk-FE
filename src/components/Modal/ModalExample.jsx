@@ -3,7 +3,7 @@ import ResultModal from './ResultModal.jsx';
 import CreateRefModal from './CreateRefModal.jsx';
 import LoginModal from './LoginModal.jsx';
 import MessageModal from './MessageModal.jsx';
-import InfoModal from './InfoModal.jsx';
+import MenualModal from './MenualModal.jsx';
 import RecipeModal from './RecipeModal.jsx';
 import SecretIngredientModal from './SecretIngredientModal.jsx'
 
@@ -28,7 +28,7 @@ const ModalExample = () => {
                 // <CreateRefModal onConfirmClick={()=>confirmEvent('createRef')} onCancelClick={()=>cancelEvent('createRef')}/>
                 // <LoginModal onConfirmClick={()=>confirmEvent('login')} onCancelClick={()=>cancelEvent('login')}/>
                 // <MessageModal onConfirmClick={()=>confirmEvent('message')} secret={true}/>
-                // <InfoModal close={()=>cancelEvent('info')}/>
+                // <MenualModal close={()=>cancelEvent('info')}/>
                 // <RecipeModal close={()=>cancelEvent('recipe')}/>
                 <SecretIngredientModal onConfirmClick={()=>confirmEvent('secretIngredient')} />
             }

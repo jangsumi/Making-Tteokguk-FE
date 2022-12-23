@@ -1,34 +1,50 @@
 import LoginBtnImg from "../../images/LoginBtn.svg";
 import styled from "styled-components";
-import MainPic from "../../images/MainPic.svg";
-
+import Home from '../../images/Home.svg';
+import HomeTree from '../../images/homeTree.svg'
 
 export const Container = styled.div`
-  margin: 30px 20px 40px 20px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  margin: auto 0;
+  gap: 80px;
+  height: calc(100vh - 80px);
 `;
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center; // 가운데 정렬
-  // margin: 0 auto;
-`;
 export const BackGroundWrapper = styled.div`
   position: relative;
-  width: 380px;
-  height: 484px;
+  width: 100%;
+  height: 322px;
 `
-export const BackGroundImg = styled.div`
+export const MainImg = styled.div`
+  margin: auto;
+  width: 322px;
+  height: 322px;
   position: absolute;
-  width: 360px;
-  height: 360px;
-  top: 100px;
-  left: 0px;
-  background: url(${MainPic}) no-repeat;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: url(${Home}) no-repeat;
 `;
+export const TreeImg = styled.div`
+  position: absolute;
+  width: 250px;
+  height: 137px;
+  top: -29px;
+  left: 0;
+  background: url(${HomeTree}) no-repeat;
+`;
+export const Text = styled.div`
+  font-size: 28px;
+  text-align: center;
+  white-space: pre-wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 322px;
+`
 
 export const LoginContainer = styled.div`
   display: flex;

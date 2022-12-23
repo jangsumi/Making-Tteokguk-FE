@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import * as styled from './styles.jsx';
 
-const Modal = ({children}) => {
+const Modal = ({children, close}) => {
     useEffect(() => {
         document.body.style.cssText = `
             position: fixed; 
@@ -15,10 +15,10 @@ const Modal = ({children}) => {
         };
     }, []);
 
-
     return (
         <styled.Background>
-            <styled.ModalContainer>
+            <styled.ModalContainer close={close}>
+                {close && <styled.CloseImg onClick={close}/>}
                 {children}
             </styled.ModalContainer>
         </styled.Background>

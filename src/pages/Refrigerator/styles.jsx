@@ -60,9 +60,10 @@ export const menuBar = styled.div`
     background-color:#ffffff;
     z-index:5;
     position:absolute;
-    top:165px;
+    top:25vh;
     @media only screen and (max-width: 480px) {
-        left: calc(50vw - 132px)
+        left: calc(50vw - 132px);
+        top:20vh;
     }
     left:108px;
     border: 1px solid #000000;

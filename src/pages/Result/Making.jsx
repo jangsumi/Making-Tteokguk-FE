@@ -16,7 +16,10 @@ const Making = () => {
             setShowImage(image[count.current % 2]);
             count.current += 1;
         }, 1000);
-        setTimeout(() => navigate('/result'), 10000);
+        setTimeout(() => {
+            navigate('/result');
+            clearInterval(loading);
+        }, 10000);
         return () => clearInterval(loading);
     }, [showImage, count]);
 

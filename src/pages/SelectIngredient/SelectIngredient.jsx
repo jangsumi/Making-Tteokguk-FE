@@ -38,7 +38,7 @@ const SelectIngredient = () => {
                 <Selected userSelect={userSelect}
                           onRemoveItem={(item) => onRemoveItem(item)}/>
 
-                <Button text="떡국 끓이기" pageName="/"/>
+                <Button text="떡국 끓이기" pageName="/making"/>
             </styled.Container>
         </div>
     );

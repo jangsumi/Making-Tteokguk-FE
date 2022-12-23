@@ -56,6 +56,7 @@ export const LoginContainer = styled.div`
   border: 1px solid #000000;
   border-radius: 10px;
   z-index: 1000;
+  cursor: pointer;
 `
 export const LoginImg = styled.div`
   background: url(${LoginBtnImg});

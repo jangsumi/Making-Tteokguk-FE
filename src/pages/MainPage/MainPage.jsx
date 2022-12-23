@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import * as styled from "./styles";
-
+import {useNavigate} from "react-router-dom";
 
 const MainPage = () => {
+    const navigate = useNavigate();
     return (
         <styled.Container>
             <styled.BackGroundWrapper>
@@ -12,7 +13,7 @@ const MainPage = () => {
             </styled.BackGroundWrapper>
 
             <styled.LoginContainer>
-                <styled.LoginImg/>
+                <styled.LoginImg onClick={()=>navigate('/init')}/>
                 <styled.LoginText>카카오계정으로 계속하기</styled.LoginText>
                 <styled.Fake/>
             </styled.LoginContainer>

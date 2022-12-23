@@ -1,259 +1,186 @@
 import styled from "styled-components";
+import WhiteRef from "../../images/WhiteRef.svg";
+import YellowRef from "../../images/YellowRef.svg";
+import BlackRef from "../../images/BlackRef.svg";
+import PurpleRef from "../../images/PurpleRef.svg";
+import CheckBtn from "../../images/CheckBtn.svg"
 
-
-export const MainBackGround = styled.div`
-  width : auto;
-  height : auto;
-  left : 50%;
-  top : 50%;
-  background-repeat : repeat;
-  display:flex;
-  
+export const Container = styled.div`
+  margin: 30px 20px 0px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 `;
 
-export const BackGroundImg = styled.div`
-  
-  background: #CFCFCF;
-  display:flex;
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
+
 
 export const MainText = styled.div`
   position: absolute;
   width: 320px;
   height: 58px;
-  left: 20px;
-  top: 80px;
-  font-family: 'Gowun Dodum';
-  font-style: normal;
-  font-weight: 400;
   font-size: 20px;
   line-height: 29px;
   display: flex;
   align-items: center;
-
   color: #000000;
+  white-space: pre-wrap;
 `;
 
-export const WhiteBtnText = styled.div`
-  position: absolute;
-  width: 88px;
-  height: 24px;
-  left: 30px;
-  top: 156px;
-  font-family: 'Gowun Dodum';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 23px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #000000;
+export const BtnContainer = styled.div`
+  display : flex;
+  width : 320px;
 `;
+
+
 
 export const WhiteBtn = styled.div`
   box-sizing: border-box;
-  position: absolute;
+  position: relative;
   width: 108px;
   height: 40px;
-  left: 20px;
-  top: 148px;
+  top: 65px;
   background: #FFFFFF;
   border: 1px solid #000000;
   border-radius: 9px;
+  text-align : center;
+  align-items : center;
 `;
 
 export const WhosRefTxt = styled.div`
-  position: absolute;
+  position: relative;
   width: 77px;
   height: 24px;
-  left: 136px;
-  top: 156px;
-  font-family: 'Gowun Dodum';
-  font-style: normal;
-  font-weight: 400;
+  top: 73px;
   font-size: 16px;
   line-height: 23px;
   display: flex;
-  align-items: center;
-
+  float: left;
   color: #000000;
+`;
+
+export const SelectRefColTxtContainer = styled.div`
+  display: flex;
 `;
 
 export const SelectRefColTxt = styled.div`
-  position: absolute;
-  width: 220px;
+  position: relative;
+  width: 320px;
   height: 30px;
-  left: 20px;
-  top: 228px;
-
-  font-family: 'Gowun Dodum';
-  font-style: normal;
-  font-weight: 400;
+  top: 80px;
   font-size: 20px;
-  line-height: 29px;
   display: flex;
-  align-items: center;
-
   color: #000000;
 `;
-
+export const RefColor = styled.div`
+  width: 60px;
+  height: 60px;
+  background: ${props => props.backgroundColor};
+  border: 1px solid #000000;
+  border-radius: 20px;
+  top : 380px;
+  position: relative;
+  cursor: pointer;
+`
+export const RefContainer = styled.div`
+  display: flex;
+  gap : 10px;
+`
 export const RefBgTop = styled.div`
   position: absolute;
   width: 320px;
   height: 380px;
-  left: 20px;
-  top: 268px;
-
-  background: #F5F5F5;
+  top: 150px;
+  background: ${props => props.RefBg};
   border: 1px solid #000000;
   border-radius: 10px;
 `;
-
-export const RefFirst = styled.div`
-  position: absolute;
-  width: 119.46px;
-  height: 108.71px;
-  left: 120px;
-  top: 298px;
-
-  background: #FFFFFF;
-  border: 1px solid #000000;
-  border-radius: 10px 10px 0px 0px;
-`;
-
-export const RefSecond = styled.div`
-  position: absolute;
-  width: 119.46px;
-  height: 112.29px;
-  left: 120px;
-  top: 406.71px;
-
-  background: #FFFFFF;
-  border: 1px solid #000000;
-  border-radius: 0px 0px 10px 10px;
-`;
-
-export const RefThird = styled.div`
-  position: absolute;
-  width: 119.46px;
-  height: 13.14px;
-  left: 120px;
-  top: 505.86px;
-
-  background: #D9D9D9;
-  border: 1px solid #000000;
-  border-radius: 0px 0px 10px 10px;
-`;
-
-export const RefHandle = styled.div`
-  position: absolute;
-  width: 31.85px;
-  height: 8.14px;
-  left: 130.65px;
-  top: 408px;
-  background: #D9D9D9;
-`;
-
 export const RefBgBtm = styled.div`
   position: absolute;
   width: 320px;
   height: 158px;
-  left: 21px;
-  top: 490px;
+  top: 373px;
   background: #BEB7A2;
   border-radius: 0px 0px 10px 10px;
 `;
-
-export const RefGreyColor = styled.div`
-  box-sizing: border-box;
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  left: 45px;
-  top: 562px;
-  background: #D9D9D9;
-  border: 1px solid #000000;
-  border-radius: 20px;
+export const RefContentContainer = styled.div`
+  display : flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-export const RefBlackColor = styled.div`
-  box-sizing: border-box;
+export const RefImgContainer = styled.div`
+  display: flex;
   position: absolute;
-  width: 60px;
-  height: 60px;
-  left: 115px;
-  top: 562px;
-  background: #5E5E5E;
-  border: 1px solid #000000;
-  border-radius: 20px;
+  justify-content: center;
 `;
 
-export const RefYellowColor = styled.div`
-  box-sizing: border-box;
+export const WhiteRefImg = styled.div`
   position: absolute;
-  width: 60px;
-  height: 60px;
-  left: 185px;
-  top: 562px;
-  background: #FFE5A0;
-  border: 1px solid #000000;
-  border-radius: 20px;
+  width : 122px;
+  height : 220.29px;
+  top : 110px;
+  background: url(${WhiteRef}) no-repeat;
+  background-size:contain;
+
 `;
 
-export const RefPurpleColor = styled.div`
-  box-sizing: border-box;
+export const BlackRefImg = styled.div`
   position: absolute;
-  width: 60px;
-  height: 60px;
-  left: 255px;
-  top: 562px;
+  width : 122px;
+  height : 220.29px;
+  top : 110px;
+  background: url(${BlackRef}) no-repeat;
+  background-size:contain;
 
-  background: #A5AEFF;
-  border: 1px solid #000000;
-  border-radius: 20px;
+`;
+
+export const YellowRefImg = styled.div`
+  position: absolute;
+  width : 122px;
+  height : 220.29px;
+  top : 110px;
+  background: url(${YellowRef}) no-repeat;
+  background-size:contain;
+
+`;
+
+export const PurpleRefImg = styled.div`
+  position: absolute;
+  width : 122px;
+  height : 220.29px;
+  top : 110px;
+  background: url(${PurpleRef}) no-repeat;
+  background-size:contain;
+
 `;
 
 export const CheckBtnImg = styled.div`
   position: absolute;
-  left: 3.33%;
-  right: 26.59%;
-  top: 64.00%;
-  bottom: 24.5%;
+  top: 470px;
+  left : 25%;
+  width : 22px;
+  height : 18px;
+  background : url(${CheckBtn}) no-repeat;
 `;
 
-export const GreyBtn = styled.div`
-  width : 320px;
-  height : 50px;
-  box-sizing: border-box;
-  position: absolute;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
-  background: #B9B9B9;
+export const NextBtn = styled.div`
+  top : 550px;
+  width: 320px;
+  max-width: 318px;
+  // margin: auto;
+  height: 50px;
+  background: #E6D2D8;
   border: 1px solid #000000;
   border-radius: 10px;
-  left : 20px;
-  right : 20px;
-  top : 670px;
-  bottom: 80;
-`;
-
-export const GreyBtnText = styled.div`
-  position: absolute;
-  left: 160px;
-  right: 20px;
-  top: 682px;
-  bottom: 92px;
-
-  font-family: 'Gowun Dodum';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26px;
   display: flex;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;  
+  position : absolute;
 
-  color: #000000;
 `;

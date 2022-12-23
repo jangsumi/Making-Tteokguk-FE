@@ -24,10 +24,10 @@ const Making = () => {
     }, [showImage, count]);
 
     return (
-        <styled.ResultContainer>
+        <styled.MakingContainer>
             <styled.PotImage imageUrl={showImage}/>
             <SyncLoader color="#B9B9B9" margin={6} size={10}/>
-        </styled.ResultContainer>
+        </styled.MakingContainer>
     );
 };
 

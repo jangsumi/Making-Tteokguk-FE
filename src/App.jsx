@@ -1,6 +1,8 @@
 import React from "react";
 import * as styled from "./styles";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Delivery from "./pages/Delivery/Delivery";
+import Delivery2 from "./pages/Delivery2/Delivery2";
 import Main from "./pages/Main/Main";
 import MyInfo from "./pages/MyInfo/MyInfo";
 import SelectIngredient from "./pages/SelectIngredient/SelectIngredient.jsx";
@@ -33,6 +35,8 @@ const App = () => {
             <Route path="/making" element={<Making/>} />
             <Route path="/result" element={<Result/>} />
             <Route path="/modal" element={<ModalExample/>} />
+            <Route path="/delivery" element={<Delivery />} />
+            <Route path="/delivery2" element={<Delivery2 />} />
           </Routes>
         </BrowserRouter>
       </div>

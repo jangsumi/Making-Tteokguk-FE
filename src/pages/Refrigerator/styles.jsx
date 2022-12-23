@@ -4,11 +4,14 @@ export const container = styled.div`
   width:360px;
   text-align:center;
   margin:auto;
+  @media only screen and (max-width: 480px) {
+    overflow:hidden;
+  }
 }
   .open{
     width:399px;
     height:370px;
-    }
+  }
 
 `;
 

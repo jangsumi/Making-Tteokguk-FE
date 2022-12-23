@@ -13,7 +13,7 @@ const TopBar = ({titleName, setDisplayRecipe, onRecipe}) => {
                 }}
             />
             <styled.Title>{titleName}</styled.Title>
-            <styled.ButtonRecipe padding="9px" visibility={onRecipe} onClick={onRecipe}>
+            <styled.ButtonRecipe padding="9px" visible={onRecipe} onClick={onRecipe}>
                 조리법
             </styled.ButtonRecipe>
         </styled.TopBarContainer>

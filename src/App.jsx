@@ -7,6 +7,10 @@ import Refrigerator from "./pages/Refrigerator/Refrigerator.jsx"
 import Making from "./pages/Result/Making.jsx";
 import Result from "./pages/Result/Result.jsx";
 import ModalExample from "./components/Modal/ModalExample.jsx";
+import Init from "./pages/Init/Init.jsx";
+import MySetting from "./pages/MySetting/MySetting.jsx";
+import MainPage from "./pages/MainPage/MainPage.jsx";
+
 
 const App = () => {
   return (
@@ -31,6 +35,11 @@ const App = () => {
             <Route path="/making" element={<Making/>} />
             <Route path="/result" element={<Result/>} />
             <Route path="/modal" element={<ModalExample/>} />
+            <Route path="/init" element={<Init/>} />
+            <Route path="/mysetting" element={<MySetting/>} />
+            <Route path="/mainpage" element={<MainPage/>} />
+            
+            
           </Routes>
         </BrowserRouter>
       </div>

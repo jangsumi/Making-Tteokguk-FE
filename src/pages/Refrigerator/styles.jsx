@@ -38,6 +38,7 @@ export const menu = styled.img`
     margin-right:20px;
     margin-left:auto;
     margin-bottom:29px;
+    cursor: pointer;
 `;
 
 export const background = styled.div`
@@ -54,38 +55,50 @@ export const background = styled.div`
 `;
 
 export const menuBar = styled.div`
-    width:238px;
-    height:100%;
+    width:264px;
+    height:390px;
     background-color:#ffffff;
     z-index:5;
     position:absolute;
-    margin-left:122px;
+    top:25vh;
+    @media only screen and (max-width: 480px) {
+        left: calc(50vw - 132px);
+        top:20vh;
+    }
+    left:108px;
     border: 1px solid #000000;
     box-sizing: border-box;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px 10px 10px 10px;
     .xButton{
         width:16px;
         height:16px;
-        margin-bottom:17px;
-        margin-top:20px;
+        margin-bottom:10px;
+        margin-top:22px;
         margin-left:auto;
         display:block;
-        margin-right:20px;
+        margin-right:22px;
         background-color:transparent;
+        cursor: pointer;
     }
 `;
 
 export const menuButton = styled.div`
     font-size:16px;
+    height:20px;
     width:100%;
-    margin-top:10px;
-    margin-bottom:10px;
-    margin-left:20px;
+    padding-top:13px;
+    padding-bottom:13px;
     background-color:transparent;
-    height:23px;
-    line-heigjt:23px;
     text-align:left;
     display: inline-block;
+    cursor: pointer;
+    img{
+      width:12px;
+      height:15px;
+      margin-left:34px;
+      margin-right:21px;
+      background-color:transparent;
+    }
 `;
 
 
@@ -121,6 +134,7 @@ export const customButton = styled.button`
   position:relative;
   z-index:3;
   display:inline-block;
+  cursor: pointer;
   :disabled{
     background-color:#CCAFAC;
     color:#666666;

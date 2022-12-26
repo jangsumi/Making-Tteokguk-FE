@@ -12,7 +12,7 @@ export const Background = styled.div`
 `
 
 export const ModalContainer = styled.div`
-  width: 300px;
+  width: 280px;
   background: #FFFFFF;
   border: 1px solid #000000;
   border-radius: 10px;
@@ -48,6 +48,7 @@ export const LongText = styled(Text)`
   font-size: 14px;
   text-align: left;
   text-shadow: ${props=>props.bold && "-0.1px 0 black, 0 0.1px black, 0.1px 0 black, 0 -0.1px black"};
+  white-space: pre-wrap;
 `
 
 export const ColorText = styled.span`

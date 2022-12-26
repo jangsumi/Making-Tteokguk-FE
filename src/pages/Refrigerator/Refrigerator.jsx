@@ -3,6 +3,7 @@ import * as styled from "./styles";
 import Menu from "./menu.jsx"
 import closeRefrigerator from '../../images/refrigerator.png'
 import openRefrigerator from '../../images/openRefrigerator.png'
+import ingredient from '../../images/ingredient.png'
 import menu from '../../images/menu.png'
 import lock from '../../images/lock.png'
 
@@ -38,10 +39,11 @@ const Refrigerator = () => {
         return (
             <styled.container>
                 {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
-                <styled.floor></styled.floor>
+                <styled.floor/>
                 <styled.menu src={menu} onClick={openMenu}/>
                 <styled.Title>{userName} 님의 냉장고</styled.Title>
-                <styled.refri className={openOrClose=="open"?'open':''} src={refrigeratorImg}/>
+                <styled.refri className={openOrClose=="open"?'open':''} src={refrigeratorImg}/>                
+                
                 {openOrClose=="open"?
                 <styled.bottonBox>
                     <styled.customButton className="make"  disabled={!canMake} >
@@ -59,8 +61,9 @@ const Refrigerator = () => {
     else{
         return(
             <styled.container>
-                <styled.floor></styled.floor>
-                <styled.menu src={menu}/>
+                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
+                <styled.floor/>
+                <styled.menu src={menu} onClick={openMenu}/>
                 <styled.Title>{userName} 님의 냉장고</styled.Title>
                 <styled.refri className={openOrClose=="open"?'open':''} src={refrigeratorImg}/>
                 <styled.customButton onClick={openTheDoor} disabled={!userOpen}>

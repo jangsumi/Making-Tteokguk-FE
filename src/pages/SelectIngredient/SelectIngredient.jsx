@@ -39,7 +39,7 @@ const SelectIngredient = () => {
                          onAddItem={(item) => onAddItem(item)}/>
                 <Selected userSelect={userSelect}
                           onRemoveItem={(item) => onRemoveItem(item)}/>
-                <Button text="떡국 끓이기" pageName="/making"/>
+                <Button text="떡국 끓이기" active={userSelect.length===4} pageName="/making"/>
             </styled.Container>
             {showRecipe && <RecipeModal close={() => setShowRecipe(false)}/>}
         </div>

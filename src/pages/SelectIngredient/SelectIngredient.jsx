@@ -1,13 +1,15 @@
 import React, {useEffect, useRef, useState} from 'react';
 import * as styled from "./styles";
 import TopBar from "../../components/TopBar/TopBar.jsx";
+import Button from "../../components/Button/Button.jsx";
+import RecipeModal from "../../components/Modal/RecipeModal.jsx";
 import Display from "./Display.jsx";
 import Selected from "./Selected.jsx";
-import Button from "../../components/Button/Button.jsx";
 
 const SelectIngredient = () => {
     const [userIngredient, setUserIngredient] = useState([0, 0, 0, 0, 0, 0, 0]);
     const [userSelect, setUserSelect] = useState([]);
+    const [showRecipe, setShowRecipe] = useState(false);
 
     useEffect(() => {
         setUserIngredient([10, 11, 12, 0, 13, 14, 15]);
@@ -30,16 +32,16 @@ const SelectIngredient = () => {
 
     return (
         <div>
-            <TopBar titleName="떡국 만들기" setDisplayRecipe="show"/>
+            <TopBar titleName="떡국 만들기" onRecipe={() => setShowRecipe(true)}/>
             <styled.Container>
                 <styled.TitleText>떡국에 넣을 재료를 선택해주세요</styled.TitleText>
                 <Display userIngredient={userIngredient}
                          onAddItem={(item) => onAddItem(item)}/>
                 <Selected userSelect={userSelect}
                           onRemoveItem={(item) => onRemoveItem(item)}/>
-
                 <Button text="떡국 끓이기" pageName="/making"/>
             </styled.Container>
+            {showRecipe && <RecipeModal close={() => setShowRecipe(false)}/>}
         </div>
     );
 };

@@ -3,7 +3,6 @@ import * as styled from "./styles";
 
 const Selected = ({userSelect, onRemoveItem}) => {
     console.log(userSelect);
-
     const userSelectCnt = userSelect.length;
     const [...empty] = [...Array(4 - userSelectCnt)];
 

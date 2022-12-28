@@ -25,6 +25,8 @@ export const Ingredient = styled.div`
   border: 1px solid #000000;
   border-radius: 10px;
   background-image: url(${(props) => props.imgBg});
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 export const GridContainer = styled.div`

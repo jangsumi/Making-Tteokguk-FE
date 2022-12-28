@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import Button from "../../components/Button/Button";
 import TopBar from "../../components/TopBar/TopBar";
-import test1 from "../../images/test1.svg";
-import test2 from "../../images/test2.svg";
 import tteok from "../../images/tteok.svg";
 import gim from "../../images/gim.svg";
 import gyeranjidan from "../../images/gyeranjidan.svg";
@@ -40,6 +38,15 @@ const Delivery = () => {
   const [currItemSrc, setCurrItemSrc] = useState(empty);
   const [currItemName, setCurrItemName] = useState("ㅤ");
 
+  const ingredientList = [
+    { index: 0, imgBg: tteok, name: "떡" },
+    { index: 1, imgBg: gim, name: "김" },
+    { index: 2, imgBg: gyeranjidan, name: "계란지단" },
+    { index: 3, imgBg: daepa, name: "대파" },
+    { index: 4, imgBg: yakgwa, name: "약과" },
+    { index: 5, imgBg: sanjeok, name: "산적" },
+  ];
+
   return (
     <>
       <TopBar titleName={"떡국 재료 선물하기"} />
@@ -52,60 +59,17 @@ const Delivery = () => {
           {currItemName}
         </styled.FontDiv>
         <styled.GridContainer>
-          <IngredientComponent
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            setCurrItemSrc={setCurrItemSrc}
-            setCurrItemName={setCurrItemName}
-            index={0}
-            imgBg={tteok}
-            name={"떡"}
-          />
-          <IngredientComponent
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            setCurrItemSrc={setCurrItemSrc}
-            setCurrItemName={setCurrItemName}
-            index={1}
-            imgBg={gim}
-            name={"김"}
-          />
-          <IngredientComponent
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            setCurrItemSrc={setCurrItemSrc}
-            setCurrItemName={setCurrItemName}
-            index={2}
-            imgBg={gyeranjidan}
-            name={"계란지단"}
-          />
-          <IngredientComponent
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            setCurrItemSrc={setCurrItemSrc}
-            setCurrItemName={setCurrItemName}
-            index={3}
-            imgBg={daepa}
-            name={"대파"}
-          />
-          <IngredientComponent
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            setCurrItemSrc={setCurrItemSrc}
-            setCurrItemName={setCurrItemName}
-            index={4}
-            imgBg={yakgwa}
-            name={"약과"}
-          />
-          <IngredientComponent
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            setCurrItemSrc={setCurrItemSrc}
-            setCurrItemName={setCurrItemName}
-            index={5}
-            imgBg={sanjeok}
-            name={"산적"}
-          />
+          {ingredientList.map((item) => (
+            <IngredientComponent
+              selectedItem={selectedItem}
+              setSelectedItem={setSelectedItem}
+              setCurrItemSrc={setCurrItemSrc}
+              setCurrItemName={setCurrItemName}
+              index={item.index}
+              imgBg={item.imgBg}
+              name={item.name}
+            />
+          ))}
         </styled.GridContainer>
         <Button text={"다음"} pageName={"/delivery2"} />
       </styled.PageContainer>

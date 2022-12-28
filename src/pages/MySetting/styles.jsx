@@ -12,7 +12,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center; // 가운데 정렬
-  /* margin: 0 auto; */
 `;
 
 export const TextContainer = styled.div`
@@ -56,8 +55,6 @@ export const MsgPubInfo = styled.div`
   position : relative;
 `;
 
-
-
 export const ExMarkImg = styled.div`
   position: relative;
   top: 120px;
@@ -69,21 +66,20 @@ export const ExMarkImg = styled.div`
 export const GroupContainer = styled.div`
   display : flex;
   position : absolute;
+  gap : 10px;
   
 `;
 
-export const ExMarkContainer = styled.div`
-  display : flex;
+export const ExMarkContainer = styled(GroupContainer)`
   width : 320px;
-  position : absolute;
   align-items: center;
   justify-content: left;
+  gap : 10px;
 `;
 
 export const BtnContainer = styled.div`
   display : flex;
-  justify-content : center;
-  align-items : center;
+  gap : 10px;
 `;
 export const AgreeContainer = styled.div`
   display : flex;
@@ -99,34 +95,18 @@ export const PubBtn = styled.button`
   top: 170px;
   display : flex;
   background: ${(props) => props.color};
+  border: 1px solid #000000;
+  border-radius: 10px;
+  cursor: pointer;
+  align-items: center; // 중앙정렬
+  justify-content: center; // 가운데정렬
+  font-size : 14px;
   
-  border: 1px solid #000000;
-  border-radius: 10px;
-  cursor: pointer;
-  align-items: center; // 중앙정렬
-  justify-content: center; // 가운데정렬
-  font-size : 14px;
-
 `;
 
-
-export const PrvBtn = styled.div`
-  box-sizing: border-box;
-  position: relative;
-  width: 150px;
-  height: 37px;
-  top : 170px;
-  display : flex;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  cursor: pointer;
+export const PrvBtn = styled(PubBtn)`
   background:  ${(props) => props.color};
-  align-items: center; // 중앙정렬
-  justify-content: center; // 가운데정렬
-  font-size : 14px;
-
 `;
-
 
 export const CenterLine = styled.div`
   position: absolute;
@@ -136,8 +116,6 @@ export const CenterLine = styled.div`
   display : flex;
   border: 0.5px solid #999999;
 `;
-
-
 
 export const AgreeTxt = styled.div`
   position: relative;
@@ -183,69 +161,28 @@ export const AgreeAll = styled.div`
   color: #000000;
 `;
 
-export const CheckBox2 = styled.div`
-  box-sizing: border-box;
-  cursor: pointer;
-  position: relative;
-  width : 18px;
-  height : 18px;
+export const CheckBox2 = styled(CheckBox1)`
   top: 380px;
-  display: flex;
-  border: 1px solid #000000;
-  border-radius: 2px;
 `;
 
-export const CheckBtn2Img = styled.div`
-  position: absolute;
-  width : 13px;
-  height: 9.96px;
-  left : 2px;
+export const CheckBtn2Img = styled(CheckBtn1Img)`
   top: 384px;
-  background : url(${CheckBtnBlack}) no-repeat;
-  display: flex;
 `;
 
-export const AgeCheck = styled.div`
-  position: relative;
+export const AgeCheck = styled(AgreeAll)`
   top: 380px;
-  width : 320px;
-  height : 20px;
-  font-size: 14px;
-  color: #000000;
-  display: flex;
 `;
 
-export const CheckBox3 = styled.div`
-  box-sizing: border-box;
-  cursor: pointer;
-  position: relative;
-  width : 18px;
-  height : 18px;
+export const CheckBox3 = styled(CheckBox1)`
   top: 410px;
-  display : flex;
-  border: 1px solid #000000;
-  border-radius: 2px;
-  
 `;
 
-export const CheckBtn3Img = styled.div`
-  position: absolute;
-  width : 13px;
-  height: 9.96px;
-  left : 2px;
+export const CheckBtn3Img = styled(CheckBtn1Img)`
   top: 414px;
-  background : url(${CheckBtnBlack}) no-repeat;
-  display: flex;
 `;
 
-export const Agree = styled.div`
-  position: relative;
+export const Agree = styled(AgreeAll)`
   top: 410px;
-  width : 320px;
-  height : 20px;
-  font-size: 14px;
-  display: flex;
-  color: #000000;
 `;
 
 
@@ -255,7 +192,6 @@ export const NextBtn = styled.div`
   top : 490px;
   width: 210px;
   max-width: 318px;
-  /* margin: auto; */
   height: 50px;
   background: #E6D2D8;
   border: 1px solid #000000;
@@ -267,28 +203,7 @@ export const NextBtn = styled.div`
 
 `;
 
-export const PrevBtn = styled.div`
-  box-sizing: border-box;
-  top : 490px;
+export const PrevBtn = styled(NextBtn)`
   width: 100px;
-  max-width: 318px;
-  // margin: auto;
-  height: 50px;
   background: #E6D2D8;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  position : relative;
-
-
-`;
-
-
-export const Fake = styled.div`
-  height : 10px;
-  width : 10px;
-  
 `;

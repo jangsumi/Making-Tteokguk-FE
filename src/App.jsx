@@ -6,14 +6,12 @@ import Delivery2 from "./pages/Delivery2/Delivery2";
 import Main from "./pages/Main/Main";
 import MyInfo from "./pages/MyInfo/MyInfo";
 import SelectIngredient from "./pages/SelectIngredient/SelectIngredient.jsx";
-import Refrigerator from "./pages/Refrigerator/Refrigerator.jsx"
+import Refrigerator from "./pages/Refrigerator/Refrigerator.jsx";
 import Making from "./pages/Result/Making.jsx";
 import Result from "./pages/Result/Result.jsx";
 import ModalExample from "./components/Modal/ModalExample.jsx";
 import Init from "./pages/Init/Init.jsx";
 import MySetting from "./pages/MySetting/MySetting.jsx";
-import MainPage from "./pages/MainPage/MainPage.jsx";
-
 
 const App = () => {
   return (
@@ -34,16 +32,15 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/myinfo" element={<MyInfo />} />
-            <Route path="/selectIngredient" element={<SelectIngredient/>} />
-            <Route path="/refrigerator" element={<Refrigerator/>} />
-            <Route path="/making" element={<Making/>} />
-            <Route path="/result" element={<Result/>} />
-            <Route path="/modal" element={<ModalExample/>} />
+            <Route path="/selectIngredient" element={<SelectIngredient />} />
+            <Route path="/refrigerator" element={<Refrigerator />} />
+            <Route path="/making" element={<Making />} />
+            <Route path="/result" element={<Result />} />
+            <Route path="/modal" element={<ModalExample />} />
             <Route path="/delivery" element={<Delivery />} />
             <Route path="/delivery2" element={<Delivery2 />} />
-            <Route path="/init" element={<Init/>} />
-            <Route path="/mysetting" element={<MySetting/>} />
-            <Route path="/mainpage" element={<MainPage/>} />
+            <Route path="/init" element={<Init />} />
+            <Route path="/mysetting" element={<MySetting />} />
           </Routes>
         </BrowserRouter>
       </div>

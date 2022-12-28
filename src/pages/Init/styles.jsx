@@ -3,10 +3,10 @@ import WhiteRef from "../../images/WhiteRef.svg";
 import YellowRef from "../../images/YellowRef.svg";
 import BlackRef from "../../images/BlackRef.svg";
 import PurpleRef from "../../images/PurpleRef.svg";
-import CheckBtn from "../../images/CheckBtn.svg";
+import CheckBtn from "../../images/CheckBtn.svg"
 
 export const Container = styled.div`
-  margin: 30px 20px 40px 20px;
+  margin: 30px 20px 0px 20px;
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -36,18 +36,7 @@ export const BtnContainer = styled.div`
   width : 320px;
 `;
 
-export const NickNameInput = styled.input`
-  background : #FFFFFF;
-  border : 0px solid #FFFFFF;
-  width : 100px;
-  height : 25px;
-  position: absolute;
-  top : 5px;
-  left : 1px;
-  font-size : 18px;
-  justify-content: center;
-  outline : none;
-`;
+
 
 export const WhiteBtn = styled.div`
   box-sizing: border-box;
@@ -60,10 +49,7 @@ export const WhiteBtn = styled.div`
   border-radius: 9px;
   text-align : center;
   align-items : center;
-  justify-content: center;
-  margin-right : 10px;
 `;
-
 
 export const WhosRefTxt = styled.div`
   position: relative;
@@ -143,21 +129,40 @@ export const WhiteRefImg = styled.div`
 
 `;
 
-export const BlackRefImg = styled(WhiteRefImg)`
+export const BlackRefImg = styled.div`
+  position: absolute;
+  width : 122px;
+  height : 220.29px;
+  top : 110px;
   background: url(${BlackRef}) no-repeat;
+  background-size:contain;
+
 `;
 
-export const YellowRefImg = styled(WhiteRefImg)`
+export const YellowRefImg = styled.div`
+  position: absolute;
+  width : 122px;
+  height : 220.29px;
+  top : 110px;
   background: url(${YellowRef}) no-repeat;
+  background-size:contain;
+
 `;
 
-export const PurpleRefImg = styled(WhiteRefImg)`
+export const PurpleRefImg = styled.div`
+  position: absolute;
+  width : 122px;
+  height : 220.29px;
+  top : 110px;
   background: url(${PurpleRef}) no-repeat;
+  background-size:contain;
+
 `;
 
 export const CheckBtnImg = styled.div`
   position: absolute;
   top: 470px;
+  left : 25%;
   width : 22px;
   height : 18px;
   background : url(${CheckBtn}) no-repeat;
@@ -167,6 +172,7 @@ export const NextBtn = styled.div`
   top : 550px;
   width: 320px;
   max-width: 318px;
+  // margin: auto;
   height: 50px;
   background: #E6D2D8;
   border: 1px solid #000000;

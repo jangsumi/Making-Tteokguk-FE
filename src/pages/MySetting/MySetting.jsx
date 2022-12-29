@@ -78,8 +78,8 @@ const MySetting = () => {
             <styled.Agree>(필수) 이용약관 및 개인정보수집이용에 동의해요.</styled.Agree>
           </styled.GroupContainer>
           <styled.BtnContainer>
-            <styled.PrevBtn>이전</styled.PrevBtn>
-            <styled.NextBtn>시작하기</styled.NextBtn>
+            <styled.PrevBtn onClick={()=>navigate('/init')}>이전</styled.PrevBtn>
+            <styled.NextBtn onClick={()=>navigate('/refrigerator')}>시작하기</styled.NextBtn>
           </styled.BtnContainer>
 
         </styled.Wrapper>

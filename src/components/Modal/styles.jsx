@@ -87,9 +87,10 @@ export const BoxWrapper = styled.div`
 export const RecipeBox = styled.div`
   border: 1px solid #000000;
   border-radius: 10px;
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   background: url(${props=>props.imageUrl}) center center no-repeat;
+  background-size: 42px 42px;
 `
 export const PlusImg = styled.div`
   width: 16px;

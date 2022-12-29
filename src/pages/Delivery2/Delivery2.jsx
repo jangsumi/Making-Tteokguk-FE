@@ -53,7 +53,7 @@ const Delivery2 = () => {
               상대를 비방하는 내용 작성 시 법적 처벌을 받을 수 있습니다.
             </styled.FontDiv>
           </styled.FlexDiv>
-          <Button text={"떡국 재료 선물하기"} />
+          <Button text={"떡국 재료 선물하기"} active={userName.trim() != "" && textMessage.trim() != ""}/>
         </styled.Container>
       </styled.FlexDiv>
     </>

@@ -71,7 +71,7 @@ const Delivery = () => {
             />
           ))}
         </styled.GridContainer>
-        <Button text={"다음"} pageName={"/delivery2"} />
+        <Button text={"다음"} pageName={"/delivery2"} active={selectedItem != -1}/>
       </styled.PageContainer>
     </>
   );

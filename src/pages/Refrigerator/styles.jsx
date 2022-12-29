@@ -28,6 +28,9 @@ export const floor = styled.div`
     @media only screen and (max-width: 480px) {
         left: 0;
     }
+    @media only screen and (max-height: 800px) {
+      height: calc(100vh - 582px);
+  }
 `;
 
 export const menu = styled.img`

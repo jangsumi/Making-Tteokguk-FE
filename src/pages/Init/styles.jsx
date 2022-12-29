@@ -6,10 +6,8 @@ import PurpleRef from "../../images/PurpleRef.svg";
 import CheckBtn from "../../images/CheckBtn.svg";
 
 export const Container = styled.div`
-  margin: 30px 20px 40px 20px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
 `;
 
 export const Wrapper = styled.div`
@@ -20,15 +18,14 @@ export const Wrapper = styled.div`
 
 
 export const MainText = styled.div`
-  position: absolute;
   width: 320px;
   height: 58px;
   font-size: 20px;
   line-height: 29px;
-  display: flex;
   align-items: center;
   color: #000000;
   white-space: pre-wrap;
+  margin-top : 40px;
 `;
 
 export const BtnContainer = styled.div`
@@ -39,56 +36,43 @@ export const BtnContainer = styled.div`
 export const NickNameInput = styled.input`
   background : #FFFFFF;
   border : 0px solid #FFFFFF;
-  width : 100px;
-  height : 25px;
-  position: absolute;
-  top : 5px;
-  left : 1px;
-  font-size : 18px;
+  width : 88px;
+  height : 24px;
+  font-size : 16px;
   justify-content: center;
   outline : none;
+  margin-top : 4px;
 `;
 
 export const WhiteBtn = styled.div`
   box-sizing: border-box;
-  position: relative;
   width: 108px;
   height: 40px;
-  top: 65px;
   background: #FFFFFF;
   border: 1px solid #000000;
   border-radius: 9px;
   text-align : center;
-  align-items : center;
-  justify-content: center;
   margin-right : 10px;
+  margin-top : 10px;
 `;
 
 
 export const WhosRefTxt = styled.div`
-  position: relative;
-  width: 77px;
-  height: 24px;
-  top: 73px;
   font-size: 16px;
-  line-height: 23px;
-  display: flex;
-  float: left;
   color: #000000;
+  margin-top : 18px;
 `;
 
 export const SelectRefColTxtContainer = styled.div`
-  display: flex;
+  font-size: 20px;
 `;
 
 export const SelectRefColTxt = styled.div`
-  position: relative;
   width: 320px;
   height: 30px;
-  top: 80px;
   font-size: 20px;
-  display: flex;
   color: #000000;
+  margin-top : 40px;
 `;
 export const RefColor = styled.div`
   width: 60px;
@@ -96,50 +80,42 @@ export const RefColor = styled.div`
   background: ${props => props.backgroundColor};
   border: 1px solid #000000;
   border-radius: 20px;
-  top : 380px;
-  position: relative;
   cursor: pointer;
 `
 export const RefContainer = styled.div`
   display: flex;
   gap : 10px;
+  position: absolute;
+  margin-top : 72px;
+  margin-left : 20px;
+  background-color: transparent;
 `
 export const RefBgTop = styled.div`
-  position: absolute;
   width: 320px;
   height: 380px;
-  top: 150px;
   background: ${props => props.RefBg};
   border: 1px solid #000000;
   border-radius: 10px;
+  margin-top : 10px;
+  position : relative;
 `;
 export const RefBgBtm = styled.div`
   position: absolute;
   width: 320px;
   height: 158px;
-  top: 373px;
+  margin-top : 222px;
   background: #BEB7A2;
   border-radius: 0px 0px 10px 10px;
-`;
-export const RefContentContainer = styled.div`
-  display : flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const RefImgContainer = styled.div`
-  display: flex;
-  position: absolute;
-  justify-content: center;
 `;
 
 export const WhiteRefImg = styled.div`
   position: absolute;
   width : 122px;
   height : 220.29px;
-  top : 110px;
   background: url(${WhiteRef}) no-repeat;
   background-size:contain;
+  top : 30px;
+  left : 100px;
 
 `;
 
@@ -157,14 +133,16 @@ export const PurpleRefImg = styled(WhiteRefImg)`
 
 export const CheckBtnImg = styled.div`
   position: absolute;
-  top: 470px;
-  width : 22px;
-  height : 18px;
+  width : 18.27px;
+  height : 14px;
+  margin-top: 23px;
+  margin-left : 21px;
   background : url(${CheckBtn}) no-repeat;
+  background-size:contain;
 `;
 
 export const NextBtn = styled.div`
-  top : 550px;
+  margin-top : 22px;
   width: 320px;
   max-width: 318px;
   height: 50px;
@@ -175,6 +153,4 @@ export const NextBtn = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;  
-  position : absolute;
-
 `;

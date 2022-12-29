@@ -16,7 +16,7 @@ const Result = () => {
         <styled.ResultContainer>
             <styled.Top>
                 <styled.Title>친구들이 보낸 덕담</styled.Title>
-                <styled.BackButton onClick={()=>navigate('/')}>돌아가기</styled.BackButton>
+                <styled.BackButton onClick={() => navigate('/refrigerator')}>돌아가기</styled.BackButton>
             </styled.Top>
             <Message message={userMessage}/>
         </styled.ResultContainer>

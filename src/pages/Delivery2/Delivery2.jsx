@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Button from "../../components/Button/Button";
+import MessageModal from "../../components/Modal/MessageModal";
 import TopBar from "../../components/TopBar/TopBar";
 import bang from "../../images/bang.svg";
 import * as styled from "./styles";
@@ -8,6 +9,7 @@ import * as styled from "./styles";
 const Delivery2 = () => {
   const [userName, setUserName] = useState("");
   const [textMessage, setTextMessage] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const onChangeName = (e) => {
     setUserName(e.target.value);
@@ -17,6 +19,11 @@ const Delivery2 = () => {
   const onChangeMessage = (e) => {
     setTextMessage(e.target.value);
     console.log(textMessage);
+  };
+
+  const confirmEvent = (type) => {
+    setShowModal(false);
+    console.log(type + ": confirm");
   };
 
   return (
@@ -53,7 +60,17 @@ const Delivery2 = () => {
               상대를 비방하는 내용 작성 시 법적 처벌을 받을 수 있습니다.
             </styled.FontDiv>
           </styled.FlexDiv>
-          <Button text={"떡국 재료 선물하기"} active={userName.trim() != "" && textMessage.trim() != ""}/>
+          <Button
+            setShowModal={setShowModal}
+            text={"떡국 재료 선물하기"}
+            active={userName.trim() != "" && textMessage.trim() != ""}
+          />
+          {showModal && (
+            <MessageModal
+              onConfirmClick={() => confirmEvent("message")}
+              secret={true}
+            />
+          )}
         </styled.Container>
       </styled.FlexDiv>
     </>

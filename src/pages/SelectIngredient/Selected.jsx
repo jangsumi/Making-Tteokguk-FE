@@ -1,10 +1,20 @@
 import React from 'react';
 import * as styled from "./styles";
 
-const Selected = ({userSelect, onRemoveItem}) => {
-    console.log(userSelect);
+const Selected = ({userIngredient, userSelect, setUserIngredient, onRemoveItem}) => {
     const userSelectCnt = userSelect.length;
     const [...empty] = [...Array(4 - userSelectCnt)];
+
+    const onClickEvent = (item) => {
+        setUserIngredient(userIngredient => {
+            return [
+                ...userIngredient.slice(0, item.ingredientIndex),
+                userIngredient[item.ingredientIndex] + 1,
+                ...userIngredient.slice(item.ingredientIndex + 1)
+            ]
+        })
+        onRemoveItem(item);
+    }
 
     return (
         <styled.Wrapper>
@@ -12,7 +22,7 @@ const Selected = ({userSelect, onRemoveItem}) => {
             <styled.SelectWrapper>
                 {userSelect.map((item) => {
                     return <styled.IngredientBox key={`selected-ingredient-${item.idx}`} imageUrl={item.imageUrl}
-                                                 onClick={() => onRemoveItem(item)}>
+                                                 onClick={() => onClickEvent(item)}>
                         <styled.Delete/>
                     </styled.IngredientBox>
                 })}

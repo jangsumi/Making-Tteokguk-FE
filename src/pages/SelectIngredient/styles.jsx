@@ -25,10 +25,10 @@ export const SubText = styled(TitleText)`
 export const Ingredients = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 76px);
-  grid-column-gap: 10px;
+  grid-gap: 4px 10px;
 `
 export const IngredientWrapper = styled.div`
-  cursor: pointer;
+  cursor: ${props=>props.active? "pointer":"default"};
   align-items: center;
   gap: 1px;
   margin-bottom: 4px;
@@ -39,13 +39,13 @@ export const IngredientBox = styled.div`
   height: 76px;
   border: 1px solid #000000;
   border-radius: 10px;
-  background: #D9D9D9 url(${(props) => props.imageUrl}) center center;
-  background-size: 100% 100%;
+  background: #FFFFFF url(${(props) => props.imageUrl}) center bottom no-repeat;
+  background-size: 66px 66px
 `
 export const SpecialBox = styled(IngredientBox)`
   width: 248px;
   height: 50px;
-  cursor: pointer;
+  cursor: ${props=>props.active? "pointer":"default"};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,17 +53,25 @@ export const SpecialBox = styled(IngredientBox)`
 `
 export const IngredientLock = styled.div`
   width: 100%;
-  height: 76px;
+  height: 100%;
+  position: absolute;
+  top: -1px;
+  left: -1px;
   border: 1px solid #000000;
   border-radius: 10px;
-  background: #D9D9D9 url(${lock}) center center no-repeat;
+  background: rgba(0, 0, 0, 0.3) url(${lock}) center center no-repeat;
+  background-size: 11px 14px;
+`
+export const SecretLock = styled(IngredientLock)`
+  background: rgba(0, 0, 0, 0.3) url(${lock}) 70px center no-repeat;
+  background-size: 11px 14px;
 `
 export const IngredientText = styled(TitleText)`
   font-size: 14px;
   margin-bottom: 0;
 `
 export const SpecialText = styled(IngredientText)`
-  background: #D9D9D9;
+  background: #FFFFFF;
 `
 export const IngredientNumber = styled.div`
   position: absolute;

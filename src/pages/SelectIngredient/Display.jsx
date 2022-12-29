@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import * as styled from "./styles";
 import tteok from "../../images/tteok.svg";
 import gim from "../../images/gim.svg";
@@ -27,7 +27,7 @@ const Display = ({userIngredient, userSelect, setUserIngredient, onAddItem}) => 
                     ...userIngredient.slice(item.index + 1)
                 ]
             })
-            onAddItem({ingredientIndex: item.index ,name: item.name, imageUrl: item.imageUrl});
+            onAddItem({ingredientIndex: item.index, name: item.name, imageUrl: item.imageUrl});
         }
     }
 
@@ -38,16 +38,16 @@ const Display = ({userIngredient, userSelect, setUserIngredient, onAddItem}) => 
                 {ingredient.map(({name, imageUrl}, index) =>
                     <styled.IngredientWrapper key={`ingredient-${index}`}
                                               active={userIngredient[index]}
-                                              onClick={()=>onClickEvent({index, name, imageUrl})}>
-                            <styled.IngredientBox imageUrl={imageUrl}>
-                                <styled.IngredientNumber>x {userIngredient[index]}</styled.IngredientNumber>
-                                {!userIngredient[index] && <styled.IngredientLock/>}
-                            </styled.IngredientBox>
+                                              onClick={() => onClickEvent({index, name, imageUrl})}>
+                        <styled.IngredientBox imageUrl={imageUrl}>
+                            <styled.IngredientNumber>x {userIngredient[index]}</styled.IngredientNumber>
+                            {!userIngredient[index] && <styled.IngredientLock/>}
+                        </styled.IngredientBox>
                         <styled.IngredientText>{name}</styled.IngredientText>
                     </styled.IngredientWrapper>
                 )}
                 <styled.SpecialBox active={userIngredient[6]}
-                                   onClick={()=>onClickEvent({index:6, name:"비밀의 재료", imageUrl:secretIngredient})}>
+                                   onClick={() => onClickEvent({index: 6, name: "비밀의 재료", imageUrl: secretIngredient})}>
                     <styled.SpecialText>비밀의 재료</styled.SpecialText>
                     <styled.IngredientNumber>x {userIngredient[6] || 0}</styled.IngredientNumber>
                     {!userIngredient[6] && <styled.SecretLock/>}

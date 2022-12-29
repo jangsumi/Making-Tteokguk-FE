@@ -15,6 +15,7 @@ export const IngredientBox = styled.div`
   border: 1px solid #000000;
   border-radius: 10px;
   background: #FFFFFF url(${props=>props.imageUrl}) center center no-repeat;
+  background-size: 42px 42px;
 `
 export const TextWrapper = styled.div`
   display: flex;

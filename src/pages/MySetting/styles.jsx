@@ -4,7 +4,6 @@ import UnChecked from '../../images/UnChecked.svg';
 import ExMark from '../../images/ExMark.svg';
 
 
-
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,8 +19,7 @@ export const MainText = styled.div`
   height: 29px;
   font-size: 20px;
   align-items: center;
-  color: #000000;
-  margin-top : 30px;
+  margin-top : 40px;
 `;
 
 
@@ -31,7 +29,6 @@ export const MsgPubTxt = styled.div`
   margin-top : 11px;
   font-size: 16px;
   align-items: center;
-  color: #000000;
   white-space: pre-wrap;
 `;
 
@@ -39,10 +36,8 @@ export const MsgPubInfo = styled.div`
   width: 237px;
   height: 17px;
   font-size: 12px;
-  line-height: 17px;
   align-items: center;
   top : 120px;
-  color: #000000;
 `;
 
 export const ExMarkImg = styled.div`
@@ -77,7 +72,7 @@ export const PubBtn = styled.button`
   width: 150px;
   height: 37px;
   background: ${(props) => props.color};
-  border: 1px solid #000000;
+  border: 1px solid;
   border-radius: 10px;
   cursor: pointer;
   align-items: center; // 중앙정렬
@@ -115,15 +110,14 @@ export const CheckBtn1Img = styled.div`
   margin-left : 30px;
   padding-left: 10px;
 
-`;
-export const UnCheckBtn1Img = styled.input`
-  width : 18px;
-  height: 18px;
-  background : url(${UnChecked}) no-repeat;
-  border : 0px;
-  cursor: pointer;
   
 
+`;
+export const UnCheckBtn1Img = styled(CheckBtn1Img)`
+  background : url(${UnChecked}) no-repeat;
+  border : 0px;
+  
+  
 `;
 
 

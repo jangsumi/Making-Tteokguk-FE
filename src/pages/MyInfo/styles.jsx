@@ -10,6 +10,7 @@ export const NaviItem = styled.div`
 
 export const FlexBox = styled.div`
   display: flex;
+  width: ${(props) => props.width};
   flex-direction: ${(props) => props.direction || "row"};
   justify-content: center;
 `;

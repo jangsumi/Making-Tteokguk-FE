@@ -96,7 +96,6 @@ export const AgreeTxt = styled.div`
   width: 320px;
   height: 29px;
   font-size: 20px;
-  color: #000000;
   margin-top : 40px;
 `;
 
@@ -105,18 +104,17 @@ export const CheckBtn1Img = styled.div`
   width : 18px;
   height: 18px;
   background : url(${Checked}) no-repeat;
+  visibility: ${(props) => props.ischecked1 ? "visible" : "hidden"};
   cursor: pointer;
   margin-top : 11px;
   margin-left : 30px;
   padding-left: 10px;
-
   
 
 `;
 export const UnCheckBtn1Img = styled(CheckBtn1Img)`
   background : url(${UnChecked}) no-repeat;
-  border : 0px;
-  
+  position : absolute;
   
 `;
 
@@ -125,12 +123,18 @@ export const AgreeAll = styled.div`
   width : 320px;
   height : 20px;
   font-size: 14px;
-  color: #000000;
   margin-top : 10px;
 `;
 
 
 export const CheckBtn2Img = styled(CheckBtn1Img)`
+  margin-top: 20px;
+  visibility: ${(props) => props.ischecked2 ? "visible" : "hidden"};
+`;
+
+export const UnCheckBtn2Img = styled(UnCheckBtn1Img)`
+  position : absolute;
+  visibility: ${(props) => props.ischecked2 ? "visible" : "hidden"};
   margin-top: 20px;
 `;
 
@@ -139,6 +143,13 @@ export const AgeCheck = styled(AgreeAll)`
 `;
 
 export const CheckBtn3Img = styled(CheckBtn1Img)`
+  visibility: ${(props) => props.ischecked3 ? "visible" : "hidden"};
+  margin-top: 6px;
+`;
+
+export const UnCheckBtn3Img = styled(UnCheckBtn1Img)`
+  position : absolute;
+  visibility: ${(props) => props.ischecked3 ? "visible" : "hidden"};
   margin-top: 6px;
 `;
 
@@ -153,17 +164,17 @@ export const NextBtn = styled.div`
   margin-top : 209px;
   max-width: 318px;
   height: 50px;
-  background: #E6D2D8;
-  border: 1px solid #000000;
+  background: ${(props) => (props.active ? "#E0AEBC" : "#E6D2D8")};
+  border: 1px solid;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;  
+  color: ${(props) => (props.active ? "#000000" : "#666666")};
+  cursor: ${(props) => (props.active ? "pointer" : "default")};
 
 `;
 
 export const PrevBtn = styled(NextBtn)`
   width: 100px;
-  background: #E6D2D8;
 `;

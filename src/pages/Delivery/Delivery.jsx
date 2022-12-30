@@ -65,13 +65,18 @@ const Delivery = () => {
               setSelectedItem={setSelectedItem}
               setCurrItemSrc={setCurrItemSrc}
               setCurrItemName={setCurrItemName}
+              key={item.index}
               index={item.index}
               imgBg={item.imgBg}
               name={item.name}
             />
           ))}
         </styled.GridContainer>
-        <Button text={"다음"} pageName={"/delivery2"} active={selectedItem != -1}/>
+        <Button
+          text={"다음"}
+          pageName={"/delivery2"}
+          active={selectedItem != -1}
+        />
       </styled.PageContainer>
     </>
   );

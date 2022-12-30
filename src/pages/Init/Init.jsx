@@ -60,8 +60,7 @@ const Init = () => {
           active={checkActive(nickName)}
           text = "다음" 
           pageName={'/mysetting'} 
-          setShowModal={false} >
-          </Button>
+          />
         </styled.Wrapper>
       </styled.Container>
   );

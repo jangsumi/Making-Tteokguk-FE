@@ -61,11 +61,6 @@ export const BtnContainer = styled.div`
   display : flex;
   gap : 10px;
 `;
-export const AgreeContainer = styled.div`
-  display : flex;
-  flex-direction : column;
-  margin-top: -40px;
-`;
 
 export const PubBtn = styled.button`
   box-sizing: border-box;

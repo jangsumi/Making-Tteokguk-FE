@@ -54,14 +54,9 @@ export const WhiteBtn = styled.div`
   margin-top : 10px;
 `;
 
-
 export const WhosRefTxt = styled.div`
   font-size: 16px;
   margin-top : 18px;
-`;
-
-export const SelectRefColTxtContainer = styled.div`
-  font-size: 20px;
 `;
 
 export const SelectRefColTxt = styled.div`

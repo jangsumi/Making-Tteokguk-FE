@@ -7,7 +7,7 @@ const ResultModal = ({onConfirmClick}) => {
         <Modal>
             <styled.Text>{'떡국이 떡만 있어서 떡국?\n맛있게 먹어볼까요?'}</styled.Text>
             <styled.resultImage/>
-            <styled.Button onClick={onConfirmClick} width={150}>덕담 보러가기</styled.Button>
+            <styled.Button onClick={onConfirmClick} width={150} fontSize={16}>덕담 보러가기</styled.Button>
         </Modal>
     );
 };

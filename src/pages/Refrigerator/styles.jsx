@@ -40,7 +40,7 @@ export const menu = styled.img`
     display:block;
     margin-right:20px;
     margin-left:auto;
-    margin-bottom:29px;
+    margin-bottom:10px;
     cursor: pointer;
 `;
 
@@ -105,10 +105,17 @@ export const menuButton = styled.div`
 `;
 
 
-export const Title = styled.div`
+export const title = styled.div`
     font-size:26px;
     text-align:center;
-    margin-bottom:58px;
+    margin-bottom:20px;
+`;
+
+export const info = styled.text`
+    font-size:16px;
+    text-align:center;
+    margin-bottom:24px;
+    display:block;
 `;
 
 export const refri = styled.img`
@@ -119,10 +126,26 @@ export const refri = styled.img`
     position:relative;
     margin-bottom:24px;
     padding-left:80px;
-    padding-right:80px;
     background-color:transparent;
     display:block;
 `;
+
+export const ingredientNums = styled.div`
+    z-index:4;
+    position:absolute;
+    background-color:transparent;
+    display:grid;
+    grid-template-columns: 100px 100px;
+    grid-template-rows:83px 108px 85px 20px;
+    margin-left:81px;
+    top:263px;
+    flex-direction:column;
+    text{
+      background-color:transparent;
+      font-size:10px;
+    }
+`;
+
 
 export const customButton = styled.button`
   width:320px;

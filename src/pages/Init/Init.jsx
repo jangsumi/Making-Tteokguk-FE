@@ -1,21 +1,32 @@
 import React, { useState } from "react";
 import * as styled from "./styles";
-import {useNavigate} from "react-router-dom";
 import Button from "../../components/Button/Button";
 
 
 const Init = () => {
-  const navigate = useNavigate();
   const RefColor = 
     [{id : 1, RCol : "#D9D9D9"},
     {id : 2, RCol : "#5E5E5E"},
     {id : 3, RCol : "#FFE5A0"},
     {id : 4, RCol : "#A5AEFF"}]
   const RefColorList = RefColor.map((Col)=><Init key = {Col.RCol} color = {Col.RCol}/>)
-  const [NickName, setNickName] = useState('');
+  const [nickName, setNickName] = useState('');
   const onChange = (e) =>{
     setNickName(e.target.value);
-    console.log(e.target.value);
+  }
+  const checkNickName = (nickName) =>{
+    if(nickName.length >= 6){
+      return nickName.slice(0,6);
+    }
+
+  }
+  const checkActive = (nickName) =>{
+    if (nickName === ""){
+      return false;
+    }
+    else{
+      return true;
+    }
   }
   return (
       <styled.Container>
@@ -25,8 +36,9 @@ const Init = () => {
             <styled.WhiteBtn>
               <styled.NickNameInput 
                 input type="text" 
-                maxLength={6} 
-                onChange={onChange}/>
+                maxLength='6' 
+                onChange={onChange}
+                value = {checkNickName(nickName)}/>
             </styled.WhiteBtn>
             <styled.WhosRefTxt>님의 냉장고</styled.WhosRefTxt>
           </styled.BtnContainer>
@@ -40,19 +52,18 @@ const Init = () => {
                 <styled.RefColor backgroundColor="#5E5E5E"/>
                 <styled.RefColor backgroundColor="#FFE5A0"/>
                 <styled.RefColor backgroundColor="#A5AEFF"/>
-
               </styled.RefContainer>
             </styled.RefBgBtm>
             <styled.WhiteRefImg/>
           </styled.RefBgTop>
-          <styled.NextBtn onClick={()=>navigate('/mysetting')}>다음</styled.NextBtn>
-          
+          <Button 
+          active={checkActive(nickName)}
+          text = "다음" 
+          pageName={'/mysetting'} 
+          setShowModal={false} >
+          </Button>
         </styled.Wrapper>
       </styled.Container>
-    
-
-
-    
   );
 };
 

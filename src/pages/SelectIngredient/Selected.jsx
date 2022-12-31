@@ -1,7 +1,7 @@
 import React from 'react';
 import * as styled from "./styles";
 
-const Selected = ({userIngredient, userSelect, setUserIngredient, onRemoveItem}) => {
+const Selected = ({userSelect, setUserIngredient, onRemoveItem}) => {
     const userSelectCnt = userSelect.length;
     const [...empty] = [...Array(4 - userSelectCnt)];
 
@@ -21,10 +21,11 @@ const Selected = ({userIngredient, userSelect, setUserIngredient, onRemoveItem})
             <styled.SubText>선택된 재료</styled.SubText>
             <styled.SelectWrapper>
                 {userSelect.map((item) => {
-                    return <styled.IngredientBox key={`selected-ingredient-${item.idx}`} imageUrl={item.imageUrl}
+                    return <styled.SelectedBox key={`selected-ingredient-${item.idx}`}
+                                                 imageUrl={item.imageUrl}
                                                  onClick={() => onClickEvent(item)}>
                         <styled.Delete/>
-                    </styled.IngredientBox>
+                    </styled.SelectedBox>
                 })}
                 {empty.map((_, idx) => {
                     return <styled.IngredientBox key={`selected-empty-${idx}`}/>

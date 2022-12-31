@@ -40,7 +40,7 @@ export const IngredientBox = styled.div`
   border: 1px solid #000000;
   border-radius: 10px;
   background: #FFFFFF url(${(props) => props.imageUrl}) center bottom no-repeat;
-  background-size: 66px 66px
+  background-size: 66px 66px;
 `
 export const SpecialBox = styled(IngredientBox)`
   width: 248px;
@@ -50,6 +50,9 @@ export const SpecialBox = styled(IngredientBox)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`
+export const SelectedBox = styled(IngredientBox)`
+  cursor: pointer;
 `
 export const IngredientLock = styled.div`
   width: 100%;

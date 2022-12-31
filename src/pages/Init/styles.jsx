@@ -21,9 +21,7 @@ export const MainText = styled.div`
   width: 320px;
   height: 58px;
   font-size: 20px;
-  line-height: 29px;
   align-items: center;
-  color: #000000;
   white-space: pre-wrap;
   margin-top : 40px;
 `;
@@ -49,36 +47,29 @@ export const WhiteBtn = styled.div`
   width: 108px;
   height: 40px;
   background: #FFFFFF;
-  border: 1px solid #000000;
+  border: 1px solid;
   border-radius: 9px;
   text-align : center;
   margin-right : 10px;
   margin-top : 10px;
 `;
 
-
 export const WhosRefTxt = styled.div`
   font-size: 16px;
-  color: #000000;
   margin-top : 18px;
-`;
-
-export const SelectRefColTxtContainer = styled.div`
-  font-size: 20px;
 `;
 
 export const SelectRefColTxt = styled.div`
   width: 320px;
   height: 30px;
   font-size: 20px;
-  color: #000000;
   margin-top : 40px;
 `;
 export const RefColor = styled.div`
   width: 60px;
   height: 60px;
   background: ${props => props.backgroundColor};
-  border: 1px solid #000000;
+  border: 1px solid;
   border-radius: 20px;
   cursor: pointer;
 `
@@ -94,10 +85,11 @@ export const RefBgTop = styled.div`
   width: 320px;
   height: 380px;
   background: ${props => props.RefBg};
-  border: 1px solid #000000;
+  border: 1px solid;
   border-radius: 10px;
   margin-top : 10px;
   position : relative;
+  margin-bottom: 20px;
 `;
 export const RefBgBtm = styled.div`
   position: absolute;
@@ -141,16 +133,3 @@ export const CheckBtnImg = styled.div`
   background-size:contain;
 `;
 
-export const NextBtn = styled.div`
-  margin-top : 22px;
-  width: 320px;
-  max-width: 318px;
-  height: 50px;
-  background: #E6D2D8;
-  border: 1px solid #000000;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;  
-`;

@@ -32,6 +32,11 @@ const Refrigerator = () => {
 
     const [ingredientNums,setIngredientNums ] = useState([0,1,5,10,100,17,50])
 
+    const copyClipBoard = async () => {
+        await navigator.clipboard.writeText(window.location.href);
+        setIsActive(true);
+    }
+
     const openMenu = () => {
         setMenuOpen(true)
     }
@@ -78,7 +83,7 @@ const Refrigerator = () => {
                     <styled.customButton className="cancle" onClick={openTheDoor}>닫기</styled.customButton>
                 </styled.bottonBox>
                 :<styled.customButton onClick={openTheDoor}>{buttonText}</styled.customButton>}
-                <styled.customButton onClick={() => setIsActive(true)}>나의 냉장고 주소 복사하기</styled.customButton>
+                <styled.customButton onClick={() => copyClipBoard()}>나의 냉장고 주소 복사하기</styled.customButton>
                 <styled.FlexBox>
                     <Toast
                         isActive={isActive}

@@ -6,16 +6,9 @@ import Button from "../../components/Button/Button";
 const Init = () => {
   const [nickName, setNickName] = useState('');
   const onChange = (e) =>{
-    setNickName(e.target.value);
+    setNickName(e.target.value.slice(0,6));
   }
-  const checkNickName = (nickName) =>{
-    if(nickName.length >= 6){
-      console.log(nickName.slice(0,6));
-      return nickName.slice(0,6);
-    }
-    
 
-  }
   const checkActive = (nickName) =>{
     if ((nickName === "") || (nickName.charAt(0) === " ") || (nickName.charAt(5) === " ")){
       return false;
@@ -34,7 +27,7 @@ const Init = () => {
                 input type="text" 
                 maxLength='6' 
                 onChange={onChange}
-                value = {checkNickName(nickName)}/>
+                value = {nickName || ''}/>
             </styled.WhiteBtn>
             <styled.WhosRefTxt>님의 냉장고</styled.WhosRefTxt>
           </styled.BtnContainer>

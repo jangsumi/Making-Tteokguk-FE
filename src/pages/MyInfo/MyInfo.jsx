@@ -95,9 +95,9 @@ const MyInfo = () => {
   ];
 
   return (
-    <styled.FlexBox direction="column" width="360px">
+    <styled.FlexBox direction="column">
       <TopBar titleName={"나의 떡국"} />
-      <styled.FlexBox>
+      <styled.FlexBox aCenter={true}>
         <styled.NaviItem
           onClick={() => {
             setCurrPage(0);

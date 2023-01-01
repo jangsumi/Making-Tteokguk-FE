@@ -28,4 +28,5 @@ export const ButtonRecipe = styled.div`
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
+  background: #FFFFFF;
 `;

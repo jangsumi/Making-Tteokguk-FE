@@ -30,7 +30,7 @@ const Menu = ({setMenuOpen}) => {
 
     return (
         <div>
-            <styled.background onClick={closeMenu}/>
+            <styled.background/>
             <styled.menuBar>
                 <img className='xButton'onClick={closeMenu} src={x}/>
                 <styled.menuButton onClick={()=>setShowModal(true)}><img src={manual}/>떡국 만들기 설명서</styled.menuButton>

@@ -76,6 +76,7 @@ export const Button = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  font-size: ${props=>props.fontSize || 14}px;
 `
 export const BoxWrapper = styled.div`
   display: flex;

@@ -35,11 +35,11 @@ const SelectIngredient = () => {
         <div>
             <TopBar titleName="떡국 만들기" onRecipe={() => setShowRecipe(true)}/>
             <styled.Container>
-                <styled.TitleText>떡국에 넣을 재료를 선택해주세요</styled.TitleText>
+                <styled.TitleText>떡국에 넣을 재료를 선택해 주세요</styled.TitleText>
                 <Display userIngredient={userIngredient} userSelect={userSelect}
                          setUserIngredient={(userIngredient)=>setUserIngredient(userIngredient)}
                          onAddItem={(item) => onAddItem(item)}/>
-                <Selected userIngredient={userIngredient} userSelect={userSelect}
+                <Selected userSelect={userSelect}
                           setUserIngredient={(userIngredient)=>setUserIngredient(userIngredient)}
                           onRemoveItem={(item) => onRemoveItem(item)}/>
                 <Button text="떡국 끓이기" active={userSelect.length===4} pageName="/making"/>

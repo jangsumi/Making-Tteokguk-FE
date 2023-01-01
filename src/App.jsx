@@ -40,7 +40,7 @@ const App = () => {
             <Route path="/delivery2" element={<Delivery2 />} />
             <Route path="/init" element={<Init />} />
             <Route path="/mysetting" element={<MySetting />} />
-            <Route path="/cannotFind" element={<CannotFind />} />
+            <Route path="*" element={<CannotFind />} />
           </Routes>
         </BrowserRouter>
       </div>

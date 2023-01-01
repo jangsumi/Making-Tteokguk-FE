@@ -10,7 +10,7 @@ import tgOnlytteok from "../../images/tgOnlytteok.svg";
 import tgOnlyegg from "../../images/tgOnlyegg.svg";
 import tgBlack from "../../images/tgBlack.svg";
 
-const Cooked = ({unlock}) => {
+const Cooked = ({ unlock }) => {
   const infoTteokguk = [
     { index: 0, name: "이상적인 떡국", imgSrc: tgIdeal },
     { index: 1, name: "취향이 보이는 떡국", imgSrc: tgMyTaste },
@@ -25,7 +25,12 @@ const Cooked = ({unlock}) => {
     <styled.FlexBox>
       <styled.GridContainer>
         {infoTteokguk.map((item) => (
-          <styled.FlexBox direction="column" gap="4px" aCenter={true}>
+          <styled.FlexBox
+            key={item.index}
+            direction="column"
+            gap="4px"
+            aCenter={true}
+          >
             <styled.Tteokguk background={item.imgSrc}>
               {!unlock[item.index] && <styled.TteockgukLock />}
             </styled.Tteokguk>

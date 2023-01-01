@@ -12,12 +12,12 @@ const Delivery2 = () => {
   const [showModal, setShowModal] = useState(false);
 
   const onChangeName = (e) => {
-    setUserName(e.target.value);
+    setUserName(e.target.value.slice(0, 6));
     console.log(userName);
   };
 
   const onChangeMessage = (e) => {
-    setTextMessage(e.target.value);
+    setTextMessage(e.target.value.slice(0, 50));
     console.log(textMessage);
   };
 
@@ -37,7 +37,6 @@ const Delivery2 = () => {
             name="username"
             placeholder="별명을 입력해주세요. (6글자 이내)"
             spellcheck="false"
-            maxLength={6}
             value={userName}
             onChange={onChangeName}
           />
@@ -48,7 +47,7 @@ const Delivery2 = () => {
               placeholder="친구에게 새해 덕담을 남겨 보세요. (50자 이내)"
               spellcheck="false"
               contenteditable="true"
-              maxLength={50}
+              rows={4}
               value={textMessage}
               onChange={onChangeMessage}
             />

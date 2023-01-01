@@ -37,6 +37,8 @@ export const MsgTxtArea = styled.textarea`
   background-color: #ffffff;
   border: 1px solid #000000;
   border-radius: 10px;
+  overflow: hidden;
+  white-space: pre-wrap;
   font-size: 16px;
   resize: none;
   :focus {

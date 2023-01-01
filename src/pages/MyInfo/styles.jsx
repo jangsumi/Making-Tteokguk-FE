@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import lock from "../../images/lock.svg";
 
 export const NaviItem = styled.div`
   width: 160px;
@@ -10,7 +11,10 @@ export const NaviItem = styled.div`
 
 export const FlexBox = styled.div`
   display: flex;
+  width: ${(props) => props.width};
   flex-direction: ${(props) => props.direction || "row"};
+  align-items: ${(props) => props.aCenter && "center"};
+  gap: ${(props) => props.gap};
   justify-content: center;
 `;
 
@@ -20,7 +24,7 @@ export const GridContainer = styled.div`
   margin: 20px 0px 0px 0px;
   display: grid;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   grid-template-columns: repeat(2, minmax(130px, auto));
   gap: 13px 23px;
 `;
@@ -31,4 +35,21 @@ export const Tteokguk = styled.div`
   border-radius: 10px;
   border: 1px solid #000000;
   background-color: #ffffff;
+  background-image: url(${(props) => props.background});
+  background-size: 120px 120px;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+export const TteockgukLock = styled.div`
+  display: relative;
+  width: 130px;
+  height: 130px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3) url(${lock}) center center no-repeat;
+  background-size: 11px 14px;
+`;
+
+export const FontDiv = styled.div`
+  font-size: ${(props) => props.fontSize};
 `;

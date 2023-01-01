@@ -4,24 +4,20 @@ import Button from "../../components/Button/Button";
 
 
 const Init = () => {
-  const RefColor = 
-    [{id : 1, RCol : "#D9D9D9"},
-    {id : 2, RCol : "#5E5E5E"},
-    {id : 3, RCol : "#FFE5A0"},
-    {id : 4, RCol : "#A5AEFF"}]
-  const RefColorList = RefColor.map((Col)=><Init key = {Col.RCol} color = {Col.RCol}/>)
   const [nickName, setNickName] = useState('');
   const onChange = (e) =>{
     setNickName(e.target.value);
   }
   const checkNickName = (nickName) =>{
     if(nickName.length >= 6){
+      console.log(nickName.slice(0,6));
       return nickName.slice(0,6);
     }
+    
 
   }
   const checkActive = (nickName) =>{
-    if (nickName === ""){
+    if ((nickName === "") || (nickName.charAt(0) === " ") || (nickName.charAt(5) === " ")){
       return false;
     }
     else{
@@ -59,7 +55,7 @@ const Init = () => {
           <Button 
           active={checkActive(nickName)}
           text = "다음" 
-          pageName={'/mysetting'} 
+          pageName="/mysetting"
           />
         </styled.Wrapper>
       </styled.Container>

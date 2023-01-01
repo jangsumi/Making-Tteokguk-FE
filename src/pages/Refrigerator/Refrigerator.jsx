@@ -12,10 +12,14 @@ import openRefrigeratorBlue from  '../../images/openRefrigeratorBlue.svg'
 import ingredient from '../../images/ingredient.png'
 import menu from '../../images/menu.png'
 import lock from '../../images/lock.png'
+import Toast from '../../components/Toast/Toast';
 
 const Refrigerator = () => {
+    // 주소 복사 Toast 관리 State
+    const [isActive, setIsActive] = useState(false);
+
     const [userName, setUserName] = useState("여섯글자별명"); 
-    const [userSelf, setUserSelf] = useState(false);
+    const [userSelf, setUserSelf] = useState(true);
     const [userOpen, setuUerOpen] = useState(true);
     const [closeRefrigerator, setCloseRefrigerator] = useState(closeRefrigeratorBlack);
     const [openRefrigerator, openCloseRefrigerator] = useState(openRefrigeratorBlack);
@@ -27,6 +31,11 @@ const Refrigerator = () => {
     const [menuOpen, setMenuOpen] = useState(false)
 
     const [ingredientNums,setIngredientNums ] = useState([0,1,5,10,100,17,50])
+
+    const copyClipBoard = async () => {
+        await navigator.clipboard.writeText(window.location.href);
+        setIsActive(true);
+    }
 
     const openMenu = () => {
         setMenuOpen(true)
@@ -74,7 +83,14 @@ const Refrigerator = () => {
                     <styled.customButton className="cancle" onClick={openTheDoor}>닫기</styled.customButton>
                 </styled.bottonBox>
                 :<styled.customButton onClick={openTheDoor}>{buttonText}</styled.customButton>}
-                <styled.customButton>나의 냉장고 주소 복사하기</styled.customButton>
+                <styled.customButton onClick={() => copyClipBoard()}>나의 냉장고 주소 복사하기</styled.customButton>
+                <styled.FlexBox>
+                    <Toast
+                        isActive={isActive}
+                        setIsActive={setIsActive}
+                        message={`주소 복사 완료!\n친구에게 내 냉장고를 공유해 보세요.`}
+                    />
+                </styled.FlexBox>
             </styled.container>
 
         )

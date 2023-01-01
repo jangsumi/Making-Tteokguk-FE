@@ -39,12 +39,12 @@ const Delivery = () => {
   const [currItemName, setCurrItemName] = useState("ㅤ");
 
   const ingredientList = [
-    { index: 0, imgBg: tteok, name: "떡" },
-    { index: 1, imgBg: gim, name: "김" },
-    { index: 2, imgBg: gyeranjidan, name: "계란지단" },
-    { index: 3, imgBg: daepa, name: "대파" },
-    { index: 4, imgBg: yakgwa, name: "약과" },
-    { index: 5, imgBg: sanjeok, name: "산적" },
+    { index: 0, imgBg: tteok, name: "홍철 없는 홍철 팀 방지용 떡" },
+    { index: 1, imgBg: gim, name: "간이 안 맞으면 김 잔뜩 넣기" },
+    { index: 2, imgBg: gyeranjidan, name: "계란지단을 국수 면만큼 넣기" },
+    { index: 3, imgBg: daepa, name: "파 송송 대파 탁" },
+    { index: 4, imgBg: yakgwa, name: "윤기 좌르르 꿀 바른 약과" },
+    { index: 5, imgBg: sanjeok, name: "산적을 산 적 있나요?" },
   ];
 
   return (
@@ -52,7 +52,7 @@ const Delivery = () => {
       <TopBar titleName={"떡국 재료 선물하기"} />
       <styled.PageContainer>
         <styled.FontDiv fontSize={"20px"} padding={"30px 0px 30px 0px"}>
-          선물할 떡국 재료를 선택해주세요
+          선물할 떡국 재료를 선택해 주세요.
         </styled.FontDiv>
         <IngredientComponent index={-1} imgBg={currItemSrc} />
         <styled.FontDiv fontSize={"18px"} padding={"14px 0px 14px 0px"}>

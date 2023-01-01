@@ -15,8 +15,6 @@ export const container = styled.div`
 
 `;
 
-
-
 export const floor = styled.div`
     width:100vw;
     top:502px;
@@ -186,3 +184,9 @@ export const bottonBox = styled.div`
     width:100px;
   }
 `;
+
+export const FlexBox = styled.div`
+  display: flex;
+  justify-content: center;
+
+`

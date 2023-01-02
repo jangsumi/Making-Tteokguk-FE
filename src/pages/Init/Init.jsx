@@ -10,9 +10,8 @@ const Init = () => {
   }
 
   const checkActive = (nickName) =>{
-    var length = nickName.length;
     if ((nickName === "") || (nickName.charAt(0) === " ") || 
-    (nickName.charAt(length-1) === " ")){
+    (nickName.charAt(nickName.length-1) === " ")){
       return false;
     }
     else{

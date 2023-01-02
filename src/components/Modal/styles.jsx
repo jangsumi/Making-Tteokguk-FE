@@ -97,7 +97,6 @@ export const PlusImg = styled.div`
   width: 16px;
   height: 16px;
   background: url(${close}) center center no-repeat;
-  cursor: pointer;
   transform: rotate(45deg);
   display: ${props=>!props.visible && "none"};
 `

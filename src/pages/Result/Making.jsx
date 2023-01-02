@@ -1,17 +1,19 @@
 import React, {useEffect, useState, useRef} from 'react';
 import SyncLoader from "react-spinners/SyncLoader.js";
-import {useNavigate} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import * as styled from "./styles";
 import makingClose from "../../images/makingClose.svg";
 import makingOpen from "../../images/makingOpen.svg";
 import ResultModal from '../../components/Modal/ResultModal.jsx'
 
 const Making = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { userSelect } = location.state;
     const image = [makingOpen, makingClose];
     const [showImage, setShowImage] = useState(makingClose);
     const [showResult, setShowResult] = useState(false);
     const count = useRef(0);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const loading = setInterval(() => {

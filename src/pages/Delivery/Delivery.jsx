@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import TopBar from "../../components/TopBar/TopBar";
 import tteok from "../../images/tteok.svg";
@@ -37,6 +38,7 @@ const Delivery = () => {
   const [selectedItem, setSelectedItem] = useState(-1);
   const [currItemSrc, setCurrItemSrc] = useState(empty);
   const [currItemName, setCurrItemName] = useState("ㅤ");
+  const navigate = useNavigate();
 
   const ingredientList = [
     { index: 0, imgBg: tteok, name: "홍철 없는 홍철 팀 방지용 떡" },
@@ -47,6 +49,9 @@ const Delivery = () => {
     { index: 5, imgBg: sanjeok, name: "산적을 산 적 있나요?" },
   ];
 
+  const onButtonClick = () => {
+    navigate("/delivery2", {state: {ingredient: selectedItem}});
+  }
   return (
     <>
       <TopBar titleName={"떡국 재료 선물하기"} />
@@ -74,7 +79,7 @@ const Delivery = () => {
         </styled.GridContainer>
         <Button
           text={"다음"}
-          pageName={"/delivery2"}
+          onClickEvent={onButtonClick}
           active={selectedItem != -1}
         />
       </styled.PageContainer>

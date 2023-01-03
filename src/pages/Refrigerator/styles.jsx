@@ -7,7 +7,6 @@ export const container = styled.div`
   @media only screen and (max-width: 480px) {
     overflow:hidden;
   }
-}
   .open{
     width:399px;
     height:370px;
@@ -19,6 +18,7 @@ export const floor = styled.div`
     width:100vw;
     top:502px;
     position: absolute;
+    min-height: 201px;
     height: calc(100vh - 582px);
     background-color:#BEB7A2;
     right: calc(240px - 50vw);
@@ -109,7 +109,7 @@ export const title = styled.div`
     margin-bottom:20px;
 `;
 
-export const info = styled.text`
+export const info = styled.div`
     font-size:16px;
     text-align:center;
     margin-bottom:24px;

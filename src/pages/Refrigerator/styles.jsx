@@ -138,11 +138,11 @@ export const ingredientNums = styled.div`
     margin-left:81px;
     top:263px;
     flex-direction:column;
-    text{
-      background-color:transparent;
-      font-size:10px;
-    }
 `;
+export const ingredientText = styled.div`
+  font-size: 10px;
+  background-color:transparent;
+`
 
 
 export const customButton = styled.button`

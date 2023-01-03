@@ -94,12 +94,11 @@ export const AgreeTxt = styled.div`
   margin-top : 40px;
 `;
 
-
+//체크 했을 때 이미지
 export const CheckBtn1Img = styled.div`
   width : 18px;
   height: 18px;
-  background : url(${Checked}) no-repeat;
-  visibility: ${(props) => props.ischecked1 ? "visible" : "hidden"};
+  background : ${(props) => props.url} no-repeat;
   cursor: pointer;
   margin-top : 11px;
   margin-left : 30px;
@@ -107,8 +106,10 @@ export const CheckBtn1Img = styled.div`
   
 
 `;
+
+//체크 안 했을 때 이미지
 export const UnCheckBtn1Img = styled(CheckBtn1Img)`
-  background : url(${UnChecked}) no-repeat;
+  background : ${(props) => props.url};
   position : absolute;
   
 `;
@@ -124,12 +125,10 @@ export const AgreeAll = styled.div`
 
 export const CheckBtn2Img = styled(CheckBtn1Img)`
   margin-top: 20px;
-  visibility: ${(props) => props.ischecked2 ? "visible" : "hidden"};
 `;
 
 export const UnCheckBtn2Img = styled(UnCheckBtn1Img)`
   position : absolute;
-  visibility: ${(props) => props.ischecked2 ? "visible" : "hidden"};
   margin-top: 20px;
 `;
 
@@ -138,13 +137,11 @@ export const AgeCheck = styled(AgreeAll)`
 `;
 
 export const CheckBtn3Img = styled(CheckBtn1Img)`
-  visibility: ${(props) => props.ischecked3 ? "visible" : "hidden"};
   margin-top: 6px;
 `;
 
 export const UnCheckBtn3Img = styled(UnCheckBtn1Img)`
   position : absolute;
-  visibility: ${(props) => props.ischecked3 ? "visible" : "hidden"};
   margin-top: 6px;
 `;
 

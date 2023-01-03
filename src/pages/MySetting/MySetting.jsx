@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import * as styled from "./styles";
 import {useNavigate} from "react-router-dom";
-
+import checked from '../../images/Checked.svg';
+import unChecked from '../../images/UnChecked.svg';
 
 
 
@@ -11,12 +12,12 @@ const MySetting = () => {
   const [pubSel, setPubsel] = useState("false");
   const [color, setColor] = useState("#CFCFCF");
   const [color2, setColor2] = useState("#CFCFCF");
-
   const pubBtn = (e) => {
     setPubCheck(true);
     setColor("#E0AEBC");
     setColor2("#CFCFCF");
     setPubsel(true);
+  
   };
 
   const prvBtn = (e) => {
@@ -27,7 +28,7 @@ const MySetting = () => {
   };
 
   const checkActive = (pubSel) => {
-    if (pubSel === true && check1Y === true || pubSel === true && (check2Y === true && check3Y === true)){
+    if (pubSel === true && check1 === true || pubSel === true && (check2 === true && check3 === true)){
       return true;
     }
     else{
@@ -35,54 +36,51 @@ const MySetting = () => {
     }
   }
   //Y는 체크된 경우 , N은 체크 안된경우
-  const [check1Y, setCheck1Y] = useState(false);
-  const [check1N, setCheck1N] = useState(true);
-  const [check2Y, setCheck2Y] = useState(false);
-  const [check2N, setCheck2N] = useState(true);
-  const [check3Y, setCheck3Y] = useState(false);
-  const [check3N, setCheck3N] = useState(true);
-  
+  const [check1, setCheck1] = useState(true);
+  const [check2, setCheck2] = useState(true);
+  const [check3, setCheck3] = useState(true);
+  const [allCheck, setAllCheck] = useState(false);
   const checkBox1 = () =>{
-    if (check1Y === true){
-      setCheck1Y(false);
-      setCheck1N(true);
-      setCheck2Y(false);
-      setCheck2N(true);
-      setCheck3Y(false);
-      setCheck3N(true);
-    } else if (check1Y === false){
-      setCheck1Y(true);
-      setCheck1N(false);
-      setCheck2Y(true);
-      setCheck2N(false);
-      setCheck3Y(true);
-      setCheck3N(false);
-      
+    if (check1 === true){
+      setCheck1(false);
+      setCheck2(false);
+      setCheck3(false);
+      setAllCheck(false);
+      console.log("1번 체크 : ",check1);
+    } else if (check1 === false){
+      setCheck1(true);
+      setCheck2(true);
+      setCheck3(true);
+      setAllCheck(true);
+      console.log("1번 체크 : ",check1);
     }
 
   };
 
   const checkBox2 = () => {
-    if (check2Y === true){
-      setCheck2Y(false);
-      setCheck2N(true);
-
-    } else if (check2Y === false){
-      setCheck2Y(true);
-      setCheck2N(false);
-
+    if (check2 === true){
+      setCheck2(false);
+      if (setAllCheck() === true)
+      {
+        setAllCheck(false);
+        setCheck1(false);
+        console.log("체크해제");
+      }
+      console.log("2번 체크 : ",check2);
+    } else if (check2 === false){
+      setCheck2(true);
+      console.log("2번 체크 : ",check2);
     }
   };
 
   const checkBox3 = () =>{
-    if (check3Y === true){
-      setCheck3Y(false);
-      setCheck3N(true);
+    if (check3 === true){
+      setCheck3(false);
+      console.log("3번 체크 : ",check3);
 
-    } else if (check3Y === false){
-      setCheck3Y(true);
-      setCheck3N(false);
-
+    } else if (check3 === false){
+      setCheck3(true);
+      console.log("3번 체크 : ",check3);
     }
   };
 
@@ -111,34 +109,26 @@ const MySetting = () => {
           <styled.AgreeTxt>약관 동의</styled.AgreeTxt>
           <styled.GroupContainer>
             <styled.CheckBtn1Img
-            ischecked1 = {check1Y}
+            ischecked1 = {check1}
             onClick = {()=>checkBox1()}
-            />
-            <styled.UnCheckBtn1Img
-            ischecked1 = {check1N}
-            onClick = {()=>checkBox1()}
+            value = {check1}
+            url = {check1 === true ? {checked} : {unChecked}}
             />
             <styled.AgreeAll>전체 동의</styled.AgreeAll>
           </styled.GroupContainer>
           <styled.GroupContainer>
             <styled.CheckBtn2Img
-            ischecked2 = {check2Y}
+            ischecked2 = {check2}
             onClick = {()=>checkBox2()}
-            />
-            <styled.UnCheckBtn2Img
-            ischecked2 = {check2N}
-            onClick = {()=>checkBox2()}
+            url = {check2 === true ? {checked} : {unChecked}}
             />
             <styled.AgeCheck>(필수) 만 14세 이상이예요.</styled.AgeCheck>
           </styled.GroupContainer>
           <styled.GroupContainer>
             <styled.CheckBtn3Img
-            ischecked3 = {check3Y}
+            ischecked3 = {check3}
             onClick = {()=>checkBox3()}
-            />
-            <styled.UnCheckBtn3Img
-            ischecked3 = {check3N}
-            onClick = {()=>checkBox3()}
+            url = {check3 === true ? {checked} : {unChecked}}
             />
             <styled.Agree>(필수) 이용약관 및 개인정보수집이용에 동의해요.</styled.Agree>
           </styled.GroupContainer>
@@ -154,7 +144,7 @@ const MySetting = () => {
             <styled.NextBtn
               active={checkActive(pubSel)}
               onClick={() => {
-                navigate('/refrigerator');
+                checkActive(pubSel) && navigate('/refrigerator');
               }}
             >
               {"시작하기"}

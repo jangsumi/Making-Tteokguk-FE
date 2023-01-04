@@ -1,4 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
+import { useNavigate, useLocation } from "react-router-dom";
 import * as styled from "./styles";
 import TopBar from "../../components/TopBar/TopBar.jsx";
 import Button from "../../components/Button/Button.jsx";
@@ -7,6 +8,11 @@ import Display from "./Display.jsx";
 import Selected from "./Selected.jsx";
 
 const SelectIngredient = () => {
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const { today } = location.state || false;
+
     const [userIngredient, setUserIngredient] = useState([0, 0, 0, 0, 0, 0, 0]);
     const [userSelect, setUserSelect] = useState([]);
     const [showRecipe, setShowRecipe] = useState(false);
@@ -29,7 +35,12 @@ const SelectIngredient = () => {
     };
     const onRemoveItem = (item) => {
         setUserSelect(userSelect.filter(select => select.idx !== item.idx))
-    }
+    };
+
+    const onButtonClick = () => {
+        navigate("/making", {state: {userSelect, today}});
+        console.log(userSelect);
+    };
 
     return (
         <div>

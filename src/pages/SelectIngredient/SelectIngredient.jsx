@@ -8,20 +8,18 @@ import Display from "./Display.jsx";
 import Selected from "./Selected.jsx";
 
 const SelectIngredient = () => {
-
     const navigate = useNavigate();
     const location = useLocation();
     const { today } = location.state || false;
-
     const [userIngredient, setUserIngredient] = useState([0, 0, 0, 0, 0, 0, 0]);
     const [userSelect, setUserSelect] = useState([]);
     const [showRecipe, setShowRecipe] = useState(false);
+    const itemIdx = useRef(1);
 
     useEffect(() => {
         setUserIngredient([10, 11, 12, 0, 13, 14, 15]);
     }, []);
 
-    const itemIdx = useRef(1);
     const onAddItem = (item) => {
         if (userSelect.length > 3) return;
         const ingredient = {
@@ -53,7 +51,7 @@ const SelectIngredient = () => {
                 <Selected userSelect={userSelect}
                           setUserIngredient={(userIngredient)=>setUserIngredient(userIngredient)}
                           onRemoveItem={(item) => onRemoveItem(item)}/>
-                <Button text="떡국 끓이기" active={userSelect.length===4} pageName="/making"/>
+                <Button text="떡국 끓이기" active={userSelect.length===4} onClickEvent={onButtonClick} />
             </styled.Container>
             {showRecipe && <RecipeModal close={() => setShowRecipe(false)}/>}
         </div>

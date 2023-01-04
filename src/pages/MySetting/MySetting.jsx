@@ -59,7 +59,7 @@ const MySetting = () => {
           margin={"6px 0px 0px 0px"}
         >
           <styled.PubBtn color={color} onClick={pubBtn}>
-            공개 할래요!
+            공개할래요!
           </styled.PubBtn>
           <styled.PrvBtn color={color2} onClick={prvBtn}>
             나만 볼래요.
@@ -103,7 +103,7 @@ const MySetting = () => {
             isChecked={check3}
           />
           <styled.TextDiv fontSize={"14px"}>
-            (필수) 이용약관 및 개인정보수집이용에 동의해요.
+            (필수) 이용약관 및 개인정보 수집 이용에 동의해요.
           </styled.TextDiv>
         </styled.FlexBox>
         <styled.FlexBox gap={"10px"}>

@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as styled from "./styles";
 import Button from "../../components/Button/Button";
+import WhiteRef from "../../images/WhiteRef.svg";
+import YellowRef from "../../images/YellowRef.svg";
+import BlackRef from "../../images/BlackRef.svg";
+import PurpleRef from "../../images/PurpleRef.svg";
 
 const Init = () => {
   const RefColor =
@@ -10,6 +14,7 @@ const Init = () => {
     {id : 3, rColor : "#FFE5A0"},
     {id : 4, rColor : "#A5AEFF"}]
   const [nickName, setNickName] = useState('');
+  const [RefCol, setRefCol] = useState(1);
   const navigate = useNavigate();
 
   const onChange = (e) =>{
@@ -22,7 +27,7 @@ const Init = () => {
   }
 
   const checkActive = (nickName) =>{
-    if ((nickName === "") || (nickName.charAt(0) === " ") || 
+    if ((nickName === "") || (nickName.charAt(0) === " ") ||
     (nickName.charAt(nickName.length-1) === " ")){
       return false;
     }
@@ -32,31 +37,10 @@ const Init = () => {
   }
 
   const onButtonClick = () => {
-    navigate('/mysetting');
-    console.log({ nickName })
+    navigate('/mysetting', {state:{nickName, RefCol}});
+    console.log({ nickName, RefCol })
   }
 
-  const [RefCol, setRefCol] = useState(1);
-
-  const onClick = (n) => {
-    if (n===1){
-      setRefCol(1);
-      console.log("RefCol : ",RefCol);
-    }
-    else if (n===2){
-      setRefCol(2);
-      console.log("RefCol : ",RefCol);
-    }
-    else if (n===3){
-      setRefCol(3);
-      console.log("RefCol : ",RefCol);
-    }
-    else if (n===4){
-      setRefCol(4);
-      console.log("RefCol : ",RefCol);
-    }
-
-  }
   return (
       <styled.Container>
           <styled.MainText>{`친구가 나를 알아볼 수 있도록\n별명을 정해주세요`}.</styled.MainText>
@@ -74,31 +58,22 @@ const Init = () => {
           <styled.RefBgTop RefBg = "#F5F5F5">
             <styled.RefBgBtm>
               <styled.RefContainer>
-                <styled.RefColor 
-                  backgroundColor="#D9D9D9"
-                  onClick = {() => onClick(1)}
+                {RefColor.map((item)=> {
+                  return <styled.RefColor
+                    key={`refColor-${item.id}`}
+                    backgroundColor={item.rColor}
+                    onClick = {() => setRefCol(item.id)}
                   >
-                  <styled.CheckBtnImg/>
-                </styled.RefColor>
-                <styled.RefColor 
-                  backgroundColor="#5E5E5E"
-                  onClick = {() => onClick(2)}
-                  />
-                <styled.RefColor 
-                  backgroundColor="#FFE5A0"
-                  onClick = {() => onClick(3)}
-                 />
-                <styled.RefColor
-                  backgroundColor="#A5AEFF"
-                  onClick = {() => onClick(4)}
-                />
+                    {item.id === RefCol && <styled.CheckBtnImg/>}
+                  </styled.RefColor>
+                })}
               </styled.RefContainer>
             </styled.RefBgBtm >
-            <styled.WhiteRefImg refVisible = {RefCol}/>
-            <styled.BlackRefImg refVisible = {RefCol}/>
-            <styled.YellowRefImg refVisible = {RefCol}/>
-            <styled.PurpleRefImg refVisible = {RefCol}/>
-            
+            {[WhiteRef, BlackRef, YellowRef, PurpleRef].map((ref, index)=>{
+              return <styled.RefImg key={`ref-${index}`} imageUrl={ref}
+                                    refVisible={index+1 === RefCol} />
+            })}
+
           </styled.RefBgTop>
           <Button
             active={checkActive(nickName)}

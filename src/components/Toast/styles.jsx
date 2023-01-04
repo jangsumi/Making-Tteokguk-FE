@@ -12,6 +12,7 @@ const fadeOut = keyframes`
 
 export const ToastBox = styled.div`
   display: flex;
+  flex-direction: column;
   z-index: 100;
   position: fixed;
   bottom: 72px;

@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import * as styled from "./styles";
 import TopBar from "../../components/TopBar/TopBar.jsx";
 import Button from "../../components/Button/Button.jsx";
@@ -9,6 +9,8 @@ import Selected from "./Selected.jsx";
 
 const SelectIngredient = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const { today } = location.state || false;
     const [userIngredient, setUserIngredient] = useState([0, 0, 0, 0, 0, 0, 0]);
     const [userSelect, setUserSelect] = useState([]);
     const [showRecipe, setShowRecipe] = useState(false);
@@ -35,7 +37,7 @@ const SelectIngredient = () => {
     }
 
     const onButtonClick = () => {
-        navigate("/making", {state: {userSelect}});
+        navigate("/making", {state: {userSelect, today}});
         console.log(userSelect);
     }
 

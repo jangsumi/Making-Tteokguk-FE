@@ -5,4 +5,5 @@ export const Line = styled.div`
   height: 40px;
   background-image: url(${line});
   background-repeat: repeat-x;
+  position: relative;
 `;

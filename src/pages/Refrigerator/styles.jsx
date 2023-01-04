@@ -3,7 +3,9 @@ import styled from "styled-components";
 export const container = styled.div`
   width:360px;
   text-align:center;
-  margin:auto;
+  margin: auto;
+  min-height: calc(100vh - 80px);
+  position: relative;
   @media only screen and (max-width: 480px) {
     overflow:hidden;
   }
@@ -17,18 +19,12 @@ export const container = styled.div`
 export const floor = styled.div`
     width:100vw;
     top:502px;
-    position: absolute;
-    min-height: 201px;
-    height: calc(100vh - 582px);
+    position: fixed;
+    top: 502px;
+    left: 0;
+    bottom: 40px;
+    min-height: 232px;
     background-color:#BEB7A2;
-    right: calc(240px - 50vw);
-    z-index:1;
-    @media only screen and (max-width: 480px) {
-        left: 0;
-    }
-    @media only screen and (max-height: 800px) {
-      height: calc(100vh - 582px);
-  }
 `;
 
 export const menu = styled.img`
@@ -46,10 +42,10 @@ export const background = styled.div`
     background: rgba(0, 0, 0, 0.3);
     width: 100vw;
     height: 100vh;
-    position:absolute;
-    right: calc(240px - 50vw);
-    z-index:4;
-    top:-40px;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 4;
     @media only screen and (max-width: 480px) {
         left: 0;
     }
@@ -60,13 +56,10 @@ export const menuBar = styled.div`
     height:390px;
     background-color:#ffffff;
     z-index:5;
-    position:absolute;
-    top:25vh;
-    @media only screen and (max-width: 480px) {
-        left: calc(50vw - 132px);
-        top:20vh;
-    }
-    left:108px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border: 1px solid #000000;
     box-sizing: border-box;
     border-radius: 10px 10px 10px 10px;
@@ -143,7 +136,9 @@ export const ingredientText = styled.div`
   font-size: 10px;
   background-color:transparent;
 `
-
+export const ButtonWrapper = styled.div`
+  margin-top: auto;
+`
 
 export const customButton = styled.button`
   width:320px;
@@ -154,7 +149,7 @@ export const customButton = styled.button`
   border: 1px solid #000000;
   border-radius: 10px;
   text-align:center;
-  margin-bottom:10px;
+  margin-bottom: ${props=>props.last? 40:10}px;
   position:relative;
   z-index:3;
   display:inline-block;

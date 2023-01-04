@@ -23,9 +23,10 @@ export const ButtonBack = styled.div`
 export const ButtonRecipe = styled.div`
   width: 65px;
   padding: ${(props) => props.padding};
-  visibility: ${(props) => props.visibility || "hidden"};
+  visibility: ${(props) => !props.visible && "hidden"};
   border: 1px solid #000000;
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
+  background: #FFFFFF;
 `;

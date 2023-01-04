@@ -1,15 +1,16 @@
-import React from 'react';
+import React from "react";
 import * as styled from "./styles";
-import {useNavigate} from "react-router-dom";
 
-const Button = ({text, pageName}) => {
-    const navigate = useNavigate();
 
-    return (
-        <styled.ButtonContainer onClick={()=>navigate(pageName)}>
-            {text}
-        </styled.ButtonContainer>
-    );
+const Button = ({ active, text, onClickEvent }) => {
+  return (
+    <styled.ButtonContainer
+      active={active}
+      onClick={onClickEvent}
+    >
+      {text}
+    </styled.ButtonContainer>
+  );
 };
 
 export default Button;

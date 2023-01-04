@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import example from '../../images/example.svg'
 import close from '../../images/close.svg'
 
 export const Background = styled.div`
@@ -9,6 +8,7 @@ export const Background = styled.div`
   position: fixed;
   top:0;
   left: 0;
+  z-index: 100;
 `
 
 export const ModalContainer = styled.div`
@@ -59,7 +59,8 @@ export const ColorText = styled.span`
 export const resultImage = styled.div`
   width: 120px;
   height: 102px;
-  background: url(${example}) center center no-repeat;
+  background: url(${props=>props.imageUrl}) center center no-repeat;
+  background-size: cover;
 `
 export const ButtonWrapper = styled.div`
   display: flex;
@@ -75,6 +76,8 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  font-size: ${props=>props.fontSize || 14}px;
 `
 export const BoxWrapper = styled.div`
   display: flex;
@@ -86,9 +89,10 @@ export const BoxWrapper = styled.div`
 export const RecipeBox = styled.div`
   border: 1px solid #000000;
   border-radius: 10px;
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   background: url(${props=>props.imageUrl}) center center no-repeat;
+  background-size: 42px 42px;
 `
 export const PlusImg = styled.div`
   width: 16px;

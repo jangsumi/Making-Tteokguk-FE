@@ -24,10 +24,39 @@ const Refrigerator = () => {
     const [userName, setUserName] = useState("여섯글자별명");
     const [userSelf, setUserSelf] = useState(true);
     const [userOpen, setuUerOpen] = useState(true);
-    const [closeRefrigerator, setCloseRefrigerator] = useState(closeRefrigeratorBlack);
-    const [openRefrigerator, openCloseRefrigerator] = useState(openRefrigeratorBlack);
-
+    const [refrigeratorColor, setRefrigeratorColor] = useState(3);
+    const [closeRefrigerator, setCloseRefrigerator] = useState(closeRefrigeratorGray);
+    const [openRefrigerator, openCloseRefrigerator] = useState(openRefrigeratorGray);
     const [refrigeratorImg, setRefrigeratorImg] = useState(closeRefrigerator)
+
+    useEffect(()=>{
+        switch(refrigeratorColor){
+            case 0:
+                setCloseRefrigerator(closeRefrigeratorGray);
+                openCloseRefrigerator(openRefrigeratorGray);
+                console.log("dfd","gray")
+                break;
+            case 1:
+                setCloseRefrigerator(closeRefrigeratorBlack);
+                openCloseRefrigerator(openRefrigeratorBlack);
+                console.log("dfd","gray")
+                break;
+            case 2:
+                setCloseRefrigerator(closeRefrigeratorYellow);
+                openCloseRefrigerator(openRefrigeratorYellow);
+                console.log("dfd","gray")
+                break;
+            case 3:
+                setCloseRefrigerator(closeRefrigeratorBlue);
+                openCloseRefrigerator(openRefrigeratorBlue);
+                console.log("dfd",closeRefrigerator)
+                break;
+    }
+    });
+    useEffect(()=>{
+        setRefrigeratorImg(closeRefrigerator);
+    },[closeRefrigerator]);
+
     const [openOrClose, setOpenOrClose] = useState("close")
     const [buttonText, setButtonText] = useState("냉장고 열어보기")
     const [canMake, setCanMake] = useState(true)

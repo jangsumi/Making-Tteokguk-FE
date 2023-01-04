@@ -1,6 +1,7 @@
 import React from "react";
 import * as styled from "./styles";
 
+
 const Button = ({ active, text, onClickEvent }) => {
   return (
     <styled.ButtonContainer

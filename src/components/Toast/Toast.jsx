@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import * as styled from "./styles";
 
 const Toast = ({ message, isActive, setIsActive }) => {
+  const bgColor = useMemo(() => ({ backgroundColor: "#ffffff" }), [])
   useEffect(() => {
     if (isActive) {
       setTimeout(() => {
@@ -15,10 +16,10 @@ const Toast = ({ message, isActive, setIsActive }) => {
         <styled.ToastBox show={true}>
           {message.split(
             "\n").map((msg) => (
-              <>
+              <div style={bgColor} key={msg}>
                 {msg}
                 <br />
-              </>
+              </div>
             )
           )}
         </styled.ToastBox>

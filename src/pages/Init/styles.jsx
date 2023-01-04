@@ -101,6 +101,7 @@ export const WhiteRefImg = styled.div`
   width : 122px;
   height : 220.29px;
   background: url(${WhiteRef}) no-repeat;
+  visibility: ${(props) => props.refVisible === 1 ? "visible" : "hidden"};
   background-size:contain;
   top : 30px;
   left : 100px;
@@ -109,14 +110,20 @@ export const WhiteRefImg = styled.div`
 
 export const BlackRefImg = styled(WhiteRefImg)`
   background: url(${BlackRef}) no-repeat;
+  visibility: ${(props) => props.refVisible === 2 ? "visible" : "hidden"};
+  background-size:contain;
 `;
 
 export const YellowRefImg = styled(WhiteRefImg)`
   background: url(${YellowRef}) no-repeat;
+  visibility: ${(props) => props.refVisible === 3 ? "visible" : "hidden"};
+  background-size:contain;
 `;
 
 export const PurpleRefImg = styled(WhiteRefImg)`
   background: url(${PurpleRef}) no-repeat;
+  visibility: ${(props) => props.refVisible === 4 ? "visible" : "hidden"};
+  background-size:contain;
 `;
 
 export const CheckBtnImg = styled.div`

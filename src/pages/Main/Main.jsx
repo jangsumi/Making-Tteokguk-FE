@@ -14,7 +14,7 @@ const MainPage = () => {
 
             <styled.LoginContainer onClick={()=>navigate('/init')}>
                 <styled.LoginImg />
-                <styled.LoginText>카카오계정으로 계속하기</styled.LoginText>
+                <styled.LoginText>카카오 계정으로 계속하기</styled.LoginText>
                 <styled.Fake/>
             </styled.LoginContainer>
         </styled.Container>

@@ -52,6 +52,7 @@ const Delivery = () => {
   const onButtonClick = () => {
     navigate("/delivery2", {state: {ingredient: selectedItem}});
   }
+
   return (
     <styled.PageContainer>
       <TopBar titleName={"떡국 재료 선물하기"} />

@@ -22,10 +22,11 @@ const App = () => {
         style={{
           maxWidth: "480px",
           margin: "0 auto",
-          minHeight: "calc(100vh - 80px)",
+          height: "calc(100vh - 80px)",
           width: "auto",
           position: "relative",
           wordBreak: "keep-all",
+          overflow: "auto",
         }}
       >
         <BrowserRouter>

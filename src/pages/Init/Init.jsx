@@ -38,7 +38,6 @@ const Init = () => {
 
   return (
       <styled.Container>
-        <styled.Wrapper>
           <styled.MainText>{`친구가 나를 알아볼 수 있도록\n별명을 정해주세요`}.</styled.MainText>
           <styled.BtnContainer>
             <styled.WhiteBtn>
@@ -69,7 +68,6 @@ const Init = () => {
             text = "다음"
             onClickEvent={onButtonClick}
           />
-        </styled.Wrapper>
       </styled.Container>
   );
 };

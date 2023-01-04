@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  min-height: calc(100vh - 120px);
+  margin: 0 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 export const FlexDiv = styled.div`
   display: flex;
-  flex-direction: ${(props) => props.flexDirection || "row"};
-  align-items: ${(props) => props.alignItems};
-  gap: ${(props) => props.gap};
-  margin: ${(props) => props.margin};
-`;
-
-export const Container = styled.div`
-  margin: ${(props) => props.marign};
-  padding: ${(props) => props.padding};
+  gap: 6px;
+  margin: 0 0 36px;
 `;
 
 export const FontDiv = styled.div`

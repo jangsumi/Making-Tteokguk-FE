@@ -8,14 +8,10 @@ import CheckBtn from "../../images/CheckBtn.svg";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  margin: 40px auto;
+  min-height: calc(100vh - 160px);
 `;
-
 
 export const MainText = styled.div`
   width: 320px;
@@ -23,7 +19,6 @@ export const MainText = styled.div`
   font-size: 20px;
   align-items: center;
   white-space: pre-wrap;
-  margin-top : 40px;
 `;
 
 export const BtnContainer = styled.div`
@@ -39,7 +34,7 @@ export const NickNameInput = styled.input`
   font-size : 16px;
   justify-content: center;
   outline : none;
-  margin-top : 4px;
+  padding-left: 10px;
 `;
 
 export const WhiteBtn = styled.div`
@@ -52,6 +47,8 @@ export const WhiteBtn = styled.div`
   text-align : center;
   margin-right : 10px;
   margin-top : 10px;
+  display: flex;
+  align-items: center;
 `;
 
 export const WhosRefTxt = styled.div`
@@ -87,9 +84,8 @@ export const RefBgTop = styled.div`
   background: ${props => props.RefBg};
   border: 1px solid;
   border-radius: 10px;
-  margin-top : 10px;
+  margin : 10px 0 22px;
   position : relative;
-  margin-bottom: 20px;
 `;
 export const RefBgBtm = styled.div`
   position: absolute;

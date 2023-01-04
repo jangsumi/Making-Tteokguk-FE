@@ -7,7 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
-  //min-height: calc(100vh - 233px);
+  min-height: calc(100vh - 233px);
 `;
 export const Wrapper = styled.div`
   display: flex;

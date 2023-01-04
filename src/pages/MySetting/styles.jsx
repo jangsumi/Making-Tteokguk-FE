@@ -7,11 +7,9 @@ import ExMark from '../../images/ExMark.svg';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-`;
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   align-items: center; // 가운데 정렬
+  margin: 40px auto;
+  height: calc(100vh - 160px);
 `;
 
 export const MainText = styled.div`
@@ -19,9 +17,7 @@ export const MainText = styled.div`
   height: 29px;
   font-size: 20px;
   align-items: center;
-  margin-top : 40px;
 `;
-
 
 export const MsgPubTxt = styled.div`
   width: 320px;
@@ -60,9 +56,10 @@ export const ExMarkContainer = styled(GroupContainer)`
 export const BtnContainer = styled.div`
   display : flex;
   gap : 10px;
+  margin-top: ${props=>props.marginTop || "auto"};
 `;
 
-export const PubBtn = styled.button`
+export const PubPrvBtn = styled.button`
   box-sizing: border-box;
   width: 150px;
   height: 37px;
@@ -73,27 +70,14 @@ export const PubBtn = styled.button`
   align-items: center; // 중앙정렬
   justify-content: center; // 가운데정렬
   font-size : 14px;
-  margin-top : 20px;
-`;
-
-export const PrvBtn = styled(PubBtn)`
-  background:  ${(props) => props.color};
 `;
 
 export const CenterLine = styled.div`
   width: 320px;
   height: 0px;
   border: 0.5px solid #999999;
-  margin-top : 50px;
+  margin : 50px 0;
 `;
-
-export const AgreeTxt = styled.div`
-  width: 320px;
-  height: 29px;
-  font-size: 20px;
-  margin-top : 40px;
-`;
-
 
 export const CheckBtn1Img = styled.div`
   width : 18px;
@@ -156,7 +140,6 @@ export const Agree = styled(AgreeAll)`
 export const NextBtn = styled.div`
   box-sizing: border-box;
   width: 210px;
-  margin-top : 209px;
   max-width: 318px;
   height: 50px;
   background: ${(props) => (props.active ? "#E0AEBC" : "#E6D2D8")};

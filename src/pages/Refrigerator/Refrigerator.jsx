@@ -86,15 +86,19 @@ const Refrigerator = () => {
                     </styled.ingredientNums>
                 }
                 <styled.refri className={openOrClose=="open"?'open':''} src={refrigeratorImg}/>
-                {openOrClose=="open"?
-                <styled.bottonBox>
-                    <styled.customButton className="make"  disabled={!canMake} onClick={()=>onSelectIngredient(false)}>
-                    {canMake?'':<img className="lock" src={lock}/>}
-                    떡국 끓이기</styled.customButton>
-                    <styled.customButton className="cancle" onClick={openTheDoor}>닫기</styled.customButton>
-                </styled.bottonBox>
-                :<styled.customButton onClick={openTheDoor}>{buttonText}</styled.customButton>}
-                <styled.customButton onClick={() => copyClipBoard()}>나의 냉장고 주소 복사하기</styled.customButton>
+                <styled.ButtonWrapper>
+                    {openOrClose=="open"?
+                        <styled.bottonBox>
+                            <styled.customButton className="make"  disabled={!canMake} onClick={()=>onSelectIngredient(false)}>
+                            {canMake?'':<img className="lock" src={lock}/>}
+                            떡국 끓이기</styled.customButton>
+                            <styled.customButton className="cancle" onClick={openTheDoor}>닫기</styled.customButton>
+                        </styled.bottonBox>
+                        :
+                        <styled.customButton onClick={openTheDoor}>{buttonText}</styled.customButton>
+                    }
+                    <styled.customButton last onClick={() => copyClipBoard()}>나의 냉장고 주소 복사하기</styled.customButton>
+                </styled.ButtonWrapper>
                 <styled.FlexBox>
                     <Toast
                         isActive={isActive}
@@ -123,11 +127,13 @@ const Refrigerator = () => {
                         })}
                     </styled.ingredientNums>
                 }
-                <styled.customButton onClick={openTheDoor} disabled={!userOpen}>
-                    {userOpen?'':<img className="lock" src={lock}/>}
-                    {buttonText}
-                </styled.customButton>
-                <styled.customButton>떡국 재료 선물하기</styled.customButton>
+                <styled.ButtonWrapper>
+                    <styled.customButton onClick={openTheDoor} disabled={!userOpen}>
+                        {userOpen?'':<img className="lock" src={lock}/>}
+                        {buttonText}
+                    </styled.customButton>
+                    <styled.customButton last>떡국 재료 선물하기</styled.customButton>
+                </styled.ButtonWrapper>
             </styled.container>
         )
     }

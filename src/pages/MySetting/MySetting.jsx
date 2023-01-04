@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import * as styled from "./styles";
 import {useNavigate} from "react-router-dom";
 
-
-
-
 const MySetting = () => {
   const navigate = useNavigate();
   const [pubCheck, setPubCheck] = useState("false");
@@ -41,7 +38,7 @@ const MySetting = () => {
   const [check2N, setCheck2N] = useState(true);
   const [check3Y, setCheck3Y] = useState(false);
   const [check3N, setCheck3N] = useState(true);
-  
+
   const checkBox1 = () =>{
     if (check1Y === true){
       setCheck1Y(false);
@@ -57,7 +54,7 @@ const MySetting = () => {
       setCheck2N(false);
       setCheck3Y(true);
       setCheck3N(false);
-      
+
     }
 
   };
@@ -89,26 +86,25 @@ const MySetting = () => {
 
   return (
       <styled.Container>
-        <styled.Wrapper>
           <styled.MainText>덕담 개수 공개 여부</styled.MainText>
           <styled.MsgPubTxt>{`다른 사람에게\n받은 덕담의 개수를 공개할까요?`}</styled.MsgPubTxt>
           <styled.ExMarkContainer>
             <styled.ExMarkImg/>
             <styled.MsgPubInfo>공개할 때만 남이 내 냉장고를 열어볼 수 있어요.</styled.MsgPubInfo>
           </styled.ExMarkContainer>
-          <styled.BtnContainer>
-            <styled.PubBtn
-              color = {color} 
+          <styled.BtnContainer marginTop={"20px"}>
+            <styled.PubPrvBtn
+              color = {color}
               onClick={pubBtn}
               >공개 할래요!
-              </styled.PubBtn>
-            <styled.PrvBtn 
-              color = {color2} 
+              </styled.PubPrvBtn>
+            <styled.PubPrvBtn
+              color = {color2}
               onClick={prvBtn}
-              >나만 볼래요.</styled.PrvBtn>
+              >나만 볼래요.</styled.PubPrvBtn>
           </styled.BtnContainer>
           <styled.CenterLine/>
-          <styled.AgreeTxt>약관 동의</styled.AgreeTxt>
+          <styled.MainText>약관 동의</styled.MainText>
           <styled.GroupContainer>
             <styled.CheckBtn1Img
             ischecked1 = {check1Y}
@@ -160,7 +156,6 @@ const MySetting = () => {
               {"시작하기"}
             </styled.NextBtn>
           </styled.BtnContainer>
-        </styled.Wrapper>
       </styled.Container>
   );
 };

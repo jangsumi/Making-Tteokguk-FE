@@ -4,7 +4,7 @@ import * as styled from './styles.jsx';
 const Modal = ({children, close}) => {
     useEffect(() => {
         document.body.style.cssText = `
-            position: fixed; 
+            position: fixed;
             top: -${window.scrollY}px;
             overflow-y: scroll;
             width: 100%;`;

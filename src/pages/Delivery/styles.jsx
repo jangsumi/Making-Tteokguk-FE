@@ -5,6 +5,8 @@ export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: calc(100vh - 120px);
+  margin-bottom: 40px;
 `;
 
 export const CheckMark = styled.div`
@@ -31,7 +33,7 @@ export const Ingredient = styled.div`
 
 export const GridContainer = styled.div`
   width: 320px;
-  margin: 20px 0px 72px 0px;
+  margin: 20px 0px 50px;
   display: grid;
   justify-content: center;
   align-content: center;

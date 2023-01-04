@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
 import SyncLoader from "react-spinners/SyncLoader.js";
-import { useNavigate, useLocation } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import * as styled from "./styles";
 import makingClose from "../../images/makingClose.svg";
 import makingOpen from "../../images/makingOpen.svg";

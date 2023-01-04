@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import MessageModal from "../../components/Modal/MessageModal";
 import TopBar from "../../components/TopBar/TopBar";
@@ -11,8 +10,6 @@ const Delivery2 = () => {
   const [userName, setUserName] = useState("");
   const [textMessage, setTextMessage] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const location = useLocation();
-  const { ingredient } = location.state;
 
   const onChangeName = (e) => {
     setUserName(e.target.value.slice(0, 6));
@@ -28,11 +25,6 @@ const Delivery2 = () => {
     setShowModal(false);
     console.log(type + ": confirm");
   };
-
-  const onButtonClick = () => {
-    setShowModal(true);
-    console.log({ingredient: ingredient, name: userName, message: textMessage});
-  }
 
   return (
     <>
@@ -68,7 +60,7 @@ const Delivery2 = () => {
             </styled.FontDiv>
           </styled.FlexDiv>
           <Button
-            onClickEvent={onButtonClick}
+            setShowModal={setShowModal}
             text={"떡국 재료 선물하기"}
             active={userName.trim() != "" && textMessage.trim() != ""}
           />

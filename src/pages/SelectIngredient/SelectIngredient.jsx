@@ -31,15 +31,14 @@ const SelectIngredient = () => {
         setUserSelect(userSelect.concat(ingredient));
         itemIdx.current += 1;
     };
-
     const onRemoveItem = (item) => {
         setUserSelect(userSelect.filter(select => select.idx !== item.idx))
-    }
+    };
 
     const onButtonClick = () => {
         navigate("/making", {state: {userSelect, today}});
         console.log(userSelect);
-    }
+    };
 
     return (
         <div>
@@ -52,7 +51,7 @@ const SelectIngredient = () => {
                 <Selected userSelect={userSelect}
                           setUserIngredient={(userIngredient)=>setUserIngredient(userIngredient)}
                           onRemoveItem={(item) => onRemoveItem(item)}/>
-                <Button text="떡국 끓이기" active={userSelect.length===4} onClickEvent={onButtonClick}/>
+                <Button text="떡국 끓이기" active={userSelect.length===4} onClickEvent={onButtonClick} />
             </styled.Container>
             {showRecipe && <RecipeModal close={() => setShowRecipe(false)}/>}
         </div>

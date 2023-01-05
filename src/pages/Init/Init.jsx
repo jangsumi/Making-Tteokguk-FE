@@ -9,21 +9,18 @@ import PurpleRef from "../../images/PurpleRef.svg";
 
 const Init = () => {
   const RefColor =
-    [{id : 1, rColor : "#D9D9D9"},
-    {id : 2, rColor : "#5E5E5E"},
-    {id : 3, rColor : "#FFE5A0"},
-    {id : 4, rColor : "#A5AEFF"}]
+    [
+      {id : 1, rColor : "#D9D9D9"},
+      {id : 2, rColor : "#5E5E5E"},
+      {id : 3, rColor : "#FFE5A0"},
+      {id : 4, rColor : "#A5AEFF"},
+    ]
   const [nickName, setNickName] = useState('');
   const [RefCol, setRefCol] = useState(1);
   const navigate = useNavigate();
 
   const onChange = (e) =>{
     setNickName(e.target.value.slice(0,6));
-  }
-  const checkNickName = (nickName) =>{
-    if(nickName.length >= 6) {
-      return nickName.slice(0, 6);
-    }
   }
 
   const checkActive = (nickName) =>{

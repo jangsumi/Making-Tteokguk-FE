@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import * as styled from "./styles";
 import x from '../../images/x.png';
 import manual from '../../images/manual.svg';
@@ -11,6 +11,18 @@ import logout from '../../images/logout.svg';
 import MenualModal from '../../components/Modal/MenualModal';
 
 const Menu = ({setMenuOpen}) => {
+    useEffect(() => {
+        document.body.style.cssText = `
+            position: fixed;
+            top: -${window.scrollY}px;
+            overflow-y: scroll;
+            width: 100%;`;
+        return () => {
+            const scrollY = document.body.style.top;
+            document.body.style.cssText = '';
+            window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
+        };
+    }, []);
 
     const [showModal, setShowModal] = useState(false);
 
@@ -29,8 +41,7 @@ const Menu = ({setMenuOpen}) => {
     }
 
     return (
-        <div>
-            <styled.background/>
+            <styled.background>
             <styled.menuBar>
                 <img className='xButton'onClick={closeMenu} src={x}/>
                 <styled.menuButton onClick={()=>setShowModal(true)}><img src={manual}/>떡국 만들기 설명서</styled.menuButton>
@@ -43,7 +54,7 @@ const Menu = ({setMenuOpen}) => {
                 <styled.menuButton><img src={developerInfo}/>개발한 사람들 소개</styled.menuButton>
                 <styled.menuButton><img src={logout}/>로그아웃</styled.menuButton>
             </styled.menuBar>
-        </div>
+        </styled.background>
     );
 };
 

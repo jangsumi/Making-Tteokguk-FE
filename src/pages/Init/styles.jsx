@@ -1,21 +1,13 @@
 import styled from "styled-components";
-import WhiteRef from "../../images/WhiteRef.svg";
-import YellowRef from "../../images/YellowRef.svg";
-import BlackRef from "../../images/BlackRef.svg";
-import PurpleRef from "../../images/PurpleRef.svg";
 import CheckBtn from "../../images/CheckBtn.svg";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  margin: 40px auto;
+  min-height: calc(100vh - 160px);
 `;
-
 
 export const MainText = styled.div`
   width: 320px;
@@ -23,7 +15,6 @@ export const MainText = styled.div`
   font-size: 20px;
   align-items: center;
   white-space: pre-wrap;
-  margin-top : 40px;
 `;
 
 export const BtnContainer = styled.div`
@@ -39,7 +30,7 @@ export const NickNameInput = styled.input`
   font-size : 16px;
   justify-content: center;
   outline : none;
-  margin-top : 4px;
+  padding-left: 10px;
 `;
 
 export const WhiteBtn = styled.div`
@@ -52,6 +43,8 @@ export const WhiteBtn = styled.div`
   text-align : center;
   margin-right : 10px;
   margin-top : 10px;
+  display: flex;
+  align-items: center;
 `;
 
 export const WhosRefTxt = styled.div`
@@ -87,9 +80,8 @@ export const RefBgTop = styled.div`
   background: ${props => props.RefBg};
   border: 1px solid;
   border-radius: 10px;
-  margin-top : 10px;
+  margin : 10px 0 22px;
   position : relative;
-  margin-bottom: 20px;
 `;
 export const RefBgBtm = styled.div`
   position: absolute;
@@ -100,35 +92,17 @@ export const RefBgBtm = styled.div`
   border-radius: 0px 0px 10px 10px;
 `;
 
-export const WhiteRefImg = styled.div`
+export const RefImg = styled.div`
   position: absolute;
   width : 122px;
   height : 220.29px;
-  background: url(${WhiteRef}) no-repeat;
-  visibility: ${(props) => props.refVisible === 1 ? "visible" : "hidden"};
+  background: url(${props=>props.imageUrl}) no-repeat;
+  visibility: ${(props) => props.refVisible? "visible" : "hidden"};
   background-size:contain;
   top : 30px;
   left : 100px;
-
 `;
 
-export const BlackRefImg = styled(WhiteRefImg)`
-  background: url(${BlackRef}) no-repeat;
-  visibility: ${(props) => props.refVisible === 2 ? "visible" : "hidden"};
-  background-size:contain;
-`;
-
-export const YellowRefImg = styled(WhiteRefImg)`
-  background: url(${YellowRef}) no-repeat;
-  visibility: ${(props) => props.refVisible === 3 ? "visible" : "hidden"};
-  background-size:contain;
-`;
-
-export const PurpleRefImg = styled(WhiteRefImg)`
-  background: url(${PurpleRef}) no-repeat;
-  visibility: ${(props) => props.refVisible === 4 ? "visible" : "hidden"};
-  background-size:contain;
-`;
 
 export const CheckBtnImg = styled.div`
   position: absolute;

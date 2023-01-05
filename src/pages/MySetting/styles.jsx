@@ -3,17 +3,26 @@ import checked from "../../images/ic_checked.svg";
 import unchecked from "../../images/ic_unchecked.svg";
 import ExMark from "../../images/ExMark.svg";
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 40px;
+  width: 320px;
+  min-height: calc(100vh - 120px);
+`
 export const FlexBox = styled.div`
   display: flex;
   flex-direction: ${(props) => props.direction};
-  align-items: ${(props) => props.alignItems};
-  justify-content: ${(props) => props.justifyContent};
-  gap: ${(props) => props.gap};
+  align-items: center;
+  gap: ${(props) => props.gap}px;
   margin: ${(props) => props.margin};
 `;
-
+export const TitleDiv = styled.div`
+  font-size: 20px;
+  margin: 40px 0 10px;
+`
 export const TextDiv = styled.div`
-  font-size: ${(props) => props.fontSize};
+  font-size: ${(props) => props.fontSize || 14}px;
   margin: ${(props) => props.margin};
   padding: ${(props) => props.padding};
 `;
@@ -25,7 +34,7 @@ export const ExMarkImg = styled.div`
   background: url(${ExMark}) no-repeat;
 `;
 
-export const PubBtn = styled.button`
+export const PubPrvBtn = styled.button`
   box-sizing: border-box;
   width: 150px;
   height: 37px;
@@ -36,12 +45,8 @@ export const PubBtn = styled.button`
   align-items: center; // 중앙정렬
   justify-content: center; // 가운데정렬
   font-size: 14px;
-  margin-top: 20px;
 `;
 
-export const PrvBtn = styled(PubBtn)`
-  background: ${(props) => props.color};
-`;
 
 export const CenterLine = styled.div`
   width: 320px;
@@ -56,11 +61,14 @@ export const CheckBtn = styled.div`
   background-image: url(${(props) => (props.isChecked ? checked : unchecked)});
   cursor: pointer;
 `;
-
+export const ButtonWrapper = styled.div`
+  margin-top: auto;
+  display: flex;
+  gap: 10px;
+`
 export const NextBtn = styled.div`
   box-sizing: border-box;
   width: 210px;
-  margin-top: 209px;
   max-width: 318px;
   height: 50px;
   background: ${(props) => (props.active ? "#E0AEBC" : "#E6D2D8")};

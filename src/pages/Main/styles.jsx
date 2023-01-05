@@ -33,7 +33,7 @@ export const TreeImg = styled.div`
   width: 250px;
   height: 137px;
   top: -29px;
-  left: 20px;
+  left: 0;
   background: url(${HomeTree}) no-repeat;
 `;
 export const Text = styled.div`

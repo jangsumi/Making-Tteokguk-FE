@@ -1,27 +1,15 @@
 import React from 'react';
-import Modal from "./Modal.jsx"
 import * as styled from './styles.jsx';
 
-const MenualModal = ({close, setShowMenual}) => {
-
-    // const [showModal, setShowModal] = useState(false);
-
-    // const openMenual = (type) => {
-    //     setShowModal(true);
-    //     console.log(type + ": confirm")
-    // }
-
-    // const closeMenual = (type) => {
-    //     setShowMenual(false);
-    //     console.log(type + ": cancel")
-    // }
+const MenualModal = ({close}) => {
 
     return (
-        <Modal close={close}>
+        <styled.NoModalContainer>
+            <styled.CloseImg onClick={close}/>
             <styled.Text fontSize={18} gap={17}>새해 맞이 떡국 만들기</styled.Text>
-            <styled.LongText>2023년 새해를 맞아 떡국을 만들기로 했어요.  그런데 냉장고에 재료가 하나도 없는 거 있죠...<br></br>
-                어쩔 수 없이 친구들에게 재료를 사 와달라고<br></br>
-                부탁했답니다. <styled.ColorText>떡국 재료 4개</styled.ColorText>를 모아서 떡국을<br></br>만들어 볼까요?
+            <styled.LongText>2023년 새해를 맞아 떡국을 만들기로 했어요.  그런데 냉장고에 재료가 하나도 없는 거 있죠...<br/>
+                어쩔 수 없이 친구들에게 재료를 사 와달라고<br/>
+                부탁했답니다. <styled.ColorText>떡국 재료 4개</styled.ColorText>를 모아서 떡국을<br/>만들어 볼까요?
             </styled.LongText>
 
             <div>
@@ -41,7 +29,7 @@ const MenualModal = ({close, setShowMenual}) => {
                     <styled.ColorText>‘떡국 조리법’</styled.ColorText> 참고해 보세요. 재료에 따라 떡국<br></br>의 모습이 달라진답니다. 여러 가지 떡국을 모아<br></br>보세요!
                 </styled.LongText>
             </div>
-        </Modal>
+        </styled.NoModalContainer>
     );
 };
 

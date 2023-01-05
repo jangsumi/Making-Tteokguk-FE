@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as styled from "./styles";
 import Menu from "./menu.jsx"
 import ActiveModal from '../../components/Modal/ActiveModal.jsx';
@@ -11,7 +11,6 @@ import openRefrigeratorGray from  '../../images/openRefrigeratorGray.svg'
 import openRefrigeratorBlack from  '../../images/openRefrigeratorBlack.svg'
 import openRefrigeratorYellow from  '../../images/openRefrigeratorYellow.svg'
 import openRefrigeratorBlue from  '../../images/openRefrigeratorBlue.svg'
-import ingredient from '../../images/ingredient.png'
 import menu from '../../images/menu.png'
 import lock from '../../images/lock.png'
 import Toast from '../../components/Toast/Toast';
@@ -29,34 +28,6 @@ const Refrigerator = () => {
     const [openRefrigerator, openCloseRefrigerator] = useState(openRefrigeratorGray);
     const [refrigeratorImg, setRefrigeratorImg] = useState(closeRefrigerator)
 
-    useEffect(()=>{
-        switch(refrigeratorColor){
-            case 0:
-                setCloseRefrigerator(closeRefrigeratorGray);
-                openCloseRefrigerator(openRefrigeratorGray);
-                console.log("dfd","gray")
-                break;
-            case 1:
-                setCloseRefrigerator(closeRefrigeratorBlack);
-                openCloseRefrigerator(openRefrigeratorBlack);
-                console.log("dfd","gray")
-                break;
-            case 2:
-                setCloseRefrigerator(closeRefrigeratorYellow);
-                openCloseRefrigerator(openRefrigeratorYellow);
-                console.log("dfd","gray")
-                break;
-            case 3:
-                setCloseRefrigerator(closeRefrigeratorBlue);
-                openCloseRefrigerator(openRefrigeratorBlue);
-                console.log("dfd",closeRefrigerator)
-                break;
-    }
-    });
-    useEffect(()=>{
-        setRefrigeratorImg(closeRefrigerator);
-    },[closeRefrigerator]);
-
     const [openOrClose, setOpenOrClose] = useState("close")
     const [buttonText, setButtonText] = useState("냉장고 열어보기")
     const [canMake, setCanMake] = useState(true)
@@ -64,6 +35,21 @@ const Refrigerator = () => {
     const [todayActive, setTodayActive] = useState(false);
 
     const [ingredientNums,setIngredientNums ] = useState([0,1,5,10,100,17,50])
+    const refColorList = [
+        {close: closeRefrigeratorGray, open:openRefrigeratorGray},
+        {close: closeRefrigeratorBlack, open:openRefrigeratorBlack},
+        {close: closeRefrigeratorYellow, open:openRefrigeratorYellow},
+        {close: closeRefrigeratorBlue, open:openRefrigeratorBlue},
+    ]
+
+    useEffect(()=>{
+        setCloseRefrigerator(refColorList[refrigeratorColor].close);
+        openCloseRefrigerator(refColorList[refrigeratorColor].open);
+    },[]);
+
+    useEffect(()=>{
+        setRefrigeratorImg(closeRefrigerator);
+    },[closeRefrigerator]);
 
     useEffect(()=> {
         const now = new Date().toLocaleDateString();
@@ -80,7 +66,7 @@ const Refrigerator = () => {
     }
 
     const openTheDoor = (e) => {
-        if(openOrClose=="open"){
+        if(openOrClose==="open"){
             setRefrigeratorImg(closeRefrigerator)
             setButtonText("냉장고 열기")
             setOpenOrClose("close")
@@ -106,17 +92,17 @@ const Refrigerator = () => {
                 <styled.floor/>
                 <styled.menu src={menu} onClick={openMenu}/>
                 <styled.title>{userName} 님의 냉장고</styled.title>
-                <styled.info>떡국 재료를 4개 모아보세요.<br></br>떡국을 끓이면 덕담을 볼 수 있답니다!</styled.info>
-                {openOrClose=="open" &&
+                <styled.info>떡국 재료를 4개 모아보세요.<br/>떡국을 끓이면 덕담을 볼 수 있답니다!</styled.info>
+                {openOrClose==="open" &&
                     <styled.ingredientNums>
                     {['떡','김','계란지단','대파','약과','산적','비밀의 재료'].map((text, index)=>{
                         return <styled.ingredientText key={`ref-${text}-${index}`}>{text} x {ingredientNums[index]}<br></br></styled.ingredientText>
                     })}
                     </styled.ingredientNums>
                 }
-                <styled.refri className={openOrClose=="open"?'open':''} src={refrigeratorImg}/>
+                <styled.refri className={openOrClose==="open"?'open':''} src={refrigeratorImg}/>
                 <styled.ButtonWrapper>
-                    {openOrClose=="open"?
+                    {openOrClose==="open"?
                         <styled.bottonBox>
                             <styled.customButton className="make"  disabled={!canMake} onClick={()=>onSelectIngredient(false)}>
                             {canMake?'':<img className="lock" src={lock}/>}
@@ -148,8 +134,8 @@ const Refrigerator = () => {
                 <styled.menu src={menu} onClick={openMenu}/>
                 <styled.title>{userName} 님의 냉장고</styled.title>
                 <styled.info>떡국 재료를 4개 모아보세요.<br></br>떡국을 끓이면 덕담을 볼 수 있답니다!</styled.info>
-                <styled.refri className={openOrClose=="open"?'open':''} src={refrigeratorImg}/>
-                {openOrClose=="open" &&
+                <styled.refri className={openOrClose==="open"?'open':''} src={refrigeratorImg}/>
+                {openOrClose==="open" &&
                     <styled.ingredientNums>
                         {['떡','김','계란지단','대파','약과','산적','비밀의 재료'].map((text, index)=>{
                             return <styled.ingredientText key={`ref-${text}-${index}`}>{text} x {ingredientNums[index]}<br></br></styled.ingredientText>

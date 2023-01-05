@@ -11,6 +11,8 @@ import logout from '../../images/logout.svg';
 import MenualModal from '../../components/Modal/MenualModal';
 
 const Menu = ({setMenuOpen}) => {
+    const [showModal, setShowModal] = useState(false);
+
     useEffect(() => {
         document.body.style.cssText = `
             position: fixed;
@@ -23,8 +25,6 @@ const Menu = ({setMenuOpen}) => {
             window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
         };
     }, []);
-
-    const [showModal, setShowModal] = useState(false);
 
     const confirmEvent = (type) => {
         setShowModal(false);
@@ -47,7 +47,7 @@ const Menu = ({setMenuOpen}) => {
                 <styled.menuButton onClick={()=>setShowModal(true)}><img src={manual}/>떡국 만들기 설명서</styled.menuButton>
                 {showModal &&
                 <MenualModal close={()=>cancelEvent('info')}/>}
-                <styled.menuButton> <img src={myRefrigerator}/>내 냉장고로 돌아가기</styled.menuButton>
+                <styled.menuButton><img src={myRefrigerator}/>내 냉장고로 돌아가기</styled.menuButton>
                 <styled.menuButton><img src={riceCakeSoup}/>나의 떡국</styled.menuButton>
                 <styled.menuButton><img src={question}/>자주 묻는 질문</styled.menuButton>
                 <styled.menuButton><img src={toDeveloper}/>개발자에게 문의</styled.menuButton>

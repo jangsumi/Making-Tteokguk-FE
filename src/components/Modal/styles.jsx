@@ -17,7 +17,7 @@ export const ModalContainer = styled.div`
   border: 1px solid #000000;
   border-radius: 10px;
   word-break: break-all;
-  position: relative;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -27,6 +27,9 @@ export const ModalContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+`
+export const NoModalContainer = styled(ModalContainer)`
+  padding: 48px 20px 48px 20px;
 `
 export const CloseImg = styled.div`
   position: absolute;

@@ -99,7 +99,7 @@ const MyInfo = () => {
   ];
 
   return (
-    <styled.FlexBox direction="column">
+    <styled.FlexBox direction="column" padding="0px 20px 40px 20px;">
       <TopBar titleName={"나의 떡국"} />
       <styled.FlexBox aCenter={true}>
         <styled.NaviItem

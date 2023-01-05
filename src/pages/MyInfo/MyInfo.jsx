@@ -9,6 +9,8 @@ import tgSpicy from "../../images/tgSpicy.svg";
 import tgOnlytteok from "../../images/tgOnlytteok.svg";
 import tgOnlyegg from "../../images/tgOnlyegg.svg";
 import tgBlack from "../../images/tgBlack.svg";
+import tgFamilar from "../../images/tgFamiliar.svg";
+import tgLove from "../../images/tgLove.svg";
 
 const Cooked = ({ unlock }) => {
   const infoTteokguk = [
@@ -19,6 +21,8 @@ const Cooked = ({ unlock }) => {
     { index: 4, name: "떡국이 떡만 있어서 떡국", imgSrc: tgOnlytteok },
     { index: 5, name: "매운 떡국", imgSrc: tgSpicy },
     { index: 6, name: "이상한 떡국", imgSrc: tgStrange },
+    { index: 7, name: "뭔가 맛이 익숙한 떡국", imgSrc: tgFamilar },
+    { index: 8, name: "사랑이 가득 담긴 떡국", imgSrc: tgLove},
   ];
 
   return (
@@ -45,7 +49,7 @@ const Cooked = ({ unlock }) => {
 };
 
 const MyInfo = () => {
-  const unlock = [false, true, true, false, true];
+  const unlock = [false, true, true, false, true, true, false, true, true];
   const [currPage, setCurrPage] = useState(0);
   const userMessage = [
     {
@@ -95,7 +99,7 @@ const MyInfo = () => {
   ];
 
   return (
-    <styled.FlexBox direction="column">
+    <styled.FlexBox direction="column" padding="0px 20px 40px 20px;">
       <TopBar titleName={"나의 떡국"} />
       <styled.FlexBox aCenter={true}>
         <styled.NaviItem

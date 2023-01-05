@@ -19,12 +19,12 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  body {
+  * {
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
   
-  body::-webkit-scrollbar {
+  *::-webkit-scrollbar {
     display: none;
   }
 `;

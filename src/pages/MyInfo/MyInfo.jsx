@@ -4,7 +4,7 @@ import TopBar from "../../components/TopBar/TopBar";
 import * as styled from "./styles";
 import tgStrange from "../../images/tgStrange.svg";
 import tgIdeal from "../../images/tgIdeal.svg";
-import tgMyTaste from "../../images/tgMyTaste.svg";
+import tgMyTaste from "../../images/tgMytaste.svg";
 import tgSpicy from "../../images/tgSpicy.svg";
 import tgOnlytteok from "../../images/tgOnlytteok.svg";
 import tgOnlyegg from "../../images/tgOnlyegg.svg";

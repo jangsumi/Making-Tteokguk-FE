@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 import * as styled from "./styles";
-import Menu from "./menu.jsx"
+import Menu from "./Menu.jsx"
 import ActiveModal from '../../components/Modal/ActiveModal.jsx';
 import closeRefrigeratorGray from  '../../images/closeRefrigeratorGray.svg'
 import closeRefrigeratorBlack from  '../../images/closeRefrigeratorBlack.svg'

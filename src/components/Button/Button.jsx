@@ -6,7 +6,7 @@ const Button = ({ active, text, onClickEvent }) => {
   return (
     <styled.ButtonContainer
       active={active}
-      onClick={onClickEvent}
+      onClick={active && onClickEvent}
     >
       {text}
     </styled.ButtonContainer>

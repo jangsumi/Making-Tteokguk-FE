@@ -6,25 +6,20 @@ export const container = styled.div`
   margin: auto;
   min-height: calc(100vh - 80px);
   position: relative;
-  @media only screen and (max-width: 480px) {
-    overflow:hidden;
-  }
   .open{
     width:399px;
     height:370px;
   }
-
 `;
 
 export const floor = styled.div`
-    width:100vw;
-    top:502px;
-    position: fixed;
-    top: 502px;
-    left: 0;
-    bottom: 40px;
-    min-height: 232px;
-    background-color:#BEB7A2;
+  width:100vw;
+  position: fixed;
+  top: 502px;
+  left: 0;
+  bottom: 40px;
+  min-height: 232px;
+  background-color:#BEB7A2;
 `;
 
 export const menu = styled.img`

@@ -15,11 +15,11 @@ export const container = styled.div`
 
 export const floor = styled.div`
   width:100vw;
-  position: fixed;
+  position: absolute;
   top:502px;
-  left: 0;
-  bottom:40px;
+  left:calc(-50vw + 180px);
   min-height: 232px;
+  height:calc(100vh - 582px);
   background-color:#BEB7A2;
 `;
 

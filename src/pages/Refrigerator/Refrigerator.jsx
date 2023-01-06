@@ -17,7 +17,7 @@ import Toast from '../../components/Toast/Toast';
 
 const Refrigerator = () => {
     // 주소 복사 Toast 관리 State
-    const [isActive, setIsActive] = useState(false);
+    const [isActive, setIsActive] = useState(false);  
 
     const navigate = useNavigate();
     const [userName, setUserName] = useState("여섯글자별명");
@@ -88,7 +88,6 @@ const Refrigerator = () => {
         return (
             <styled.container>
                 {todayActive && <ActiveModal onConfirmClick={()=>onSelectIngredient(true)} onCancelClick={()=>setTodayActive(false)}/>}
-                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 <styled.floor/>
                 <styled.menu src={menu} onClick={openMenu}/>
                 <styled.title>{userName} 님의 냉장고</styled.title>
@@ -100,6 +99,7 @@ const Refrigerator = () => {
                     })}
                     </styled.ingredientNums>
                 }
+                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 <styled.refri className={openOrClose==="open"?'open':''} src={refrigeratorImg}/>
                 <styled.ButtonWrapper>
                     {openOrClose==="open"?
@@ -129,7 +129,6 @@ const Refrigerator = () => {
     else{
         return(
             <styled.container>
-                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 <styled.floor/>
                 <styled.menu src={menu} onClick={openMenu}/>
                 <styled.title>{userName} 님의 냉장고</styled.title>
@@ -142,6 +141,7 @@ const Refrigerator = () => {
                         })}
                     </styled.ingredientNums>
                 }
+                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 <styled.ButtonWrapper>
                     <styled.customButton onClick={openTheDoor} disabled={!userOpen}>
                         {userOpen?'':<img className="lock" src={lock}/>}

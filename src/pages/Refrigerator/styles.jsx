@@ -6,6 +6,7 @@ export const container = styled.div`
   margin: auto;
   min-height: calc(100vh - 80px);
   position: relative;
+  overflow:visible;
   .open{
     width:399px;
     height:370px;
@@ -14,11 +15,11 @@ export const container = styled.div`
 
 export const floor = styled.div`
   width:100vw;
-  position: fixed;
-  top: 502px;
-  left: 0;
-  bottom: 40px;
+  position: absolute;
+  top:502px;
+  left:calc(-50vw + 180px);
   min-height: 232px;
+  height:calc(100vh - 582px);
   background-color:#BEB7A2;
 `;
 
@@ -50,7 +51,7 @@ export const menuBar = styled.div`
     width:264px;
     height:390px;
     background-color:#ffffff;
-    z-index:5;
+    z-index:;
     position: relative;
     top: 50%;
     left: 50%;
@@ -133,7 +134,7 @@ export const ingredientText = styled.div`
 `
 export const ButtonWrapper = styled.div`
   margin-top: auto;
-`
+  `
 
 export const customButton = styled.button`
   width:320px;

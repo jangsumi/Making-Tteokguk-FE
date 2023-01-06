@@ -11,6 +11,8 @@ export const NaviItem = styled.div`
 
 export const FlexBox = styled.div`
   display: flex;
+  max-width:480px;
+  margin: 0 auto;
   padding: ${(props) => props.padding};
   flex-direction: ${(props) => props.direction || "row"};
   align-items: ${(props) => props.aCenter && "center"};

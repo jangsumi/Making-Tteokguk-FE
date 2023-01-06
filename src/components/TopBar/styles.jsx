@@ -4,6 +4,7 @@ import arrow from "../../images/leftArrow.svg";
 export const TopBarContainer = styled.div`
   padding: 40px 20px 0px 20px;
   display: flex;
+  max-width:480px;
   justify-content: space-between;
   align-items: center;
 `;

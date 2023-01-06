@@ -20,13 +20,13 @@ const App = () => {
       <div
         className="App"
         style={{
-          maxWidth: "480px",
           margin: "0 auto",
           height: "calc(100vh - 80px)",
           width: "auto",
           position: "relative",
           wordBreak: "keep-all",
-          overflow: "auto",
+          overflowY: "auto",
+          overflowX: "hidden"
         }}
       >
         <BrowserRouter>

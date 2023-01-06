@@ -3,6 +3,8 @@ import check from "../../images/check.svg";
 
 export const PageContainer = styled.div`
   display: flex;
+  max-width:480px;
+  margin: 0 auto;
   flex-direction: column;
   align-items: center;
   min-height: calc(100vh - 120px);

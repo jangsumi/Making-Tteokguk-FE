@@ -13,7 +13,7 @@ export const ResultContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 30px;
-  max-width:480px;
+  max-width:440px;
   margin:0 auto;
   padding: 40px 20px 40px 20px;
 `

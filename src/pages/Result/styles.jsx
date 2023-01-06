@@ -13,6 +13,8 @@ export const ResultContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 30px;
+  margin:0 auto;
+  max-width:480px;
   padding: 40px 20px 40px 20px;
 `
 export const PotImage = styled.div`

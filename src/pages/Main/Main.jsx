@@ -1,9 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import * as styled from "./styles";
-import {useNavigate} from "react-router-dom";
 
 const MainPage = () => {
-    const navigate = useNavigate();
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_APP_REST_API_KEY}&redirect_uri=${import.meta.env.VITE_APP_REDIRECT_URI}&response_type=code`;
+    const handleLogin = () => {
+        window.location.href = KAKAO_AUTH_URL;
+    };
     return (
         <styled.Container>
             <styled.BackGroundWrapper>
@@ -12,7 +14,7 @@ const MainPage = () => {
                 <styled.Text>{`2023 새해\n떡국 만들기`}</styled.Text>
             </styled.BackGroundWrapper>
 
-            <styled.LoginContainer onClick={()=>navigate('/init')}>
+            <styled.LoginContainer onClick={() => handleLogin()}>
                 <styled.LoginImg />
                 <styled.LoginText>카카오 계정으로 계속하기</styled.LoginText>
                 <styled.Fake/>

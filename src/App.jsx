@@ -12,7 +12,7 @@ import Result from "./pages/Result/Result.jsx";
 import CannotFind from "./pages/CannotFind/CannotFind.jsx";
 import Init from "./pages/Init/Init.jsx";
 import MySetting from "./pages/MySetting/MySetting.jsx";
-import ScrollToTop from "./scrollToTop";
+import ScrollToTop from "./ScrollToTop";
 
 const App = () => {
   return (

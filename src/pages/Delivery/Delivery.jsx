@@ -50,33 +50,36 @@ const Delivery = () => {
   ];
 
   const onButtonClick = () => {
-    navigate("/delivery2", {state: {ingredient: selectedItem}});
-  }
+    navigate("/delivery2", { state: { ingredient: selectedItem } });
+  };
 
   return (
     <styled.PageContainer>
       <TopBar titleName={"떡국 재료 선물하기"} />
-      <styled.FontDiv fontSize={"20px"} padding={"30px 0px 30px 0px"}>
-        선물할 떡국 재료를 선택해 주세요.
-      </styled.FontDiv>
-      <IngredientComponent index={-1} imgBg={currItemSrc} />
-      <styled.FontDiv fontSize={"18px"} padding={"14px 0px 14px 0px"}>
-        {currItemName}
-      </styled.FontDiv>
-      <styled.GridContainer>
-        {ingredientList.map((item) => (
-          <IngredientComponent
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            setCurrItemSrc={setCurrItemSrc}
-            setCurrItemName={setCurrItemName}
-            key={item.index}
-            index={item.index}
-            imgBg={item.imgBg}
-            name={item.name}
-          />
-        ))}
-      </styled.GridContainer>
+      <styled.PageContainer center={true}>
+        <styled.FontDiv fontSize={"20px"} padding={"30px 0px 30px 0px"}>
+          선물할 떡국 재료를 선택해 주세요.
+        </styled.FontDiv>
+        <IngredientComponent index={-1} imgBg={currItemSrc} />
+        <styled.FontDiv fontSize={"18px"} padding={"14px 0px 14px 0px"}>
+          {currItemName}
+        </styled.FontDiv>
+        <styled.GridContainer>
+          {ingredientList.map((item) => (
+            <IngredientComponent
+              selectedItem={selectedItem}
+              setSelectedItem={setSelectedItem}
+              setCurrItemSrc={setCurrItemSrc}
+              setCurrItemName={setCurrItemName}
+              key={item.index}
+              index={item.index}
+              imgBg={item.imgBg}
+              name={item.name}
+            />
+          ))}
+        </styled.GridContainer>
+      </styled.PageContainer>
+
       <Button
         text={"다음"}
         onClickEvent={onButtonClick}

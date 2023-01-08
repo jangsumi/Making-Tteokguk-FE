@@ -46,6 +46,10 @@ const MySetting = () => {
     setPubCheck(true);
   };
 
+  const onBackClick = () => {
+      navigate(`/init`, {state:{nickName, RefCol}});
+  }
+
   const onStartClick = async() => {
     if (check1 && pubCheck) {
       console.log({nickName, RefCol, pubSel});
@@ -127,7 +131,7 @@ const MySetting = () => {
       <styled.ButtonWrapper>
         <styled.PrevBtn
           active={true}
-          onClick={() => navigate("/init")}
+          onClick={onBackClick}
         >
           이전
         </styled.PrevBtn>

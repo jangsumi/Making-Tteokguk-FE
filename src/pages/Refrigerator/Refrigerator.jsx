@@ -64,8 +64,8 @@ const Refrigerator = () => {
             setUserName(nickname);
             setUserSelf(userID.ref === id);
             setUserOpen(secret);
-            setCloseRefrigerator(refColorList[color - 1].close);
-            openCloseRefrigerator(refColorList[color - 1].open);
+            setCloseRefrigerator(refColorList[color].close);
+            openCloseRefrigerator(refColorList[color].open);
             if (userSelf) {
                 if (isFirst) setShowCreateRef(true);
                 const now = new Date().toLocaleDateString();

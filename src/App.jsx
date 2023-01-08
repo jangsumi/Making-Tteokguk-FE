@@ -1,4 +1,5 @@
 import React from "react";
+import {RecoilRoot} from 'recoil';
 import * as styled from "./styles";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Delivery from "./pages/Delivery/Delivery";
@@ -14,8 +15,9 @@ import Init from "./pages/Init/Init.jsx";
 import MySetting from "./pages/MySetting/MySetting.jsx";
 
 const App = () => {
+
   return (
-    <>
+  <RecoilRoot>
       <styled.Line />
       <div
         className="App"
@@ -34,7 +36,7 @@ const App = () => {
             <Route path="/" element={<Main />} />
             <Route path="/myinfo" element={<MyInfo />} />
             <Route path="/selectIngredient" element={<SelectIngredient />} />
-            <Route path="/refrigerator" element={<Refrigerator />} />
+            <Route path="/refrigerator/:id" element={<Refrigerator />} />
             <Route path="/making" element={<Making />} />
             <Route path="/result" element={<Result />} />
             <Route path="/delivery" element={<Delivery />} />
@@ -46,7 +48,7 @@ const App = () => {
         </BrowserRouter>
       </div>
       <styled.Line />
-    </>
+    </RecoilRoot>
   );
 };
 

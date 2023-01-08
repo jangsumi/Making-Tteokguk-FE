@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import * as styled from "./styles";
 import Menu from "./Menu.jsx"
 import ActiveModal from '../../components/Modal/ActiveModal.jsx';
@@ -14,16 +14,22 @@ import openRefrigeratorBlue from  '../../images/openRefrigeratorBlue.svg'
 import menu from '../../images/menu.png'
 import lock from '../../images/lock.png'
 import Toast from '../../components/Toast/Toast';
+import {getFridgeWithLink} from "../../axios/refrigerator-service.jsx";
+import {useRecoilValue} from "recoil";
+import {IDState} from "../../atom.jsx";
+
 
 const Refrigerator = () => {
     // 주소 복사 Toast 관리 State
     const [isActive, setIsActive] = useState(false);
 
     const navigate = useNavigate();
-    const [userName, setUserName] = useState("여섯글자별명");
+    const location = useLocation();
+    const linkInfo = location.pathname.split('/')[2];
+    const userID = useRecoilValue(IDState);
+    const [userName, setUserName] = useState("");
     const [userSelf, setUserSelf] = useState(true);
-    const [userOpen, setuUerOpen] = useState(true);
-    const [refrigeratorColor, setRefrigeratorColor] = useState(3);
+    const [userOpen, setUserOpen] = useState(true);
     const [closeRefrigerator, setCloseRefrigerator] = useState(closeRefrigeratorGray);
     const [openRefrigerator, openCloseRefrigerator] = useState(openRefrigeratorGray);
     const [refrigeratorImg, setRefrigeratorImg] = useState(closeRefrigerator)
@@ -34,7 +40,7 @@ const Refrigerator = () => {
     const [menuOpen, setMenuOpen] = useState(false)
     const [todayActive, setTodayActive] = useState(false);
 
-    const [ingredientNums,setIngredientNums ] = useState([0,1,5,10,100,17,50])
+    const [ingredientNums,setIngredientNums] = useState([0,1,5,10,100,17,50])
     const refColorList = [
         {close: closeRefrigeratorGray, open:openRefrigeratorGray},
         {close: closeRefrigeratorBlack, open:openRefrigeratorBlack},
@@ -42,19 +48,24 @@ const Refrigerator = () => {
         {close: closeRefrigeratorBlue, open:openRefrigeratorBlue},
     ]
 
-    useEffect(()=>{
-        setCloseRefrigerator(refColorList[refrigeratorColor].close);
-        openCloseRefrigerator(refColorList[refrigeratorColor].open);
+    useEffect( ()=>{
+        const now = new Date().toLocaleDateString();
+        if (now === new Date('2023-01-22').toLocaleDateString()) setTodayActive(true);
+        getFridgeWithLink(linkInfo).then(r => {
+            console.log("내 정보: ", userID);
+            console.log("링크 정보", r);
+            const {id, color, nickname, secret} = r;
+            setUserName(nickname);
+            setUserSelf(userID.ref === id);
+            setUserOpen(secret);
+            setCloseRefrigerator(refColorList[color-1].close);
+            openCloseRefrigerator(refColorList[color-1].open);
+        });
     },[]);
 
     useEffect(()=>{
         setRefrigeratorImg(closeRefrigerator);
     },[closeRefrigerator]);
-
-    useEffect(()=> {
-        const now = new Date().toLocaleDateString();
-        if (now === new Date('2023-01-22').toLocaleDateString()) setTodayActive(true);
-    },[]);
 
     const copyClipBoard = async () => {
         await navigator.clipboard.writeText(window.location.href);
@@ -65,10 +76,10 @@ const Refrigerator = () => {
         setMenuOpen(true)
     }
 
-    const openTheDoor = (e) => {
+    const openTheDoor = () => {
         if(openOrClose==="open"){
             setRefrigeratorImg(closeRefrigerator)
-            setButtonText("냉장고 열기")
+            setButtonText("냉장고 열어보기")
             setOpenOrClose("close")
         }
         else{
@@ -133,12 +144,12 @@ const Refrigerator = () => {
                 <styled.floor/>
                 <styled.menu src={menu} onClick={openMenu}/>
                 <styled.title>{userName} 님의 냉장고</styled.title>
-                <styled.info>떡국 재료를 4개 모아보세요.<br></br>떡국을 끓이면 덕담을 볼 수 있답니다!</styled.info>
+                <styled.info>떡국 재료를 4개 모아보세요.<br/>떡국을 끓이면 덕담을 볼 수 있답니다!</styled.info>
                 <styled.refri className={openOrClose==="open"?'open':''} src={refrigeratorImg}/>
                 {openOrClose==="open" &&
                     <styled.ingredientNums>
                         {['떡','김','계란지단','대파','약과','산적','비밀의 재료'].map((text, index)=>{
-                            return <styled.ingredientText key={`ref-${text}-${index}`}>{text} x {ingredientNums[index]}<br></br></styled.ingredientText>
+                            return <styled.ingredientText key={`ref-${text}-${index}`}>{text} x {ingredientNums[index]}<br/></styled.ingredientText>
                         })}
                     </styled.ingredientNums>
                 }

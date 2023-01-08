@@ -5,6 +5,8 @@ import MessageModal from "../../components/Modal/MessageModal";
 import TopBar from "../../components/TopBar/TopBar";
 import bang from "../../images/bang.svg";
 import * as styled from "./styles";
+import {useRecoilValue} from "recoil";
+import {IDState} from "../../atom.jsx";
 
 const Delivery2 = () => {
   const [userName, setUserName] = useState("");
@@ -12,30 +14,31 @@ const Delivery2 = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { ingredient } = location.state || false;
+  const { friendRef, ingredient } = location.state || false;
+  const userID = useRecoilValue(IDState);
 
   useEffect(() => {
-    if (!ingredient) navigate("/delivery");
+    console.log("내 정보: ", userID);
+    console.log("Data: ", {friendRef, ingredient});
+    if (!friendRef || !ingredient) navigate("/delivery");
   }, []);
 
   const onChangeName = (e) => {
     setUserName(e.target.value.slice(0, 6));
-    console.log(userName);
   };
 
   const onChangeMessage = (e) => {
     setTextMessage(e.target.value.slice(0, 50));
-    console.log(textMessage);
   };
 
-  const confirmEvent = (type) => {
+  const confirmEvent = () => {
     setShowModal(false);
-    console.log(type + ": confirm");
   };
 
   const onButtonClick = () => {
     setShowModal(true);
     console.log({
+      friendRef,
       ingredient: ingredient,
       name: userName,
       message: textMessage,
@@ -83,12 +86,12 @@ const Delivery2 = () => {
         <Button
           onClickEvent={onButtonClick}
           text={"떡국 재료 선물하기"}
-          active={userName.trim() != "" && textMessage.trim() != ""}
+          active={userName.trim() !== "" && textMessage.trim() !== ""}
         />
         {showModal && (
           <MessageModal
-            onConfirmClick={() => confirmEvent("message")}
-            secret={true}
+            onConfirmClick={confirmEvent}
+            secret={userID.ref}
           />
         )}
       </styled.Container>

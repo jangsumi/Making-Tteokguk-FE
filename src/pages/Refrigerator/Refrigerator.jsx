@@ -17,6 +17,8 @@ import Toast from '../../components/Toast/Toast';
 import {getFridgeWithLink} from "../../axios/refrigerator-service.jsx";
 import {useRecoilValue} from "recoil";
 import {IDState} from "../../atom.jsx";
+import LoginModal from "../../components/Modal/LoginModal";
+import CreateRefModal from "../../components/Modal/CreateRefModal.jsx";
 
 
 const Refrigerator = () => {
@@ -26,7 +28,9 @@ const Refrigerator = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const linkInfo = location.pathname.split('/')[2];
+    const {isFirst} = location.state || false;
     const userID = useRecoilValue(IDState);
+
     const [friendID, setFriendID] = useState(null);
     const [userName, setUserName] = useState("");
     const [userSelf, setUserSelf] = useState(true);
@@ -40,6 +44,8 @@ const Refrigerator = () => {
     const [canMake, setCanMake] = useState(true)
     const [menuOpen, setMenuOpen] = useState(false)
     const [todayActive, setTodayActive] = useState(false);
+    const [showLogin, setShowLogin] = useState(false); // 로그인한 사용자 = true, 비로그인 = false
+    const [showCreateRef, setShowCreateRef] = useState(false);
     const [ingredientNums, setIngredientNums] = useState([0, 1, 5, 10, 100, 17, 50])
     const refColorList = [
         {close: closeRefrigeratorGray, open: openRefrigeratorGray},
@@ -53,6 +59,7 @@ const Refrigerator = () => {
             console.log("내 정보: ", userID);
             console.log("링크 정보", r);
             const {id, color, nickname, secret} = r;
+            if (!id) return navigate('/cannotFind');
             setFriendID(id);
             setUserName(nickname);
             setUserSelf(userID.ref === id);
@@ -60,6 +67,7 @@ const Refrigerator = () => {
             setCloseRefrigerator(refColorList[color - 1].close);
             openCloseRefrigerator(refColorList[color - 1].open);
             if (userSelf) {
+                if (isFirst) setShowCreateRef(true);
                 const now = new Date().toLocaleDateString();
                 const newDay = new Date('2023-01-22').toLocaleDateString();
                 setTodayActive(now === newDay);
@@ -74,6 +82,7 @@ const Refrigerator = () => {
     const copyClipBoard = async () => {
         await navigator.clipboard.writeText(window.location.href);
         setIsActive(true);
+        setShowCreateRef(false);
     }
 
     const openMenu = () => {
@@ -97,7 +106,18 @@ const Refrigerator = () => {
         navigate('/selectIngredient', {state: {today: value}});
     }
 
-    const onDelivery = () => {
+    const isShowLoginModal = () => {
+        if (!userID.ref) setShowLogin(true);
+        else onDeliveryPage();
+    }
+
+    const onLoginEvent = () => {
+        // kakao login 코드 작성
+
+        onDeliveryPage();
+    }
+
+    const onDeliveryPage = () => {
         navigate('/delivery', {state: {friendRef: friendID}});
     }
 
@@ -106,6 +126,8 @@ const Refrigerator = () => {
         return (
             <styled.container>
                 {todayActive && <ActiveModal onConfirmClick={()=>onSelectIngredient(true)} onCancelClick={()=> setTodayActive(false)}/>}
+                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
+                {showCreateRef && <CreateRefModal onConfirmClick={()=>copyClipBoard()} onCancelClick={()=> setShowCreateRef(false)}/>}
                 <styled.floor/>
                 <styled.menu src={menu} onClick={openMenu}/>
                 <styled.title>{userName} 님의 냉장고</styled.title>
@@ -119,7 +141,6 @@ const Refrigerator = () => {
                         })}
                     </styled.ingredientNums>
                 }
-                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 <styled.refri className={openOrClose === "open" ? 'open' : ''} src={refrigeratorImg}/>
                 <styled.ButtonWrapper>
                     {openOrClose === "open" ?
@@ -151,6 +172,8 @@ const Refrigerator = () => {
     else {
         return (
             <styled.container>
+                {showLogin && <LoginModal onConfirmClick={onLoginEvent} onCancelClick={onDeliveryPage}/>}
+                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 <styled.floor/>
                 <styled.menu src={menu} onClick={openMenu}/>
                 <styled.title>{userName} 님의 냉장고</styled.title>
@@ -165,13 +188,12 @@ const Refrigerator = () => {
                         })}
                     </styled.ingredientNums>
                 }
-                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 <styled.ButtonWrapper>
                     <styled.customButton onClick={openTheDoor} disabled={!userOpen}>
                         {userOpen ? '' : <img className="lock" src={lock}/>}
                         {buttonText}
                     </styled.customButton>
-                    <styled.customButton last onClick={onDelivery}>떡국 재료 선물하기</styled.customButton>
+                    <styled.customButton last onClick={isShowLoginModal}>떡국 재료 선물하기</styled.customButton>
                 </styled.ButtonWrapper>
             </styled.container>
         )

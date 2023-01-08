@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import close from '../../images/close.svg'
+import LoginBtnImg from "../../images/LoginBtn.svg";
 
 export const Background = styled.div`
   background: rgba(0, 0, 0, 0.3);
@@ -104,4 +105,12 @@ export const PlusImg = styled.div`
   cursor: pointer;
   transform: rotate(45deg);
   display: ${props=>!props.visible && "none"};
+`
+export const LoginLogo = styled.div`
+  background: url(${LoginBtnImg});
+  background-size: cover;
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
 `

@@ -51,13 +51,13 @@ const MySetting = () => {
       console.log({nickName, RefCol, pubSel});
       const body = {
         "color": RefCol,
-        "kakaoId": "kakaoID_test4",
+        "kakaoId": "kakaoID어쩌구",
         "nickname": nickName
       }
       createRef(pubSel, body).then(r => {
           console.log(r);
           setUserID({ref: r.id, kakao: r.kakaoId, link: r.link});
-          navigate(`/refrigerator/${r.link}`);
+          navigate(`/refrigerator/${r.link}`, {state: {isFirst:true}});
       });
     }
   }

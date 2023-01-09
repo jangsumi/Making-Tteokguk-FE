@@ -63,7 +63,6 @@ export const LoginImg = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 10px;
-  
 `
 export const LoginText = styled.div`
   font-size: 15px;

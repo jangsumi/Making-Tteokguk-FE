@@ -18,15 +18,10 @@ const Delivery2 = () => {
     if (!ingredient) navigate("/delivery");
   }, []);
 
-  const onChangeName = (e) => {
-    setUserName(e.target.value.slice(0, 6));
-    console.log(userName);
-  };
-
-  const onChangeMessage = (e) => {
-    setTextMessage(e.target.value.slice(0, 50));
-    console.log(textMessage);
-  };
+  const onChangeName = (e) => setUserName(e.target.value.trimStart().slice(0, 6));
+  const onBlurName = (e) => setUserName(userName.trimEnd());
+  const onChangeMessage = (e) => setTextMessage(e.target.value.trimStart().slice(0, 50));
+  const onBlurMessage = (e) => setTextMessage(textMessage.trimEnd());
 
   const confirmEvent = (type) => {
     setShowModal(false);
@@ -55,6 +50,7 @@ const Delivery2 = () => {
             spellcheck="false"
             value={userName}
             onChange={onChangeName}
+            onBlur={onBlurName}
           />
         </div>
 
@@ -69,6 +65,7 @@ const Delivery2 = () => {
               rows={4}
               value={textMessage}
               onChange={onChangeMessage}
+              onBlur={onBlurMessage}
             />
             <styled.TextCounter>({textMessage.length}/50)</styled.TextCounter>
           </styled.TextContainer>

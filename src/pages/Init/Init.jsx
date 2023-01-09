@@ -21,14 +21,8 @@ const Init = () => {
   const [nickName, setNickName] = useState(location.state?.nickName || '');
   const [RefCol, setRefCol] = useState(location.state?.RefCol || 0);
 
-  const onChange = (e) =>{
-    setNickName(e.target.value.slice(0,6));
-  }
-
-  const checkActive = (nickName) =>{
-    return !((nickName === "") || (nickName.charAt(0) === " ") ||
-        (nickName.charAt(nickName.length - 1) === " "));
-  }
+  const onChange = (e) => setNickName(e.target.value.trimStart().slice(0,6));
+  const onBlur = (e) => setNickName(nickName.trimEnd().slice(0,6))
 
   const onButtonClick = () => {
     navigate('/mysetting', {state:{nickName, RefCol}});
@@ -44,6 +38,7 @@ const Init = () => {
                 input type="text"
                 maxLength='6'
                 onChange={onChange}
+                onBlur={onBlur}
                 value = {nickName || ''}/>
             </styled.WhiteBtn>
             <styled.WhosRefTxt>님의 냉장고</styled.WhosRefTxt>
@@ -70,7 +65,7 @@ const Init = () => {
 
           </styled.RefBgTop>
           <Button
-            active={checkActive(nickName)}
+            active={nickName != ""}
             text = "다음"
             onClickEvent={onButtonClick}
           />

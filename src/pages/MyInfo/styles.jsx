@@ -7,6 +7,7 @@ export const NaviItem = styled.div`
   color: ${(props) => !props.isCurr && "#999999"};
   border-bottom: ${(props) => props.isCurr && "1px solid #000000"};
   text-align: center;
+  cursor: pointer;
 `;
 
 export const FlexBox = styled.div`

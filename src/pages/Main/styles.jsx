@@ -8,9 +8,10 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: auto 0;
+  margin: auto;
   gap: 80px;
   height: calc(100vh - 80px);
+  max-width: 480px;
 `;
 
 export const BackGroundWrapper = styled.div`

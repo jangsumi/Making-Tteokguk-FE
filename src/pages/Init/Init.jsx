@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import * as styled from "./styles";
 import Button from "../../components/Button/Button";
 import WhiteRef from "../../images/WhiteRef.svg";
@@ -10,27 +10,24 @@ import PurpleRef from "../../images/PurpleRef.svg";
 const Init = () => {
   const RefColor =
     [
-      {id : 1, rColor : "#D9D9D9"},
-      {id : 2, rColor : "#5E5E5E"},
-      {id : 3, rColor : "#FFE5A0"},
-      {id : 4, rColor : "#A5AEFF"},
+      {id : 0, rColor : "#D9D9D9"},
+      {id : 1, rColor : "#5E5E5E"},
+      {id : 2, rColor : "#FFE5A0"},
+      {id : 3, rColor : "#A5AEFF"},
     ]
-  const [nickName, setNickName] = useState('');
-  const [RefCol, setRefCol] = useState(1);
+
   const navigate = useNavigate();
+  const location = useLocation();
+  const [nickName, setNickName] = useState(location.state?.nickName || '');
+  const [RefCol, setRefCol] = useState(location.state?.RefCol || 0);
 
   const onChange = (e) =>{
     setNickName(e.target.value.slice(0,6));
   }
 
   const checkActive = (nickName) =>{
-    if ((nickName === "") || (nickName.charAt(0) === " ") ||
-    (nickName.charAt(nickName.length-1) === " ")){
-      return false;
-    }
-    else{
-      return true;
-    }
+    return !((nickName === "") || (nickName.charAt(0) === " ") ||
+        (nickName.charAt(nickName.length - 1) === " "));
   }
 
   const onButtonClick = () => {
@@ -68,7 +65,7 @@ const Init = () => {
             </styled.RefBgBtm >
             {[WhiteRef, BlackRef, YellowRef, PurpleRef].map((ref, index)=>{
               return <styled.RefImg key={`ref-${index}`} imageUrl={ref}
-                                    refVisible={index+1 === RefCol} />
+                                    refVisible={index === RefCol} />
             })}
 
           </styled.RefBgTop>

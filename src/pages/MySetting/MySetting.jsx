@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from "react";
+import {useRecoilState} from "recoil";
 import * as styled from "./styles";
 import { useNavigate, useLocation } from "react-router-dom";
+import {createRef} from "../../axios/refrigerator-service.jsx";
+import {IDState} from "../../atom.jsx";
 
 const MySetting = () => {
   const navigate = useNavigate();
@@ -15,6 +18,8 @@ const MySetting = () => {
   const [check2, setCheck2] = useState(false);
   const [check3, setCheck3] = useState(false);
 
+  const [userID, setUserID] = useRecoilState(IDState);
+
   useEffect(()=> {
     if (!nickName || !RefCol) navigate('/init');
   },[]);
@@ -27,24 +32,37 @@ const MySetting = () => {
     }
   }, [check2, check3]);
 
-  const pubBtn = (e) => {
+  const pubBtn = () => {
     setColor("#E0AEBC");
     setColor2("#CFCFCF");
     setPubsel(true);
     setPubCheck(true);
   };
 
-  const prvBtn = (e) => {
+  const prvBtn = () => {
     setColor("#CFCFCF");
     setColor2("#E0AEBC");
     setPubsel(false);
     setPubCheck(true);
   };
 
-  const onStartClick = () => {
+  const onBackClick = () => {
+      navigate(`/init`, {state:{nickName, RefCol}});
+  }
+
+  const onStartClick = async() => {
     if (check1 && pubCheck) {
-      console.log({nickName, RefCol, pubSel})
-      navigate("/refrigerator");
+      console.log({nickName, RefCol, pubSel});
+      const body = {
+        "color": RefCol,
+        "kakaoId": "kakaoID어쩌구",
+        "nickname": nickName
+      }
+      createRef(pubSel, body).then(r => {
+          console.log(r);
+          setUserID({ref: r.id, kakao: r.kakaoId, link: r.link});
+          navigate(`/refrigerator/${r.link}`, {state: {isFirst:true}});
+      });
     }
   }
 
@@ -113,7 +131,7 @@ const MySetting = () => {
       <styled.ButtonWrapper>
         <styled.PrevBtn
           active={true}
-          onClick={() => navigate("/init")}
+          onClick={onBackClick}
         >
           이전
         </styled.PrevBtn>

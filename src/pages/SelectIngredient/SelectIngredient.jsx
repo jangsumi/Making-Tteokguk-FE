@@ -57,13 +57,13 @@ const SelectIngredient = () => {
     };
 
     const onButtonClick = () => {
-        const tgIdx = decideTg();
-        navigate("/making", {state: {tgType: tgType[tgIdx]}});
-    };
-
-    const decideTg = () => {
         const ingredient = userSelect.map((item)=>item.ingredientIndex);
         ingredient.sort();
+        const tgIdx = decideTg(ingredient);
+        navigate("/making", {state: {usedIngredient: ingredient,tgType: tgType[tgIdx]}});
+    };
+
+    const decideTg = (ingredient) => {
         if (ingredient[3] === 6) return 0;
         else if (today) return 1;
         else if (ingredient[3] === 5 || ingredient[3] === 4) return 2;

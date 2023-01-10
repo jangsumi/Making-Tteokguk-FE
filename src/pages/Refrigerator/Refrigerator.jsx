@@ -17,6 +17,7 @@ import Toast from '../../components/Toast/Toast';
 import {getFridgeWithLink} from "../../axios/refrigerator-service.jsx";
 import {useRecoilValue} from "recoil";
 import {IDState} from "../../atom.jsx";
+import {getUnusedIngredients} from "../../axios/ingredient-service.jsx";
 import LoginModal from "../../components/Modal/LoginModal";
 import CreateRefModal from "../../components/Modal/CreateRefModal.jsx";
 
@@ -90,6 +91,10 @@ const Refrigerator = () => {
     }
 
     const openTheDoor = () => {
+        getUnusedIngredients(userID.ref).then(r => {
+            console.log("가져온 재료 ",r);
+            setIngredientNums(r);
+        })
         if (openOrClose === "open") {
             setRefrigeratorImg(closeRefrigerator)
             setButtonText("냉장고 열어보기")

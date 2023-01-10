@@ -5,8 +5,9 @@ import MessageModal from "../../components/Modal/MessageModal";
 import TopBar from "../../components/TopBar/TopBar";
 import bang from "../../images/bang.svg";
 import * as styled from "./styles";
-import {useRecoilValue} from "recoil";
-import {IDState} from "../../atom.jsx";
+import { useRecoilValue } from "recoil";
+import { IDState } from "../../atom.jsx";
+import { deliveryIngredients } from "../../axios/ingredient-service";
 
 const Delivery2 = () => {
   const [userName, setUserName] = useState("");
@@ -14,32 +15,43 @@ const Delivery2 = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { friendRef, ingredient } = location.state || false;
+  const { friendRef, ingredient, redirectLink } = location.state || false;
   const userID = useRecoilValue(IDState);
 
   useEffect(() => {
     console.log("내 정보: ", userID);
-    console.log("Data: ", {friendRef, ingredient});
+    console.log("Data: ", { friendRef, ingredient });
     if (!friendRef || !ingredient) navigate("/delivery");
   }, []);
 
   const onChangeName = (e) => setUserName(e.target.value.trimStart().slice(0, 6));
-  const onBlurName = (e) => setUserName(userName.trimEnd());
+  const onBlurName = () => setUserName(userName.trimEnd());
   const onChangeMessage = (e) => setTextMessage(e.target.value.trimStart().slice(0, 50));
-  const onBlurMessage = (e) => setTextMessage(textMessage.trimEnd());
+  const onBlurMessage = () => setTextMessage(textMessage.trimEnd());
 
   const confirmEvent = () => {
     setShowModal(false);
+    navigate(`/refrigerator/${redirectLink}`);
   };
 
   const onButtonClick = () => {
-    setShowModal(true);
     console.log({
       friendRef,
       ingredient: ingredient,
       name: userName,
       message: textMessage,
     });
+    setShowModal(true);
+    const body = {
+      content: textMessage,
+      title: userName,
+      type: ingredient,
+    };
+    if (userID.ref) {
+      // 회원의 경우, 비밀의 재료 획득
+      deliveryIngredients(userID.ref, { content: "", title: "", type: 6 });
+    } // 친구에게 재료 선물
+    deliveryIngredients(friendRef, body);
   };
 
   return (
@@ -88,10 +100,7 @@ const Delivery2 = () => {
           active={userName.trim() !== "" && textMessage.trim() !== ""}
         />
         {showModal && (
-          <MessageModal
-            onConfirmClick={confirmEvent}
-            secret={userID.ref}
-          />
+          <MessageModal onConfirmClick={confirmEvent} secret={userID.ref} />
         )}
       </styled.Container>
     </styled.Container>

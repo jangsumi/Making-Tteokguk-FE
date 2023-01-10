@@ -122,7 +122,7 @@ const Refrigerator = () => {
     }
 
     const onDeliveryPage = () => {
-        navigate('/delivery', {state: {friendRef: friendID}});
+        navigate('/delivery', {state: {friendRef: friendID, redirectLink: linkInfo}});
     }
 
     //user 본인

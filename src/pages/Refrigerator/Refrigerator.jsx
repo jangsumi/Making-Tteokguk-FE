@@ -130,7 +130,6 @@ const Refrigerator = () => {
         return (
             <styled.container>
                 {todayActive && <ActiveModal onConfirmClick={()=>onSelectIngredient(true)} onCancelClick={()=> setTodayActive(false)}/>}
-                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 {showCreateRef && <CreateRefModal onConfirmClick={()=>copyClipBoard()} onCancelClick={()=> setShowCreateRef(false)}/>}
                 <styled.floor/>
                 <styled.menu src={menu} onClick={openMenu}/>
@@ -146,6 +145,7 @@ const Refrigerator = () => {
                     </styled.ingredientNums>
                 }
                 <styled.refri className={openOrClose === "open" ? 'open' : ''} src={refrigeratorImg}/>
+                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 <styled.ButtonWrapper>
                     {openOrClose === "open" ?
                         <styled.bottonBox>
@@ -177,12 +177,12 @@ const Refrigerator = () => {
         return (
             <styled.container>
                 {showLogin && <LoginModal onConfirmClick={onLoginEvent} onCancelClick={onDeliveryPage}/>}
-                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 <styled.floor/>
                 <styled.menu src={menu} onClick={openMenu}/>
                 <styled.title>{userName} 님의 냉장고</styled.title>
                 <styled.info>떡국 재료를 4개 모아보세요.<br/>떡국을 끓이면 덕담을 볼 수 있답니다!</styled.info>
                 <styled.refri className={openOrClose === "open" ? 'open' : ''} src={refrigeratorImg}/>
+                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 {openOrClose === "open" &&
                     <styled.ingredientNums>
                         {['떡', '김', '계란지단', '대파', '약과', '산적', '비밀의 재료'].map((text, index) => {

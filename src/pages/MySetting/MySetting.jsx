@@ -21,7 +21,7 @@ const MySetting = () => {
   const [userID, setUserID] = useRecoilState(IDState);
 
   useEffect(()=> {
-    if (!nickName || !RefCol) navigate('/init');
+    if (!nickName || RefCol===undefined) navigate('/init');
   },[]);
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Message from "../../components/Message/Message";
 import TopBar from "../../components/TopBar/TopBar";
 import * as styled from "./styles";
@@ -11,6 +11,9 @@ import tgOnlyegg from "../../images/tgOnlyegg.svg";
 import tgBlack from "../../images/tgBlack.svg";
 import tgFamilar from "../../images/tgFamiliar.svg";
 import tgLove from "../../images/tgLove.svg";
+import { getMyMessage } from "../../axios/ingredient-service";
+import {useRecoilState} from "recoil";
+import {IDState} from "../../atom.jsx";
 
 const Cooked = ({ unlock }) => {
   const infoTteokguk = [
@@ -51,52 +54,18 @@ const Cooked = ({ unlock }) => {
 const MyInfo = () => {
   const unlock = [false, true, true, false, true, true, false, true, true];
   const [currPage, setCurrPage] = useState(0);
-  const userMessage = [
-    {
-      username: "한",
-      ingredient: "떡",
-      content:
-        "수미야 새해에도 행복한 일들만 가득하길 바랄게! 올해는 골골대지말고 건강하게 잘 지내보자ㅎㅎ",
-    },
-    {
-      username: "두글",
-      ingredient: "김",
-      content: "수미야 새해에도 행복한 일들만 가득하길 바랄게! ",
-    },
-    {
-      username: "세글자",
-      ingredient: "계란지단",
-      content: "새해 복 많이 받아!",
-    },
-    {
-      username: "여섯글자별명",
-      ingredient: "대파",
-      content:
-        "수미야 새해에도 행복한 일들만 가득하길 바랄게! 올해는 골골대지말고 건강하게 잘 지내보자ㅎㅎ",
-    },
-    {
-      username: "한",
-      ingredient: "떡",
-      content:
-        "수미야 새해에도 행복한 일들만 가득하길 바랄게! 올해는 골골대지말고 건강하게 잘 지내보자ㅎㅎ",
-    },
-    {
-      username: "두글",
-      ingredient: "김",
-      content: "수미야 새해에도 행복한 일들만 가득하길 바랄게! ",
-    },
-    {
-      username: "세글자",
-      ingredient: "계란지단",
-      content: "새해 복 많이 받아!",
-    },
-    {
-      username: "여섯글자별명",
-      ingredient: "대파",
-      content:
-        "수미야 새해에도 행복한 일들만 가득하길 바랄게! 올해는 골골대지말고 건강하게 잘 지내보자ㅎㅎ",
-    },
-  ];
+  const userID = useRecoilState(IDState);
+  const id = userID[0].ref;
+  const [userMessage, setUserMessage] = useState([]);
+
+  useEffect(()=>{
+    getMyMessage(id, false).then(r => {
+      setUserMessage(r);
+      console.log(r)
+    });
+  },[])
+ 
+
 
   return (
     <styled.FlexBox direction="column" padding="0px 20px 40px 20px;">

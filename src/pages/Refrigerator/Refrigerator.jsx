@@ -90,8 +90,8 @@ const Refrigerator = () => {
     }
 
     const openTheDoor = () => {
-        getUnusedIngredients(userID.ref).then(r => {
-            console.log("가져온 재료 ",r);
+        getUnusedIngredients(friendID).then(r => {
+            console.log(friendID,"에서 가져온 재료 ",r);
             setIngredientNums(r);
         })
         if (openOrClose === "open") {

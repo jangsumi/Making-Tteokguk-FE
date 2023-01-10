@@ -9,11 +9,17 @@ import toDeveloper from '../../images/toDeveloper.svg';
 import developerInfo from '../../images/developerInfo.svg';
 import logout from '../../images/logout.svg';
 import MenualModal from '../../components/Modal/MenualModal';
+import { useNavigate } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { IDState } from '../../atom';
 
 const Menu = ({setMenuOpen}) => {
     const [showModal, setShowModal] = useState(false);
+    const navigate = useNavigate();
+    const userID = useRecoilValue(IDState)
 
     useEffect(() => {
+        console.log(userID);
         document.body.style.cssText = `
             position: fixed;
             top: -${window.scrollY}px;
@@ -40,6 +46,16 @@ const Menu = ({setMenuOpen}) => {
         setMenuOpen(false)
     }
 
+    const returnMyRef = () =>  {
+        if (userID.ref) {
+            navigate(`/refrigerator/${userID.link}`);
+            window.location.reload(); // 코드 개선
+            closeMenu();
+        } else {
+            alert('로그인 모달로 대체할 예정');
+        }
+    }
+
     return (
             <styled.background>
             <styled.menuBar>
@@ -47,7 +63,7 @@ const Menu = ({setMenuOpen}) => {
                 <styled.menuButton onClick={()=>setShowModal(true)}><img src={manual}/>떡국 만들기 설명서</styled.menuButton>
                 {showModal &&
                 <MenualModal close={()=>cancelEvent('info')}/>}
-                <styled.menuButton><img src={myRefrigerator}/>내 냉장고로 돌아가기</styled.menuButton>
+                <styled.menuButton onClick={() => returnMyRef()}><img src={myRefrigerator}/>내 냉장고로 돌아가기</styled.menuButton>
                 <styled.menuButton><img src={riceCakeSoup}/>나의 떡국</styled.menuButton>
                 <styled.menuButton><img src={question}/>자주 묻는 질문</styled.menuButton>
                 <styled.menuButton><img src={toDeveloper}/>개발자에게 문의</styled.menuButton>

@@ -21,7 +21,6 @@ const MainPage = () => {
             <styled.BackGroundWrapper>
                 <styled.MainImg/>
                 <styled.TreeImg/>
-                <styled.Text>{`2023 새해\n떡국 만들기`}</styled.Text>
             </styled.BackGroundWrapper>
 
             <styled.LoginContainer onClick={onLoginClick}>

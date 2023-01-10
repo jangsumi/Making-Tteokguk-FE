@@ -27,6 +27,7 @@ const App = () => {
           margin: "0 auto",
           height: "calc(100vh - 80px)",
           width: "auto",
+          minWidth: "280px",
           position: "relative",
           wordBreak: "keep-all",
           overflowY: "auto",

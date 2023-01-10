@@ -9,7 +9,7 @@ export const getMyFridge = async(id) => {
     }
 }
 
-export async function getFridgeWithLink(link) {
+export const getFridgeWithLink = async(link) => {
     try{
         const result = await baseService.get(`/fridge/${link}`);
         return result.data;
@@ -18,8 +18,7 @@ export async function getFridgeWithLink(link) {
     }
 }
 
-export async function createRef(param, args) {
-    console.log(args);
+export const createRef = async(param, args) =>{
     try{
         const result = await baseService.post(`/fridge/init?isSecret=${param}`, args);
         return result.data;

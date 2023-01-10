@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as styled from "./styles";
 import TopBar from "../../components/TopBar/TopBar.jsx";
 import Button from "../../components/Button/Button.jsx";
@@ -18,11 +18,10 @@ import tgIdeal from "../../images/tgIdeal.svg";
 import {IDState} from "../../atom.jsx";
 import {getUnusedIngredients} from '../../axios/ingredient-service.jsx';
 import {useRecoilValue} from "recoil";
+import {createTteokguk} from "../../axios/tteokguk-service.jsx";
 
 const SelectIngredient = () => {
     const navigate = useNavigate();
-    const location = useLocation();
-    const { today } = location.state || false;
     const [userIngredient, setUserIngredient] = useState([0, 0, 0, 0, 0, 0, 0]);
     const [userSelect, setUserSelect] = useState([]);
     const [showRecipe, setShowRecipe] = useState(false);
@@ -67,12 +66,16 @@ const SelectIngredient = () => {
         const ingredient = userSelect.map((item)=>item.ingredientIndex);
         ingredient.sort();
         const tgIdx = decideTg(ingredient);
-        navigate("/making", {state: {usedIngredient: ingredient,tgType: tgType[tgIdx]}});
+        const body = {
+            ingredientList: [ingredient],
+            soupType: tgIdx,
+        }
+        createTteokguk(userID.ref, body).then(r => console.log(r));
+        navigate("/making", {state: {usedIngredient: ingredient, tgType: tgType[tgIdx]}});
     };
 
     const decideTg = (ingredient) => {
         if (ingredient[3] === 6) return 0;
-        else if (today) return 1;
         else if (ingredient[3] === 5 || ingredient[3] === 4) return 2;
         else if (ingredient[1] === ingredient[2]) {
             if (ingredient[0] === ingredient[1] || ingredient[2] === ingredient[3]) return ingredient[1]+3;

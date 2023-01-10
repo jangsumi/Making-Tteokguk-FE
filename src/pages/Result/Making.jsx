@@ -20,7 +20,7 @@ const Making = () => {
             setShowImage(image[count.current % 2]);
             count.current += 1;
         }, 1000);
-        if (count.current > 5) {
+        if (count.current > 3) {
             setShowResult(true);
             return clearInterval(loading);
         }

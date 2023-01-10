@@ -64,7 +64,7 @@ const Menu = ({setMenuOpen}) => {
                 {showModal &&
                 <MenualModal close={()=>cancelEvent('info')}/>}
                 <styled.menuButton onClick={() => returnMyRef()}><img src={myRefrigerator}/>내 냉장고로 돌아가기</styled.menuButton>
-                <styled.menuButton><img src={riceCakeSoup}/>나의 떡국</styled.menuButton>
+                <styled.menuButton onClick={() => navigate('/myinfo')}><img src={riceCakeSoup}/>나의 떡국</styled.menuButton>
                 <styled.menuButton><img src={question}/>자주 묻는 질문</styled.menuButton>
                 <styled.menuButton><img src={toDeveloper}/>개발자에게 문의</styled.menuButton>
                 <styled.menuButton><img src={developerInfo}/>개발한 사람들 소개</styled.menuButton>

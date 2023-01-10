@@ -15,6 +15,9 @@ import tgOnlyegg from "../../images/tgOnlyegg.svg";
 import tgSpicy from "../../images/tgSpicy.svg";
 import tgMytaste from "../../images/tgMytaste.svg";
 import tgIdeal from "../../images/tgIdeal.svg";
+import {IDState} from "../../atom.jsx";
+import {getUnusedIngredients} from '../../axios/ingredient-service.jsx';
+import {useRecoilValue} from "recoil";
 
 const SelectIngredient = () => {
     const navigate = useNavigate();
@@ -24,6 +27,7 @@ const SelectIngredient = () => {
     const [userSelect, setUserSelect] = useState([]);
     const [showRecipe, setShowRecipe] = useState(false);
     const itemIdx = useRef(1);
+    const userID = useRecoilValue(IDState);
 
     const tgType = [
         {text: '뭔가 맛이 익숙한 떡국', imageUrl: tgFamilar},
@@ -38,7 +42,10 @@ const SelectIngredient = () => {
     ]
 
     useEffect(() => {
-        setUserIngredient([10, 11, 12, 0, 13, 14, 15]);
+        getUnusedIngredients(userID.ref).then(r => {
+            console.log("가져온 재료 ",r);
+            setUserIngredient(r);
+        })
     }, []);
 
     const onAddItem = (item) => {

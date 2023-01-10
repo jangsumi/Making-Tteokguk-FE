@@ -3,12 +3,10 @@ import check from "../../images/check.svg";
 
 export const PageContainer = styled.div`
   display: flex;
-  max-width:480px;
   margin: 0 auto;
+  max-width: 480px;
   flex-direction: column;
-  align-items: center;
-  min-height: calc(100vh - 120px);
-  margin-bottom: 40px;
+  align-items: ${(props) => props.center && "center"};
 `;
 
 export const CheckMark = styled.div`

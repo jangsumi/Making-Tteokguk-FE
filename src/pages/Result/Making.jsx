@@ -50,9 +50,9 @@ const Making = () => {
     useEffect(()=>{
         const ingredient = userSelect.map((item)=>item.ingredientIndex);
         ingredient.sort();
-        if (ingredient[3] == 6) setTgIdx(0);
+        if (ingredient[3] === 6) setTgIdx(0);
         else if (today) setTgIdx(1);
-        else if (ingredient[3] == 5 || ingredient[3] == 4) setTgIdx(2);
+        else if (ingredient[3] === 5 || ingredient[3] === 4) setTgIdx(2);
         else if (ingredient[1] === ingredient[2]) {
             if (ingredient[0] === ingredient[1] || ingredient[2] === ingredient[3]) setTgIdx(ingredient[1]+3);
         }

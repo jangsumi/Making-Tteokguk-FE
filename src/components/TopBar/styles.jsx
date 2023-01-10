@@ -4,7 +4,7 @@ import arrow from "../../images/leftArrow.svg";
 export const TopBarContainer = styled.div`
   padding: 40px 20px 0px 20px;
   display: flex;
-  max-width:480px;
+  max-width: 480px;
   justify-content: space-between;
   align-items: center;
 `;
@@ -14,7 +14,7 @@ export const Title = styled.div`
 `;
 
 export const ButtonBack = styled.div`
-  width: 65px;
+  width: 85px;
   height: 20px;
   background-image: url(${arrow});
   background-repeat: no-repeat;

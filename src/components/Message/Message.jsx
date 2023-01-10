@@ -9,16 +9,16 @@ import sanjeok from "../../images/sanjeok.svg";
 import secretIngredient from "../../images/secretIngredient.svg";
 
 const Message = ({message}) => {
-    const ingredientImage = {"떡": tteok, "김": gim, "계란지단": gyeranjidan,
-                             "대파": daepa, "약과": yakgwa, "산적": sanjeok, "비밀": secretIngredient};
+    const ingredientImage = {0: tteok, 1: gim, 2: gyeranjidan,
+                             3: daepa, 4: yakgwa, 5: sanjeok, 6: secretIngredient};
 
     return (
         <styled.Wrapper>
             {message.map((item, index) => {
-                return <styled.MessageContainer key={`message-${item.username}-${item.ingredient}-${index}`}>
-                    <styled.IngredientBox imageUrl={ingredientImage[item.ingredient]}/>
+                return <styled.MessageContainer key={`message-${item.title}-${item.ingredient}-${index}`}>
+                    <styled.IngredientBox imageUrl={ingredientImage[item.type]}/>
                     <styled.TextWrapper>
-                        <styled.Text>{item.username}</styled.Text>
+                        <styled.Text>{item.title}</styled.Text>
                         <styled.MessageBox>{item.content}</styled.MessageBox>
                     </styled.TextWrapper>
                 </styled.MessageContainer>

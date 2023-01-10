@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  min-height: calc(100vh - 120px);
-  margin: 0 0 40px;
   display: flex;
+  margin: 0 auto;
+  max-width: 480px;
   flex-direction: column;
-  align-items: center;
-`
+`;
 export const FlexDiv = styled.div`
   display: flex;
   gap: 6px;

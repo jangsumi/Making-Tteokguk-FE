@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import TopBar from "../../components/TopBar/TopBar";
 import tteok from "../../images/tteok.svg";
@@ -12,6 +12,7 @@ import empty from "../../images/whiteBox.svg";
 import * as styled from "./styles";
 
 const IngredientComponent = ({
+  disabled,
   setSelectedItem,
   setCurrItemSrc,
   setCurrItemName,
@@ -20,13 +21,15 @@ const IngredientComponent = ({
   imgBg,
   name,
 }) => {
+
+  const onClickEvent = () => {
+    setSelectedItem(index);
+    setCurrItemSrc(imgBg);
+    setCurrItemName(name);
+  }
   return (
     <styled.Ingredient
-      onClick={() => {
-        setSelectedItem(index);
-        setCurrItemSrc(imgBg);
-        setCurrItemName(name);
-      }}
+      onClick={!disabled? onClickEvent:undefined}
       imgBg={imgBg}
     >
       {selectedItem === index && <styled.CheckMark />}
@@ -39,6 +42,8 @@ const Delivery = () => {
   const [currItemSrc, setCurrItemSrc] = useState(empty);
   const [currItemName, setCurrItemName] = useState("ㅤ");
   const navigate = useNavigate();
+  const location = useLocation();
+  const { friendRef, redirectLink } = location.state || false;
 
   const ingredientList = [
     { index: 0, imgBg: tteok, name: "홍철 없는 홍철 팀 방지용 떡" },
@@ -49,38 +54,46 @@ const Delivery = () => {
     { index: 5, imgBg: sanjeok, name: "산적을 산 적 있나요?" },
   ];
 
+  useEffect(()=> {
+    console.log("friendRef 값:", friendRef);
+    if (!friendRef) navigate('/cannotfind');
+  },[]);
+
   const onButtonClick = () => {
-    navigate("/delivery2", {state: {ingredient: selectedItem}});
-  }
+    navigate("/delivery2", { state: { friendRef, ingredient: selectedItem, redirectLink } });
+  };
 
   return (
     <styled.PageContainer>
       <TopBar titleName={"떡국 재료 선물하기"} />
-      <styled.FontDiv fontSize={"20px"} padding={"30px 0px 30px 0px"}>
-        선물할 떡국 재료를 선택해 주세요.
-      </styled.FontDiv>
-      <IngredientComponent index={-1} imgBg={currItemSrc} />
-      <styled.FontDiv fontSize={"18px"} padding={"14px 0px 14px 0px"}>
-        {currItemName}
-      </styled.FontDiv>
-      <styled.GridContainer>
-        {ingredientList.map((item) => (
-          <IngredientComponent
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-            setCurrItemSrc={setCurrItemSrc}
-            setCurrItemName={setCurrItemName}
-            key={item.index}
-            index={item.index}
-            imgBg={item.imgBg}
-            name={item.name}
-          />
-        ))}
-      </styled.GridContainer>
+      <styled.PageContainer center={true}>
+        <styled.FontDiv fontSize={"20px"} padding={"30px 0px 30px 0px"}>
+          선물할 떡국 재료를 선택해 주세요.
+        </styled.FontDiv>
+        <IngredientComponent disabled index={-1} imgBg={currItemSrc} />
+        <styled.FontDiv fontSize={"18px"} padding={"14px 0px 14px 0px"}>
+          {currItemName}
+        </styled.FontDiv>
+        <styled.GridContainer>
+          {ingredientList.map((item) => (
+            <IngredientComponent
+              selectedItem={selectedItem}
+              setSelectedItem={setSelectedItem}
+              setCurrItemSrc={setCurrItemSrc}
+              setCurrItemName={setCurrItemName}
+              key={item.index}
+              index={item.index}
+              imgBg={item.imgBg}
+              name={item.name}
+            />
+          ))}
+        </styled.GridContainer>
+      </styled.PageContainer>
+
       <Button
         text={"다음"}
         onClickEvent={onButtonClick}
-        active={selectedItem != -1}
+        active={selectedItem !== -1}
       />
     </styled.PageContainer>
   );

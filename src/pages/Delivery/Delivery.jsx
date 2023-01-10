@@ -43,7 +43,7 @@ const Delivery = () => {
   const [currItemName, setCurrItemName] = useState("ㅤ");
   const navigate = useNavigate();
   const location = useLocation();
-  const { friendRef } = location.state || false;
+  const { friendRef, redirectLink } = location.state || false;
 
   const ingredientList = [
     { index: 0, imgBg: tteok, name: "홍철 없는 홍철 팀 방지용 떡" },
@@ -60,7 +60,7 @@ const Delivery = () => {
   },[]);
 
   const onButtonClick = () => {
-    navigate("/delivery2", { state: { friendRef, ingredient: selectedItem } });
+    navigate("/delivery2", { state: { friendRef, ingredient: selectedItem, redirectLink } });
   };
 
   return (

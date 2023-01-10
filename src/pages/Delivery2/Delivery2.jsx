@@ -15,7 +15,7 @@ const Delivery2 = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { friendRef, ingredient } = location.state || false;
+  const { friendRef, ingredient, redirectLink } = location.state || false;
   const userID = useRecoilValue(IDState);
 
   useEffect(() => {
@@ -31,6 +31,7 @@ const Delivery2 = () => {
 
   const confirmEvent = () => {
     setShowModal(false);
+    navigate(`/refrigerator/${redirectLink}`);
   };
 
   const onButtonClick = () => {

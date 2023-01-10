@@ -6,9 +6,6 @@ import Button from "../../components/Button/Button.jsx";
 import RecipeModal from "../../components/Modal/RecipeModal.jsx";
 import Display from "./Display.jsx";
 import Selected from "./Selected.jsx";
-import {IDState} from "../../atom.jsx";
-import {getUnusedIngredients} from "../../axios/ingredient-service.jsx";
-import {useRecoilValue} from "recoil";
 
 const SelectIngredient = () => {
     const navigate = useNavigate();
@@ -19,13 +16,8 @@ const SelectIngredient = () => {
     const [showRecipe, setShowRecipe] = useState(false);
     const itemIdx = useRef(1);
 
-    const userID = useRecoilValue(IDState);
-
     useEffect(() => {
-        getUnusedIngredients(userID.ref).then(r => {
-            console.log("가져온 재료 ",r);
-            setUserIngredient(r);
-        })
+        setUserIngredient([10, 11, 12, 0, 13, 14, 15]);
     }, []);
 
     const onAddItem = (item) => {

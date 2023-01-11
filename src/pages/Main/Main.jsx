@@ -2,11 +2,7 @@ import React from "react";
 import * as styled from "./styles";
 
 const MainPage = () => {
-
-    
-    const REDIRECT_URI =  "http://3.35.136.13:8080/api/user/kakao/callback";
-
-    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_APP_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_APP_REDIRECT_URI}&response_type=code`;
     console.log(KAKAO_AUTH_URL);
 
     const handleLogin = () => {

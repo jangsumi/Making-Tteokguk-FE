@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import {createRef} from "../../axios/refrigerator-service.jsx";
 import {IDState} from "../../atom.jsx";
 
+
 const MySetting = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,7 +20,8 @@ const MySetting = () => {
   const [check3, setCheck3] = useState(false);
 
   const [userID, setUserID] = useRecoilState(IDState);
-
+  const [showModal, setShowModal] = useState(false);
+  
   useEffect(()=> {
     if (!nickName || !RefCol) navigate('/init');
   },[]);
@@ -65,6 +67,7 @@ const MySetting = () => {
       });
     }
   }
+
 
   return (
     <styled.Container>
@@ -124,7 +127,8 @@ const MySetting = () => {
           isChecked={check3}
         />
         <styled.TextDiv>
-          (필수) 이용약관 및 개인정보 수집 이용에 동의해요.
+          (필수) <a href="https://www.notion.so/login" target="_blank">이용약관</a>
+           및 <a href="https://www.notion.so/login" target="_blank">개인정보 수집 이용</a>에 동의해요.
         </styled.TextDiv>
       </styled.FlexBox>
 

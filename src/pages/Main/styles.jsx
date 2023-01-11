@@ -1,7 +1,7 @@
 import LoginBtnImg from "../../images/LoginBtn.svg";
 import styled from "styled-components";
-import HomeTree from '../../images/homeTree.svg'
-import MainLogo from '../../images/MainImg.svg';
+import Logo from '../../images/logo.svg'
+import HomeImg from '../../images/MainImg.svg';
 
 export const Container = styled.div`
   display: flex;
@@ -10,9 +10,9 @@ export const Container = styled.div`
   align-items: center;
   margin: auto;
   padding: 30px 0 10px;
-  gap: 80px;
+  gap: 60px;
   min-height: calc(100vh - 120px);
-  max-width: 480px;
+  max-width: 322px;
   @media only screen and (max-width:480px) {
     gap: 40px;
   }
@@ -28,23 +28,47 @@ export const MainImg = styled.div`
   width: calc(100% - 40px);
   padding-top: 0;
   height: 322px;
-  background: url(${MainLogo}) no-repeat;
+  background: url(${HomeImg}) no-repeat;
   background-size: 100%;
   @media only screen and (max-width:480px) {
     padding-top: calc(100% - 40px);
     height: 0;
   }
 `;
-export const TreeImg = styled.div`
+
+export const MainLogo = styled.div`
   position: absolute;
-  max-width: 250px;
-  width: 70%;
-  height: 137px;
-  top: -29px;
-  left: 0;
-  background: url(${HomeTree}) no-repeat;
-  background-size: 100%;
-`;
+  width: 200px;
+  height: 200px;
+  top: -195px;
+  right: -20px;
+  background: url(${Logo}) no-repeat;
+  background-size: cover;
+  @media only screen and (max-width: 480px) {
+    width: 170px;
+    height: 170px;
+    top: -165px;
+    right: -20px;
+  }
+  @media only screen and (max-width: 370px) {
+    width: 150px;
+    height: 150px;
+    top: -145px;
+    right: -15px;
+  }
+  @media only screen and (max-width: 330px) {
+    width: 130px;
+    height: 130px;
+    top: -125px;
+    right: -10px;
+  }
+`
+export const Wrapper = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
 
 export const LoginContainer = styled.div`
   display: flex;

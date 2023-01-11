@@ -12,7 +12,7 @@ import tgBlack from "../../images/tgBlack.svg";
 import tgFamilar from "../../images/tgFamiliar.svg";
 import tgLove from "../../images/tgLove.svg";
 import { getMyMessage } from "../../axios/ingredient-service";
-import {useRecoilState} from "recoil";
+import {useRecoilValue} from "recoil";
 import {IDState} from "../../atom.jsx";
 import {getMyFridge} from "../../axios/refrigerator-service.jsx";
 
@@ -33,11 +33,8 @@ const Cooked = ({ unlock }) => {
     <styled.FlexBox>
       <styled.GridContainer>
         {infoTteokguk.map((item) => (
-          <styled.FlexBox
+          <styled.TteokgukWrapper
             key={item.index}
-            direction="column"
-            gap="4px"
-            aCenter={true}
           >
             <styled.Tteokguk background={item.imgSrc}>
               {!unlock[item.index] && <styled.TteockgukLock />}
@@ -45,7 +42,7 @@ const Cooked = ({ unlock }) => {
             <styled.FontDiv fontSize="12px">
               {unlock[item.index] ? item.name : "???"}
             </styled.FontDiv>
-          </styled.FlexBox>
+          </styled.TteokgukWrapper>
         ))}
       </styled.GridContainer>
     </styled.FlexBox>
@@ -55,15 +52,15 @@ const Cooked = ({ unlock }) => {
 const MyInfo = () => {
   const [unlock, setUnLock] = useState([0,0,0,0,0,0,0,0,0]);
   const [currPage, setCurrPage] = useState(0);
-  const userID = useRecoilState(IDState);
-  const id = userID[0].ref;
+  const userID = useRecoilValue(IDState);
+  const id = userID;
   const [userMessage, setUserMessage] = useState([]);
 
   useEffect(()=>{
     getMyMessage(id, false).then(r => {
       if (r) setUserMessage(r.filter((item)=>item.type !== 6));
     });
-    getMyFridge(userID[0].kakao).then(r => {
+    getMyFridge(userID.kakao).then(r => {
       setUnLock(r.unlockedRCS);
     })
   },[])
@@ -71,7 +68,7 @@ const MyInfo = () => {
 
 
   return (
-    <styled.FlexBox direction="column" padding="0px 20px 40px 20px">
+    <styled.FlexBox direction="column" padding="0px 20px 40px">
       <TopBar titleName={"나의 떡국"} />
       <styled.FlexBox aCenter={true}>
         <styled.NaviItem onClick={() => setCurrPage(0)} isCurr={currPage === 0}>

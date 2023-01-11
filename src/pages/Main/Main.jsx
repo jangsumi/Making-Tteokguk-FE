@@ -20,14 +20,16 @@ const MainPage = () => {
         <styled.Container>
             <styled.BackGroundWrapper>
                 <styled.MainImg/>
-                <styled.TreeImg/>
             </styled.BackGroundWrapper>
 
-            <styled.LoginContainer onClick={onLoginClick}>
-                <styled.LoginImg/>
-                <styled.LoginText>카카오 계정으로 계속하기</styled.LoginText>
-                <styled.Fake/>
-            </styled.LoginContainer>
+            <styled.Wrapper>
+                <styled.MainLogo/>
+                <styled.LoginContainer onClick={onLoginClick}>
+                    <styled.LoginImg/>
+                    <styled.LoginText>카카오 계정으로 계속하기</styled.LoginText>
+                    <styled.Fake/>
+                </styled.LoginContainer>
+            </styled.Wrapper>
         </styled.Container>
 
 

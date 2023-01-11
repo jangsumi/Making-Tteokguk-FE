@@ -22,8 +22,8 @@ const Selected = ({userSelect, setUserIngredient, onRemoveItem}) => {
             <styled.SelectWrapper>
                 {userSelect.map((item) => {
                     return <styled.SelectedBox key={`selected-ingredient-${item.idx}`}
-                                                 imageUrl={item.imageUrl}
-                                                 onClick={() => onClickEvent(item)}>
+                                               imageUrl={item.imageUrl}
+                                               onClick={() => onClickEvent(item)}>
                         <styled.Delete/>
                     </styled.SelectedBox>
                 })}

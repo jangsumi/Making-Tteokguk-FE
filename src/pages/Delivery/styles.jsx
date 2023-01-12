@@ -12,6 +12,7 @@ export const Wrapper = styled.div`
 export const PageContainer = styled(Wrapper)`
   align-items: center;
   width: calc(100vw - 40px);
+  min-width: 240px;
   padding: 0 20px 40px;
 `
 export const CheckMark = styled.div`

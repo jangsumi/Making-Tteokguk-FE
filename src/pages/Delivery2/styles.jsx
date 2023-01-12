@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   margin: 0 auto;
   max-width: 480px;
+  min-width: 240px;
   width: 100%;
   flex-direction: column;
   min-height: calc(100vh - 203px);

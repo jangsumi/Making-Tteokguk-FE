@@ -19,8 +19,8 @@ const KakaoAuth = () => {
     const code = new URL(window.location.href).searchParams.get("code");
     // axios.get(`http://3.35.136.13:8080/api/user/kakao/callback?code=liHfO2h1fF2zSF8cHQK1uOHlvgZMHriYHxnt2HldqVPeiJXyMxTGGNysq5h8kpOzMp0-0AoqJQ8AAAGFpGFCoQ`)
     axios.get(`${import.meta.env.VITE_APP_API_URI}?code=${code}`).then((res) => {
-      console.lof(res);
-    }).catch((err) => console.log(err))
+      console.log(res);
+    }).catch((err) => console.log(err));
     // axios({
     //   method: "get",
     //   url: `${import.meta.env.VITE_APP_API_URI}?code=${code}`,

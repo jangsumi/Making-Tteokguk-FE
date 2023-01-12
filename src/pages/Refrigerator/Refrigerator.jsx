@@ -17,7 +17,7 @@ import Toast from '../../components/Toast/Toast';
 import {getFridgeWithLink} from "../../axios/refrigerator-service.jsx";
 import {useRecoilValue} from "recoil";
 import {IDState} from "../../atom.jsx";
-import LoginModal from "../../components/Modal/LoginModal";
+import RecipeLoginModal from "../../components/Modal/RecipeLoginModal.jsx";
 import CreateRefModal from '../../components/Modal/CreateRefModal.jsx';
 import {getUnusedIngredients} from '../../axios/ingredient-service.jsx';
 
@@ -183,7 +183,7 @@ const Refrigerator = () => {
             <>
             <styled.floor/>
             <styled.container>
-                {showLogin && <LoginModal onConfirmClick={onLoginEvent} onCancelClick={onDeliveryPage}/>}
+                {showLogin && <RecipeLoginModal onConfirmClick={onLoginEvent} onCancelClick={onDeliveryPage}/>}
                 {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
                 <styled.menu src={menu} onClick={openMenu}/>
                 <styled.title>{userName} 님의 냉장고</styled.title>

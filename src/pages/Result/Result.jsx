@@ -6,10 +6,11 @@ import {useRecoilState} from "recoil";
 import {IDState} from "../../atom.jsx";
 
 const Result = () => {
+    const userID = useRecoilState(IDState);
     const navigate = useNavigate();
     const location = useLocation();
     const { message } = location.state;
-    const userID = useRecoilState(IDState);
+    const userMessage = message.filter((item)=>item.type !== 6);
 
     return (
         <styled.ResultContainer>
@@ -17,7 +18,7 @@ const Result = () => {
                 <styled.Title>친구들이 보낸 덕담</styled.Title>
                 <styled.BackButton onClick={() => navigate(`/refrigerator/${userID[0].link}`)}>돌아가기</styled.BackButton>
             </styled.Top>
-            <Message message={message}/>
+            <Message message={userMessage}/>
         </styled.ResultContainer>
     );
 };

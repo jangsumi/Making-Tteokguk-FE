@@ -39,7 +39,7 @@ const Cooked = ({ unlock }) => {
             <styled.Tteokguk background={item.imgSrc}>
               {!unlock[item.index] && <styled.TteockgukLock />}
             </styled.Tteokguk>
-            <styled.FontDiv fontSize="12px">
+            <styled.FontDiv>
               {unlock[item.index] ? item.name : "???"}
             </styled.FontDiv>
           </styled.TteokgukWrapper>
@@ -53,14 +53,15 @@ const MyInfo = () => {
   const [unlock, setUnLock] = useState([0,0,0,0,0,0,0,0,0]);
   const [currPage, setCurrPage] = useState(0);
   const userID = useRecoilValue(IDState);
-  const id = userID;
   const [userMessage, setUserMessage] = useState([]);
 
   useEffect(()=>{
-    getMyMessage(id, false).then(r => {
+    getMyMessage(userID.ref, true).then(r => {
+      console.log(r);
       if (r) setUserMessage(r.filter((item)=>item.type !== 6));
     });
     getMyFridge(userID.kakao).then(r => {
+      console.log(r);
       setUnLock(r.unlockedRCS);
     })
   },[])

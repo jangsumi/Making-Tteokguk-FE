@@ -65,9 +65,14 @@ export const TteockgukLock = styled.div`
 `;
 
 export const FontDiv = styled.div`
-  font-size: ${(props) => props.fontSize};
+  text-align: center;
+  font-size: 12px;
+  @media only screen and (max-width: 300px) {
+    font-size: 11px;
+  }
 `;
 export const MessageContainer = styled.div`
-  width: 320px;
+  max-width: 320px;
+  width: 100%;
   margin: 20px auto 0;
 `

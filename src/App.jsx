@@ -42,7 +42,7 @@ const App = () => {
             <Route path="/delivery2" element={<Delivery2 />} />
             <Route path="/init" element={<Init />} />
             <Route path="/mysetting" element={<MySetting />} />
-            <Route path="/user/kakao/callback/" element={<KakaoAuth />} />
+            <Route path="/api/user/kakao/callback/" element={<KakaoAuth />} />
             <Route path="*" element={<CannotFind />} />
           </Routes>
         </BrowserRouter>

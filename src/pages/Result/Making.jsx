@@ -9,7 +9,7 @@ import ResultModal from '../../components/Modal/ResultModal.jsx';
 const Making = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { usedIngredient, tgType } = location.state || false;
+    const { message, tgType } = location.state || false;
     const image = [makingOpen, makingClose];
     const [showImage, setShowImage] = useState(makingClose);
     const [showResult, setShowResult] = useState(false);
@@ -28,13 +28,12 @@ const Making = () => {
     }, [showImage, count]);
 
     useEffect(()=> {
-        console.log({usedIngredient, tgType});
-        if (!usedIngredient || !tgType) navigate('/SelectIngredient')
+        if (!message) navigate('/SelectIngredient')
     },[]);
 
     const confirmEvent = () => {
         setShowResult(false);
-        navigate('/result');
+        navigate('/result', {state: {message}});
     }
 
     return (

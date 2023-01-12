@@ -72,8 +72,9 @@ const SelectIngredient = () => {
         }
         console.log(userID.ref);
         console.log(body);
-        createTteokguk(userID.ref, body).then(r => console.log(r));
-        navigate("/making", {state: {usedIngredient: ingredient, tgType: tgType[tgIdx]}});
+        createTteokguk(userID.ref, body).then(r => {
+            navigate("/making", {state: {message: r, tgType: tgType[tgIdx]}});
+        });
     };
 
     const decideTg = (ingredient) => {

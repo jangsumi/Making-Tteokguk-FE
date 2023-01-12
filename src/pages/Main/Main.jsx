@@ -9,7 +9,7 @@ const MainPage = () => {
     const [userID, setUserID] = useRecoilState(IDState);
 
     const onLoginClick = () => {
-        setUserID({ref:15, kakao:"kakao_purple", link:"kakao_purple"});
+        setUserID({ref:5, kakao:"kakaoWhite", link:"kakaoWhite"});
         if (userID.ref) navigate(`/refrigerator/${userID.link}`);
         else {
             navigate('/init');

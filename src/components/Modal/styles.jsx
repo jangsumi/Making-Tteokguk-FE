@@ -3,6 +3,7 @@ import close from '../../images/close.svg'
 import LoginBtnImg from "../../images/LoginBtn.svg";
 
 export const Background = styled.div`
+  min-width: 280px;
   background: rgba(0, 0, 0, 0.3);
   width: 100vw;
   height: 100vh;
@@ -103,6 +104,18 @@ export const Button = styled.div`
   @media only screen and (max-width: 300px) {
     font-size: ${props=>props.fontSize-1 || 13}px
   }
+`
+export const LongButton = styled(Button)`
+  gap: 5px;
+  @media only screen and (max-width: 320px) {
+    flex-direction: column;
+    gap: 0;
+    height: 40px;
+  }
+`
+export const SpanButton = styled.span`
+  background: #E0AEBC;
+  display: inline-block;
 `
 export const RecipeWrapper = styled.div`
   background: #FFFFFF;

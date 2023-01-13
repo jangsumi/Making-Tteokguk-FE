@@ -20,6 +20,8 @@ import {IDState} from "../../atom.jsx";
 import RecipeLoginModal from "../../components/Modal/RecipeLoginModal.jsx";
 import CreateRefModal from '../../components/Modal/CreateRefModal.jsx';
 import {getUnusedIngredients} from '../../axios/ingredient-service.jsx';
+import {createTteokguk} from "../../axios/tteokguk-service.jsx";
+import tgLove from "../../images/tgLove.svg";
 
 const Refrigerator = () => {
     // 주소 복사 Toast 관리 State
@@ -73,6 +75,10 @@ const Refrigerator = () => {
                 setTodayActive(now === newDay);
             }
         });
+        getUnusedIngredients(userID.ref).then(r => {
+            console.log("가져온 재료 ", r);
+            setIngredientNums(r);
+        })
     }, []);
 
     useEffect(() => {
@@ -90,10 +96,6 @@ const Refrigerator = () => {
     }
 
     const openTheDoor = () => {
-        getUnusedIngredients(userID.ref).then(r => {
-            console.log("가져온 재료 ", r);
-            setIngredientNums(r);
-        })
         if (openOrClose === "open") {
             setRefrigeratorImg(closeRefrigerator)
             setButtonText("냉장고 열어보기")
@@ -106,8 +108,18 @@ const Refrigerator = () => {
         }
     }
 
-    const onSelectIngredient = (value) => {
-        navigate('/selectIngredient', {state: {today: value}});
+    const onActiveConfirmClick = () => {
+        const allIngredient = [ingredientNums.map((v, index) => Array(v).fill(index))].flat(2);
+        console.log(allIngredient);
+
+        const body = {
+            ingredientList: allIngredient,
+            soupType: 1, // 사랑이 담긴 떡국
+        }
+        const loveTg = {text: '사랑이 가득 담긴 떡국', imageUrl: tgLove};
+        createTteokguk(userID.ref, body).then(r => {
+            navigate("/making", {state: {message: r, tgType: loveTg}});
+        });
     }
 
     const isShowLoginModal = () => {
@@ -131,7 +143,7 @@ const Refrigerator = () => {
             <>
                 <styled.floor/>
                 <styled.container>
-                    {todayActive && <ActiveModal onConfirmClick={() => onSelectIngredient(true)}
+                    {todayActive && <ActiveModal onConfirmClick={onActiveConfirmClick}
                                                  onCancelClick={() => setTodayActive(false)}/>}
                     {showCreateRef && <CreateRefModal onConfirmClick={() => copyClipBoard()}
                                                       onCancelClick={() => setShowCreateRef(false)}/>}
@@ -155,7 +167,7 @@ const Refrigerator = () => {
                         {openOrClose === "open" ?
                             <styled.bottonBox>
                                 <styled.customButton className="make" disabled={!canMake}
-                                                     onClick={() => onSelectIngredient(false)}>
+                                                     onClick={() => navigate('/selectIngredient')}>
                                     {canMake ? '' : <img className="lock" src={lock}/>}
                                     떡국 끓이기
                                 </styled.customButton>
@@ -181,35 +193,35 @@ const Refrigerator = () => {
     else {
         return (
             <>
-            <styled.floor/>
-            <styled.container>
-                {showLogin && <RecipeLoginModal onConfirmClick={onLoginEvent} onCancelClick={onDeliveryPage}/>}
-                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
-                <styled.menu src={menu} onClick={openMenu}/>
-                <styled.title>{userName} 님의 냉장고</styled.title>
-                <styled.info>떡국 재료를 4개 모아보세요.<br/>떡국을 끓이면 덕담을 볼 수 있답니다!</styled.info>
+                <styled.floor/>
+                <styled.container>
+                    {showLogin && <RecipeLoginModal onConfirmClick={onLoginEvent} onCancelClick={onDeliveryPage}/>}
+                    {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
+                    <styled.menu src={menu} onClick={openMenu}/>
+                    <styled.title>{userName} 님의 냉장고</styled.title>
+                    <styled.info>떡국 재료를 4개 모아보세요.<br/>떡국을 끓이면 덕담을 볼 수 있답니다!</styled.info>
 
-                <styled.RefriContainer>
-                    {openOrClose === "open" &&
-                        <styled.ingredientNums className={openOrClose}>
-                            {['떡', '김', '계란지단', '대파', '약과', '산적', '비밀의 재료'].map((text, index) => {
-                                return <styled.ingredientText
-                                    key={`ref-${text}-${index}`}>{text} x {ingredientNums[index]}<br/>
-                                </styled.ingredientText>
-                            })}
-                        </styled.ingredientNums>
-                    }
-                    <styled.refri className={openOrClose} src={refrigeratorImg}/>
-                </styled.RefriContainer>
+                    <styled.RefriContainer>
+                        {openOrClose === "open" &&
+                            <styled.ingredientNums className={openOrClose}>
+                                {['떡', '김', '계란지단', '대파', '약과', '산적', '비밀의 재료'].map((text, index) => {
+                                    return <styled.ingredientText
+                                        key={`ref-${text}-${index}`}>{text} x {ingredientNums[index]}<br/>
+                                    </styled.ingredientText>
+                                })}
+                            </styled.ingredientNums>
+                        }
+                        <styled.refri className={openOrClose} src={refrigeratorImg}/>
+                    </styled.RefriContainer>
 
-                <styled.ButtonWrapper>
-                    <styled.customButton onClick={openTheDoor} disabled={!userOpen}>
-                        {userOpen ? '' : <img className="lock" src={lock}/>}
-                        {buttonText}
-                    </styled.customButton>
-                    <styled.customButton last onClick={isShowLoginModal}>떡국 재료 선물하기</styled.customButton>
-                </styled.ButtonWrapper>
-            </styled.container>
+                    <styled.ButtonWrapper>
+                        <styled.customButton onClick={openTheDoor} disabled={!userOpen}>
+                            {userOpen ? '' : <img className="lock" src={lock}/>}
+                            {buttonText}
+                        </styled.customButton>
+                        <styled.customButton last onClick={isShowLoginModal}>떡국 재료 선물하기</styled.customButton>
+                    </styled.ButtonWrapper>
+                </styled.container>
             </>
         )
     }

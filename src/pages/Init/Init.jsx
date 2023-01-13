@@ -29,7 +29,7 @@ const Init = () => {
   }, []);
 
   const onButtonClick = () => {
-    navigate("/mysetting", { state: { nickName, RefCol } });
+    navigate("/mysetting", { state: { nickName, RefCol, kakaoId } });
     console.log({ nickName, RefCol });
   };
 

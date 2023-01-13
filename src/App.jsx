@@ -13,6 +13,7 @@ import Result from "./pages/Result/Result.jsx";
 import CannotFind from "./pages/CannotFind/CannotFind.jsx";
 import Init from "./pages/Init/Init.jsx";
 import MySetting from "./pages/MySetting/MySetting.jsx";
+import KakaoAuth from "./pages/Main/KakaoAuth";
 import ScrollToTop from "./ScrollToTop";
 
 const App = () => {
@@ -47,6 +48,7 @@ const App = () => {
             <Route path="/delivery2" element={<Delivery2 />} />
             <Route path="/init" element={<Init />} />
             <Route path="/mysetting" element={<MySetting />} />
+            <Route path="/api/user/kakao/callback/" element={<KakaoAuth />} />
             <Route path="*" element={<CannotFind />} />
           </Routes>
         </BrowserRouter>

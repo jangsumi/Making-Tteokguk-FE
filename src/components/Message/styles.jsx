@@ -21,7 +21,7 @@ export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: calc(100% - 50px);
+  width: calc(100% - 62px);
 `
 export const Text = styled.div`
   font-size: 16px;

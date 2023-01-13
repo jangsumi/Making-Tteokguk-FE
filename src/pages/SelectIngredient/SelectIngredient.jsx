@@ -67,11 +67,14 @@ const SelectIngredient = () => {
         ingredient.sort();
         const tgIdx = decideTg(ingredient);
         const body = {
-            ingredientList: [ingredient],
+            ingredientList: ingredient,
             soupType: tgIdx,
         }
-        createTteokguk(userID.ref, body).then(r => console.log(r));
-        navigate("/making", {state: {usedIngredient: ingredient, tgType: tgType[tgIdx]}});
+        console.log(userID.ref);
+        console.log(body);
+        createTteokguk(userID.ref, body).then(r => {
+            navigate("/making", {state: {message: r, tgType: tgType[tgIdx]}});
+        });
     };
 
     const decideTg = (ingredient) => {

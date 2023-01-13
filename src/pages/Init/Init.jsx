@@ -44,7 +44,7 @@ const Init = () => {
             <styled.WhosRefTxt>님의 냉장고</styled.WhosRefTxt>
           </styled.BtnContainer>
           <styled.SelectRefColTxt>냉장고 색상을 선택하세요.</styled.SelectRefColTxt>
-          <styled.RefBgTop RefBg = "#F5F5F5">
+          <styled.RefBgTop>
             <styled.RefBgBtm>
               <styled.RefContainer>
                 {RefColor.map((item)=> {
@@ -65,7 +65,7 @@ const Init = () => {
 
           </styled.RefBgTop>
           <Button
-            active={nickName != ""}
+            active={nickName !== ""}
             text = "다음"
             onClickEvent={onButtonClick}
           />

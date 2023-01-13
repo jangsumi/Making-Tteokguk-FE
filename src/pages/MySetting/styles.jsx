@@ -6,8 +6,9 @@ import ExMark from "../../images/ExMark.svg";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 auto 40px;
-  width: 320px;
+  padding: 0 20px 40px;
+  margin: auto;
+  max-width: 320px;
   min-height: calc(100vh - 120px);
 `
 export const FlexBox = styled.div`
@@ -17,6 +18,13 @@ export const FlexBox = styled.div`
   gap: ${(props) => props.gap}px;
   margin: ${(props) => props.margin};
 `;
+export const CheckBoxContainer = styled.div`
+  display: grid;
+  grid-template-columns: 20px auto;
+  grid-template-rows: 40px 26px auto;
+  column-gap: 10px;
+  margin-bottom: 40px;
+`
 export const TitleDiv = styled.div`
   font-size: 20px;
   margin: 40px 0 10px;
@@ -49,8 +57,9 @@ export const PubPrvBtn = styled.button`
 
 
 export const CenterLine = styled.div`
-  width: 320px;
-  height: 0px;
+  max-width: 320px;
+  width: 100%;
+  height: 0;
   border: 0.5px solid #999999;
   margin-top: 50px;
 `;

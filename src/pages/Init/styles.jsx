@@ -2,29 +2,30 @@ import styled from "styled-components";
 import CheckBtn from "../../images/CheckBtn.svg";
 
 export const Container = styled.div`
+  max-width: 320px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 40px auto;
+  margin: auto;
+  padding: 40px 20px;
   min-height: calc(100vh - 160px);
 `;
 
 export const MainText = styled.div`
-  width: 320px;
-  height: 58px;
-  font-size: 20px;
+  width: 100%;
+  font-size: 19px;
   align-items: center;
   white-space: pre-wrap;
 `;
 
 export const BtnContainer = styled.div`
   display : flex;
-  width : 320px;
+  width: 100%;
 `;
 
 export const NickNameInput = styled.input`
   background : #FFFFFF;
-  border : 0px solid #FFFFFF;
+  border : 0 solid #FFFFFF;
   width : 88px;
   height : 24px;
   font-size : 16px;
@@ -53,31 +54,34 @@ export const WhosRefTxt = styled.div`
 `;
 
 export const SelectRefColTxt = styled.div`
-  width: 320px;
+  width: 100%;
   height: 30px;
   font-size: 20px;
   margin-top : 40px;
 `;
 export const RefColor = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 100%;
+  padding-top: 100%;
   background: ${props => props.backgroundColor};
   border: 1px solid;
   border-radius: 20px;
   cursor: pointer;
+  position : relative;
+  @media only screen and (max-width: 310px){
+    border-radius: 16px;
+  }
 `
 export const RefContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(auto, 60px));
   gap : 10px;
-  position: absolute;
-  margin-top : 72px;
-  margin-left : 20px;
+  margin: 72px 20px 0;
   background-color: transparent;
 `
 export const RefBgTop = styled.div`
-  width: 320px;
+  width: 100%;
   height: 380px;
-  background: ${props => props.RefBg};
+  background: #F5F5F5;
   border: 1px solid;
   border-radius: 10px;
   margin : 10px 0 22px;
@@ -85,11 +89,11 @@ export const RefBgTop = styled.div`
 `;
 export const RefBgBtm = styled.div`
   position: absolute;
-  width: 320px;
+  width: 100%;
   height: 158px;
   margin-top : 222px;
   background: #BEB7A2;
-  border-radius: 0px 0px 10px 10px;
+  border-radius: 0 0 10px 10px;
 `;
 
 export const RefImg = styled.div`
@@ -100,17 +104,19 @@ export const RefImg = styled.div`
   visibility: ${(props) => props.refVisible? "visible" : "hidden"};
   background-size:contain;
   top : 30px;
-  left : 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
 `;
 
 
 export const CheckBtnImg = styled.div`
   position: absolute;
-  width : 18.27px;
-  height : 14px;
-  margin-top: 23px;
-  margin-left : 21px;
-  background : url(${CheckBtn}) no-repeat;
-  background-size:contain;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding-top: 100%;
+  background : url(${CheckBtn}) no-repeat center center;
+  background-size: 18.27px 14px;
 `;
 

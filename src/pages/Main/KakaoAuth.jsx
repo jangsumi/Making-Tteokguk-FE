@@ -26,7 +26,7 @@ const KakaoAuth = () => {
           // 카카오계정 연결에 성공한 경우, 회원 정보 유무 확인
           getMyFridge(res.data.toString()).then((kakaoId) => {
             if (!kakaoId) {
-              navigate("/init");
+              navigate("/init", { state: { kakaoId: res.data } });
             } else {
               navigate(`/refrigerator/${kakaoId}`);
             }

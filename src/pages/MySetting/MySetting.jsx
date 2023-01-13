@@ -8,7 +8,7 @@ import {IDState} from "../../atom.jsx";
 const MySetting = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const {nickName, RefCol} = location.state || false;
+    const {nickName, RefCol, kakaoId } = location.state || false;
     const [pubCheck, setPubCheck] = useState(false);
     const [pubSel, setPubsel] = useState(false);
     const [color, setColor] = useState("#CFCFCF");
@@ -21,7 +21,7 @@ const MySetting = () => {
     const [userID, setUserID] = useRecoilState(IDState);
 
     useEffect(() => {
-        if (!nickName || RefCol === undefined) navigate('/init');
+        if (!nickName || RefCol || kakaoId === undefined) navigate('/init');
     }, []);
 
     useEffect(() => {
@@ -55,7 +55,7 @@ const MySetting = () => {
             console.log({nickName, RefCol, pubSel});
             const body = {
                 "color": RefCol,
-                "kakaoId": "kakaoID어쩌구",
+                "kakaoId": kakaoId,
                 "nickname": nickName
             }
             createRef(pubSel, body).then(r => {

@@ -1,7 +1,7 @@
 import LoginBtnImg from "../../images/LoginBtn.svg";
 import styled from "styled-components";
 import Logo from '../../images/logo.svg'
-import HomeImg from '../../images/MainImg.svg';
+import HomeImg from '../../images/mainImg.svg';
 
 export const Container = styled.div`
   display: flex;

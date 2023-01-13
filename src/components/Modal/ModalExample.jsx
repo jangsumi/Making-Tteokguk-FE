@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ResultModal from './ResultModal.jsx';
 import CreateRefModal from './CreateRefModal.jsx';
+import RecipeLoginModal from './RecipeLoginModal.jsx';
 import LoginModal from './LoginModal.jsx';
 import MessageModal from './MessageModal.jsx';
 import MenualModal from './MenualModal.jsx';
@@ -24,13 +25,14 @@ const ModalExample = () => {
         <>
             <div onClick={()=>setShowModal(true)}>showModal</div>
             {showModal &&
-                // <ResultModal onConfirmClick={()=>confirmEvent('result')}/>
+                // <ResultModal tg={{text: '뭔가 맛이 익숙한 떡국', imageUrl: tgFamilar}} onConfirmClick={()=>confirmEvent('result')}/>
                 // <CreateRefModal onConfirmClick={()=>confirmEvent('createRef')} onCancelClick={()=>cancelEvent('createRef')}/>
-                // <LoginModal onConfirmClick={()=>confirmEvent('login')} onCancelClick={()=>cancelEvent('login')}/>
-                // <MessageModal onConfirmClick={()=>confirmEvent('message')} secret={true}/>
+                // <RecipeLoginModal onConfirmClick={()=>confirmEvent('login')} onCancelClick={()=>cancelEvent('login')}/>
+                <LoginModal onConfirmClick={()=>confirmEvent('login')} onCancelClick={()=>cancelEvent('login')}/>
+                // <MessageModal onConfirmClick={()=>confirmEvent('message')} secret={false}/>
                 // <MenualModal close={()=>cancelEvent('info')}/>
                 // <RecipeModal close={()=>cancelEvent('recipe')}/>
-                <SecretIngredientModal onConfirmClick={()=>confirmEvent('secretIngredient')} />
+                // <SecretIngredientModal onConfirmClick={()=>confirmEvent('secretIngredient')} />
             }
         </>
     );

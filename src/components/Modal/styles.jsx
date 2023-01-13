@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import close from '../../images/close.svg'
+import LoginBtnImg from "../../images/LoginBtn.svg";
 
 export const Background = styled.div`
+  min-width: 280px;
   background: rgba(0, 0, 0, 0.3);
   width: 100vw;
   height: 100vh;
@@ -12,7 +14,10 @@ export const Background = styled.div`
 `
 
 export const ModalContainer = styled.div`
-  width: 280px;
+  max-width: 280px;
+  min-width: 200px;
+  max-height: calc(100vh - 200px);
+  width: calc(100% - 80px);
   background: #FFFFFF;
   border: 1px solid #000000;
   border-radius: 10px;
@@ -21,7 +26,7 @@ export const ModalContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: ${props=>props.close? "48px 20px 48px 20px":"40px 20px 30px 20px"};
+  padding: ${props=>props.close? "48px 20px 30px":"40px 20px 30px"};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +34,7 @@ export const ModalContainer = styled.div`
   gap: 20px;
 `
 export const NoModalContainer = styled(ModalContainer)`
-  padding: 48px 20px 48px 20px;
+  padding: 48px 20px 30px;
 `
 export const CloseImg = styled.div`
   position: absolute;
@@ -46,14 +51,28 @@ export const Text = styled.div`
   white-space: pre-wrap;
   text-align: center;
   padding-bottom: ${props=>props.gap}px;
+  @media only screen and (max-width: 300px) {
+    font-size: ${props=>props.fontSize-1 || 19}px
+  }
 `
 export const LongText = styled(Text)`
+  max-width: 276px;
   font-size: 14px;
   text-align: left;
   text-shadow: ${props=>props.bold && "-0.1px 0 black, 0 0.1px black, 0.1px 0 black, 0 -0.1px black"};
   white-space: pre-wrap;
 `
-
+export const RecipeText = styled.div`
+  font-size: 14px;
+  background: #FFFFFF;
+  @media only screen and (max-width: 320px) {
+    font-size: 11px;
+  }
+`
+export const SpanText = styled.span`
+  background: #FFFFFF;
+  display: inline-block;
+`
 export const ColorText = styled.span`
   font-size: ${props=>props.fontSize || 14}px;
   color: red;
@@ -69,6 +88,7 @@ export const ButtonWrapper = styled.div`
   display: flex;
   gap: 10px;
   background: #ffffff;
+  width: 100%;
 `
 export const Button = styled.div`
   background: ${props=>props.background || "#E0AEBC"};
@@ -81,21 +101,32 @@ export const Button = styled.div`
   align-items: center;
   cursor: pointer;
   font-size: ${props=>props.fontSize || 14}px;
+  @media only screen and (max-width: 300px) {
+    font-size: ${props=>props.fontSize-1 || 13}px
+  }
 `
-export const BoxWrapper = styled.div`
-  display: flex;
-  background: #FFFFFF;
-  justify-content: center;
-  align-items: center;
+export const LongButton = styled(Button)`
   gap: 5px;
+  @media only screen and (max-width: 320px) {
+    flex-direction: column;
+    gap: 0;
+    height: 40px;
+  }
+`
+export const SpanButton = styled.span`
+  background: #E0AEBC;
+  display: inline-block;
+`
+export const RecipeWrapper = styled.div`
+  background: #FFFFFF;
+  overflow: auto;
+  width: 100%;
 `
 export const RecipeBox = styled.div`
-  border: 1px solid #000000;
-  border-radius: 10px;
-  width: 48px;
-  height: 48px;
-  background: url(${props=>props.imageUrl}) center center no-repeat;
-  background-size: 42px 42px;
+  width: 100%;
+  height: 50px;
+  background: url(${props=>props.imageUrl}) no-repeat;
+  background-size: 100% 100%;
 `
 export const PlusImg = styled.div`
   width: 16px;
@@ -104,4 +135,26 @@ export const PlusImg = styled.div`
   cursor: pointer;
   transform: rotate(45deg);
   display: ${props=>!props.visible && "none"};
+`
+export const LoginLogo = styled.div`
+  background: url(${LoginBtnImg});
+  background-size: cover;
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
+  @media only screen and (max-width: 300px){
+    margin-right: 4px;
+  }
+`
+export const TextWrapper = styled.div`
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  gap: 20px;
+  width: calc(100% - 20px);
+  @media only screen and (max-width:320px) {
+    gap: 10px;
+  }
 `

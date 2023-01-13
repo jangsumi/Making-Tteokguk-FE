@@ -1,11 +1,19 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  min-height: calc(100vh - 120px);
-  margin: 0 0 40px;
+export const Wrapper = styled.div`
   display: flex;
+  margin: 0 auto;
+  max-width: 480px;
+  min-width: 240px;
+  width: 100%;
   flex-direction: column;
+  min-height: calc(100vh - 203px);
+`;
+export const Container = styled(Wrapper)`
   align-items: center;
+  max-width: 320px;
+  width: calc(100vw - 40px);
+  padding: 0 20px 40px;
 `
 export const FlexDiv = styled.div`
   display: flex;
@@ -18,8 +26,11 @@ export const FontDiv = styled.div`
 `;
 
 export const NameInput = styled.input`
-  width: 280px;
-  margin: 10px 0px 36px 0px;
+  //min-width: 200px;
+  width: calc(100% - 40px);
+  //width: 100%;
+  max-width: 280px;
+  margin: 10px 0 36px;
   padding: 8px 20px 8px 20px;
   background-color: #ffffff;
   border: 1px solid #000000;
@@ -28,10 +39,14 @@ export const NameInput = styled.input`
   :focus {
     outline: none;
   }
+  @media only screen and (max-width: 300px) {
+    font-size: 14px;
+  }
 `;
 
 export const MsgTxtArea = styled.textarea`
-  width: 280px;
+  max-width: 280px;
+  width: calc(100% - 40px);
   height: 90px;
   padding: 20px;
   background-color: #ffffff;
@@ -47,15 +62,16 @@ export const MsgTxtArea = styled.textarea`
 `;
 
 export const TextContainer = styled.div`
-  width: 280px;
+  width: 100%;
   position: relative;
-  padding: 10px 0px;
+  padding: 10px 0;
 `;
 
 export const TextCounter = styled.div`
   position: absolute;
   color: #999999;
   background-color: transparent;
-  right: -20px;
+  right: 20px;
   bottom: 20px;
+  visibility: ${props=>props.visible? "visible":"hidden"};
 `;

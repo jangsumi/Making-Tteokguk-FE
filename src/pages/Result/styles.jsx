@@ -31,6 +31,7 @@ export const Top = styled.div`
 `
 export const Title = styled.div`
   font-size: 20px;
+  width: 80%;
 `
 export const BackButton = styled.div`
   width: 80px;

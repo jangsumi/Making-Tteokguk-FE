@@ -21,7 +21,7 @@ export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: calc(100% - 50px);
+  width: calc(100% - 62px);
 `
 export const Text = styled.div`
   font-size: 16px;
@@ -33,6 +33,11 @@ export const MessageBox = styled.div`
   font-size: 16px;
   padding: 20px;
   word-break: break-all;
-  //min-width: 220px;
   width: calc(100% - 40px);
+`
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 280px);
 `

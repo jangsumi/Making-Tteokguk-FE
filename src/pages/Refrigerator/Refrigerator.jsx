@@ -96,6 +96,10 @@ const Refrigerator = () => {
     }
 
     const openTheDoor = () => {
+        getUnusedIngredients(friendID).then(r => {
+            console.log(friendID,"에서 가져온 재료 ",r);
+            setIngredientNums(r);
+        })
         if (openOrClose === "open") {
             setRefrigeratorImg(closeRefrigerator)
             setButtonText("냉장고 열어보기")

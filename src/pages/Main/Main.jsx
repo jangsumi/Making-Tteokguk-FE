@@ -1,15 +1,16 @@
 import React from "react";
-import {useRecoilValue} from 'recoil';
+import {useRecoilState} from 'recoil';
 import * as styled from "./styles";
 import {useNavigate} from "react-router-dom";
 import {IDState} from "../../atom.jsx";
 
 const MainPage = () => {
     const navigate = useNavigate();
-    const userID = useRecoilValue(IDState);
+    const [userID, setUserID] = useRecoilState(IDState);
 
     const onLoginClick = () => {
-        if (userID.ref) navigate(`/refrigerator/${userID.link}`) // 이미 가입을 한 경우
+        setUserID({ref:15, kakao:"kakao_purple", link:"kakao_purple"});
+        if (userID.ref) navigate(`/refrigerator/${userID.link}`);
         else {
             navigate('/init');
         }

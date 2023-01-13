@@ -21,7 +21,7 @@ const MySetting = () => {
   const [userID, setUserID] = useRecoilState(IDState);
 
   useEffect(()=> {
-    if (!nickName || !RefCol) navigate('/init');
+    if (!nickName || RefCol===undefined) navigate('/init');
   },[]);
 
   useEffect(() => {
@@ -124,7 +124,7 @@ const MySetting = () => {
           isChecked={check3}
         />
         <styled.TextDiv>
-          (필수) 이용약관 및 개인정보 수집 이용에 동의해요.
+            (필수) <a href="/">이용약관</a> 및 개인정보 수집 이용에 동의해요.
         </styled.TextDiv>
       </styled.FlexBox>
 

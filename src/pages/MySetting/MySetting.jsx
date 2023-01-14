@@ -21,7 +21,7 @@ const MySetting = () => {
   const [userID, setUserID] = useRecoilState(IDState);
 
   useEffect(() => {
-    if (!nickName || RefCol || kakaoId === undefined) navigate("/init");
+    if (!nickName || RefCol === undefined || kakaoId === undefined) navigate("/init");
   }, []);
 
   useEffect(() => {

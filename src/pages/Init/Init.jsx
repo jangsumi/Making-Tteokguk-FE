@@ -21,7 +21,7 @@ const Init = () => {
   const [RefCol, setRefCol] = useState(location.state?.RefCol || 0);
   const { kakaoId } = location.state || false;
   const onChange = (e) => setNickName(e.target.value.trimStart().slice(0, 6));
-  const onBlur = (e) => setNickName(nickName.trimEnd().slice(0, 6));
+  const onBlur = () => setNickName(nickName.trimEnd().slice(0, 6));
 
   useEffect(() => {
     console.log(kakaoId);
@@ -30,7 +30,7 @@ const Init = () => {
 
   const onButtonClick = () => {
     navigate("/mysetting", { state: { nickName, RefCol, kakaoId } });
-    console.log({ nickName, RefCol });
+    console.log({ nickName, RefCol, kakaoId });
   };
 
   return (

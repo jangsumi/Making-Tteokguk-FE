@@ -24,11 +24,11 @@ const KakaoAuth = () => {
         if (res.status === 200) {
           console.log("debug 1", res.data);
           // 카카오계정 연결에 성공한 경우, 회원 정보 유무 확인
-          getMyFridge(res.data.toString()).then((kakaoId) => {
-            if (!kakaoId) {
+          getMyFridge(res.data.toString()).then((data) => {
+            if (!data) {
               navigate("/init", { state: { kakaoId: res.data } });
             } else {
-              navigate(`/refrigerator/${kakaoId}`);
+              navigate(`/refrigerator/${data.kakaoId}`);
             }
           });
         }

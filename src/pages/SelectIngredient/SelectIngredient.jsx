@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import * as styled from "./styles";
 import TopBar from "../../components/TopBar/TopBar.jsx";
 import Button from "../../components/Button/Button.jsx";
@@ -42,7 +42,7 @@ const SelectIngredient = () => {
 
     useEffect(() => {
         getUnusedIngredients(userID.ref).then(r => {
-            console.log("가져온 재료 ",r);
+            console.log("가져온 재료 ", r);
             setUserIngredient(r);
         })
     }, []);
@@ -63,7 +63,7 @@ const SelectIngredient = () => {
     };
 
     const onButtonClick = () => {
-        const ingredient = userSelect.map((item)=>item.ingredientIndex);
+        const ingredient = userSelect.map((item) => item.ingredientIndex);
         ingredient.sort();
         const tgIdx = decideTg(ingredient);
         const body = {
@@ -81,24 +81,26 @@ const SelectIngredient = () => {
         if (ingredient[3] === 6) return 0;
         else if (ingredient[3] === 5 || ingredient[3] === 4) return 2;
         else if (ingredient[1] === ingredient[2]) {
-            if (ingredient[0] === ingredient[1] || ingredient[2] === ingredient[3]) return ingredient[1]+3;
-        }
-        else if (ingredient[0] === ingredient[1] && ingredient[2] === ingredient[3]) return 7;
+            if (ingredient[0] === ingredient[1] || ingredient[2] === ingredient[3]) return ingredient[1] + 3;
+        } else if (ingredient[0] === ingredient[1] && ingredient[2] === ingredient[3]) return 7;
         return 8;
     }
 
     return (
-        <div style={{maxWidth:"480px",margin: "0 auto"}}>
+        <div style={{maxWidth: "480px", margin: "0 auto"}}>
             <TopBar titleName="떡국 만들기" onRecipe={() => setShowRecipe(true)}/>
             <styled.Container>
-                <styled.TitleText>떡국에 넣을 재료를 선택해 주세요</styled.TitleText>
+                <styled.TitleText>
+                    <styled.SpanText>떡국에 넣을 재료를</styled.SpanText>
+                    <styled.SpanText>선택해 주세요</styled.SpanText>
+                </styled.TitleText>
                 <Display userIngredient={userIngredient} userSelect={userSelect}
-                         setUserIngredient={(userIngredient)=>setUserIngredient(userIngredient)}
+                         setUserIngredient={(userIngredient) => setUserIngredient(userIngredient)}
                          onAddItem={(item) => onAddItem(item)}/>
                 <Selected userSelect={userSelect}
-                          setUserIngredient={(userIngredient)=>setUserIngredient(userIngredient)}
+                          setUserIngredient={(userIngredient) => setUserIngredient(userIngredient)}
                           onRemoveItem={(item) => onRemoveItem(item)}/>
-                <Button text="떡국 끓이기" active={userSelect.length===4} onClickEvent={onButtonClick} />
+                <Button text="떡국 끓이기" active={userSelect.length === 4} onClickEvent={onButtonClick}/>
             </styled.Container>
             {showRecipe && <RecipeModal close={() => setShowRecipe(false)}/>}
         </div>

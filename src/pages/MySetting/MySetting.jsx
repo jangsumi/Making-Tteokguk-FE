@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import * as styled from "./styles";
 import { useNavigate, useLocation } from "react-router-dom";
 import { createRef } from "../../axios/refrigerator-service.jsx";
@@ -18,7 +18,7 @@ const MySetting = () => {
   const [check2, setCheck2] = useState(false);
   const [check3, setCheck3] = useState(false);
 
-  const [userID, setUserID] = useRecoilState(IDState);
+  const setUserID = useSetRecoilState(IDState);
 
   useEffect(() => {
     if (!nickName || RefCol === undefined || kakaoId === undefined) navigate("/init");

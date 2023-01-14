@@ -1,8 +1,13 @@
 import React from 'react';
 import Modal from "./Modal.jsx"
 import * as styled from './styles.jsx';
+import {KAKAO_AUTH_URL} from "../../pages/Main/Main.jsx";
 
-const RecipeLoginModal = ({onConfirmClick, onCancelClick}) => {
+const RecipeLoginModal = ({onCancelClick}) => {
+    const onLoginEvent = () => {
+        window.location.href = KAKAO_AUTH_URL;
+    }
+
     return (
         <Modal>
             <styled.Text fontSize={16}>
@@ -12,7 +17,7 @@ const RecipeLoginModal = ({onConfirmClick, onCancelClick}) => {
                 <styled.SpanText>익명으로 보내져요.</styled.SpanText>
             </styled.Text>
             <styled.ButtonWrapper>
-                <styled.Button onClick={onConfirmClick} background={"#FDDC3F"} width={185}>
+                <styled.Button onClick={onLoginEvent} background={"#FDDC3F"} width={185}>
                     <styled.LoginLogo/>
                     카카오 로그인하기
                 </styled.Button>

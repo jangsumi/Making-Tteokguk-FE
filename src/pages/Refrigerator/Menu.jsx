@@ -33,7 +33,7 @@ const Menu = ({setMenuOpen}) => {
         };
     }, []);
 
-    const cancelEvent = (type) => {
+    const cancelEvent = () => {
         setShowModal(false);
     }
 
@@ -51,7 +51,7 @@ const Menu = ({setMenuOpen}) => {
         }
     }
 
-    const logOut = () => {
+    const LogOut = () => {
         console.log('로그아웃');
         // atom 값 초기화 (실제 출시에서는 default가 null일 것)
         logoutState(IDState);
@@ -71,7 +71,7 @@ const Menu = ({setMenuOpen}) => {
                 <styled.menuButton><img src={question}/>자주 묻는 질문</styled.menuButton>
                 <styled.menuButton><img src={toDeveloper}/>개발자에게 문의</styled.menuButton>
                 <styled.menuButton><img src={developerInfo}/>개발한 사람들 소개</styled.menuButton>
-                <styled.menuButton onClick={() => logOut()}><img src={logout}/>로그아웃</styled.menuButton>
+                <styled.menuButton onClick={LogOut}><img src={logout}/>로그아웃</styled.menuButton>
             </styled.menuBar>
         </styled.background>
     );

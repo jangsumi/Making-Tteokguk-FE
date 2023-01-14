@@ -10,7 +10,6 @@ import yakgwa from "../../images/yakgwa.svg";
 import sanjeok from "../../images/sanjeok.svg";
 import empty from "../../images/whiteBox.svg";
 import * as styled from "./styles";
-import {Enter, Wrapper} from "./styles";
 
 const IngredientComponent = ({
   disabled,
@@ -55,10 +54,10 @@ const Delivery = () => {
     { index: 5, imgBg: sanjeok, name: "산적을 산 적 있나요?" },
   ];
 
-  // useEffect(()=> {
-  //   console.log("friendRef 값:", friendRef);
-  //   if (!friendRef) navigate('/cannotfind');
-  // },[]);
+  useEffect(()=> {
+    console.log("friendRef 값:", friendRef);
+    if (!friendRef) navigate('/cannotfind');
+  },[]);
 
   const onButtonClick = () => {
     navigate("/delivery2", { state: { friendRef, ingredient: selectedItem, redirectLink } });
@@ -69,7 +68,8 @@ const Delivery = () => {
       <TopBar titleName={"떡국 재료 선물하기"} />
       <styled.PageContainer>
         <styled.FontDiv fontSize={"20px"} padding={"30px 0px 30px 0px"}>
-          <Enter>선물할 떡국 재료를</Enter> <Enter>선택해 주세요.</Enter>
+          <styled.Enter>선물할 떡국 재료를</styled.Enter>
+          <styled.Enter>선택해 주세요.</styled.Enter>
         </styled.FontDiv>
         <IngredientComponent disabled index={-1} imgBg={currItemSrc} />
         <styled.FontDiv fontSize={"18px"} padding={"14px 0px 14px 0px"}>

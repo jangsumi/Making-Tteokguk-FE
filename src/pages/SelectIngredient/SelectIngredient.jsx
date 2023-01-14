@@ -41,6 +41,7 @@ const SelectIngredient = () => {
     ]
 
     useEffect(() => {
+        if (!userID.ref) return navigate('/');
         getUnusedIngredients(userID.ref).then(r => {
             console.log("가져온 재료 ", r);
             setUserIngredient(r);

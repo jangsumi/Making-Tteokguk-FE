@@ -26,7 +26,6 @@ const Init = () => {
 
   const onButtonClick = () => {
     navigate('/mysetting', {state:{nickName, RefCol}});
-    console.log({ nickName, RefCol })
   }
 
   return (

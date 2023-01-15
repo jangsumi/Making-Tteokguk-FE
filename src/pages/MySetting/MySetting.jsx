@@ -54,14 +54,12 @@ const MySetting = () => {
 
   const onStartClick = async() => {
     if (check1 && pubCheck) {
-      console.log({nickName, RefCol, pubSel});
       const body = {
         "color": RefCol,
         "kakaoId": "kakaoID어쩌구",
         "nickname": nickName
       }
       createRef(pubSel, body).then(r => {
-          console.log(r);
           setUserID({ref: r.id, kakao: r.kakaoId, link: r.link});
           navigate(`/refrigerator/${r.link}`, {state: {isFirst:true}});
       });

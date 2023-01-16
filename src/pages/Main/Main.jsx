@@ -1,26 +1,22 @@
-import React from "react";
-import {useRecoilState} from 'recoil';
+import React, {useEffect} from "react";
 import * as styled from "./styles";
-import {useNavigate} from "react-router-dom";
+import {useRecoilValue} from "recoil";
 import {IDState} from "../../atom.jsx";
+import {useNavigate} from "react-router-dom";
+
+export const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_APP_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_APP_REDIRECT_URI}&response_type=code`;
 
 const MainPage = () => {
-    const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${import.meta.env.VITE_APP_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_APP_REDIRECT_URI}&response_type=code`;
-    console.log(KAKAO_AUTH_URL);
+    const userID = useRecoilValue(IDState);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (userID.link) navigate(`/refrigerator/${userID.link}`);
+    }, []);
 
     const handleLogin = () => {
         window.location.href = KAKAO_AUTH_URL;
     };
-    const navigate = useNavigate();
-    const [userID, setUserID] = useRecoilState(IDState);
-
-    // const onLoginClick = () => {
-    //     setUserID({ref:5, kakao:"kakaoWhite", link:"kakaoWhite"});
-    //     if (userID.ref) navigate(`/refrigerator/${userID.link}`);
-    //     else {
-    //         navigate('/init');
-    //     }
-    // }
 
     return (
         <styled.Container>

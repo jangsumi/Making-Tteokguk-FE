@@ -21,7 +21,7 @@ const Delivery2 = () => {
   useEffect(() => {
     console.log("내 정보: ", userID);
     console.log("Data: ", { friendRef, ingredient });
-    if (!friendRef || !ingredient) navigate("/delivery");
+    if (!friendRef || ingredient===undefined) navigate("/delivery");
   }, []);
 
   const onChangeName = (e) => setUserName(e.target.value.trimStart().slice(0, 6));

@@ -5,8 +5,11 @@ import SyncLoader from "react-spinners/SyncLoader.js";
 import { getMyFridge } from "../../axios/refrigerator-service";
 import LoginErrorModal from "../../components/Modal/LoginErrorModal";
 import { Container } from "./styles";
+import {useSetRecoilState} from "recoil";
+import {IDState} from "../../atom.jsx";
 
 const KakaoAuth = () => {
+  const setUserID = useSetRecoilState(IDState);
   const [showModal, setShowModal] = useState(false);
   const confirmEvent = () => {
     setShowModal(false);
@@ -24,11 +27,13 @@ const KakaoAuth = () => {
         if (res.status === 200) {
           console.log("debug 1", res.data);
           // 카카오계정 연결에 성공한 경우, 회원 정보 유무 확인
-          getMyFridge(res.data.toString()).then((kakaoId) => {
-            if (!kakaoId) {
+          getMyFridge(res.data.toString()).then((data) => {
+            console.log(data);
+            if (!data) {
               navigate("/init", { state: { kakaoId: res.data } });
             } else {
-              navigate(`/refrigerator/${kakaoId}`);
+              setUserID({ ref: data.id, kakao: data.kakaoId, link: data.link });
+              navigate(`/refrigerator/${data.kakaoId}`);
             }
           });
         }

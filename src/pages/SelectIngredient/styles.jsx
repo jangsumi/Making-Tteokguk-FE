@@ -18,6 +18,10 @@ export const TitleText = styled.div`
   font-size: 20px;
   text-align: center;
 `
+export const SpanText = styled.span`
+  display: inline-block;
+  margin: 0 3px;
+`
 export const SubText = styled(TitleText)`
   font-size: 18px;
   margin-bottom: 10px;
@@ -92,6 +96,9 @@ export const IngredientNumber = styled.div`
 export const SelectWrapper = styled(Ingredients)`
   grid-template-columns: repeat(4, 76px);
   grid-column-gap: 5px;
+  @media only screen and (max-width: 330px) {
+    grid-template-columns: repeat(2, 76px);
+  }
 `
 export const Delete = styled.div`
   position: absolute;

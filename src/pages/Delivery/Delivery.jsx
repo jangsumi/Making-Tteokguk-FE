@@ -55,7 +55,6 @@ const Delivery = () => {
   ];
 
   useEffect(()=> {
-    console.log("friendRef 값:", friendRef);
     if (!friendRef) navigate('/cannotfind');
   },[]);
 

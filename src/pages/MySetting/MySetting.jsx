@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { createRef } from "../../axios/refrigerator-service.jsx";
 import { IDState } from "../../atom.jsx";
 
+
 const MySetting = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -53,19 +54,18 @@ const MySetting = () => {
 
   const onStartClick = async () => {
     if (check1 && pubCheck) {
-      console.log({ nickName, RefCol, pubSel });
       const body = {
         color: RefCol,
         kakaoId: kakaoId,
         nickname: nickName,
       };
       createRef(pubSel, body).then((r) => {
-        console.log(r);
         setUserID({ ref: r.id, kakao: r.kakaoId, link: r.link });
         navigate(`/refrigerator/${r.link}`, { state: { isFirst: true } });
       });
     }
   };
+
 
   return (
     <styled.Container>
@@ -121,7 +121,8 @@ const MySetting = () => {
           isChecked={check3}
         />
         <styled.TextDiv>
-          (필수) <a href="/">이용약관</a> 및 개인정보 수집 이용에 동의해요.
+          (필수) <a href="https://www.notion.so/login" target="_blank">이용약관</a>
+           및 <a href="https://www.notion.so/login" target="_blank">개인정보 수집 이용</a>에 동의해요.
         </styled.TextDiv>
       </styled.CheckBoxContainer>
 

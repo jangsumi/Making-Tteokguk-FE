@@ -26,6 +26,8 @@
 ➡ [공식 Notion 사이트 (official notion)](https://kkamantokki.notion.site/2023-836477e651e24ecb9e76db9ce210e646)
 
 ➡ [공식 '새해 떡국 만들기' 사이트 (official service)](https://makingtteokguk.netlify.app/)
+
+➡ [디자인 페이지 (Figma)](https://www.figma.com/file/LivOlt0nFvBsDclvPHchp2/%EB%96%A1%EA%B5%AD-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EB%94%94%EC%9E%90%EC%9D%B8?node-id=0%3A1&t=lu3bkRntjftUa7VZ-1)
 - 새해 떡국 만들기 프로젝트는 `국민대학교 재학생 8명`이 모여 만든 `새해맞이 익명 덕담 서비스`입니다.
 - 새해를 맞이해서 하얀 토끼는 떡국을 만들기로 했어요. 앗, 그런데 냉장고를 열어보니 재료가 하나도 없는 거 있죠. 어쩔 수 없이 친구 토끼들에게 재료를 사 와달라고 부탁했답니다. 친구들이 가져다준 `떡국 재료 4개`를 모아서 떡국을 만들어 볼까요?
 

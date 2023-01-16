@@ -44,6 +44,18 @@ export const MainLogo = styled.div`
   right: -20px;
   background: url(${Logo}) no-repeat;
   background-size: cover;
+  @media only screen and (min-height:1100px) {
+    width: 170px;
+    height: 170px;
+    top: -165px;
+    right: -20px;
+  }
+  @media only screen and (max-height:800px) {
+    width: 170px;
+    height: 170px;
+    top: -165px;
+    right: -20px;
+  }
   @media only screen and (max-width: 480px) {
     width: 170px;
     height: 170px;

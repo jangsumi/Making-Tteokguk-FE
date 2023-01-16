@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseURL = new URL("http://3.35.136.13:8080/api");
+const baseURL = new URL(import.meta.env.VITE_APP_BASE_URL);
 
 export const baseService = axios.create({
     baseURL: baseURL.toString(),

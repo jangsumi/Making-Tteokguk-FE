@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {useRecoilState} from "recoil";
+import React, { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import * as styled from "./styles";
 import { useNavigate, useLocation } from "react-router-dom";
-import {createRef} from "../../axios/refrigerator-service.jsx";
-import {IDState} from "../../atom.jsx";
+import { createRef } from "../../axios/refrigerator-service.jsx";
+import { IDState } from "../../atom.jsx";
 
 
 const MySetting = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { nickName, RefCol } = location.state || false;
+  const { nickName, RefCol, kakaoId } = location.state || false;
   const [pubCheck, setPubCheck] = useState(false);
   const [pubSel, setPubsel] = useState(false);
   const [color, setColor] = useState("#CFCFCF");
@@ -20,11 +20,11 @@ const MySetting = () => {
   const [check3, setCheck3] = useState(false);
 
   const [userID, setUserID] = useRecoilState(IDState);
-  const [showModal, setShowModal] = useState(false);
-  
-  useEffect(()=> {
-    if (!nickName || !RefCol) navigate('/init');
-  },[]);
+
+  useEffect(() => {
+    if (userID.link) navigate(`/refrigerator/${userID.link}`);
+    else if (!nickName || RefCol === undefined || kakaoId === undefined) navigate("/init");
+  }, []);
 
   useEffect(() => {
     if (check2 && check3) {
@@ -49,34 +49,36 @@ const MySetting = () => {
   };
 
   const onBackClick = () => {
-      navigate(`/init`, {state:{nickName, RefCol}});
-  }
+    navigate(`/init`, { state: { nickName, RefCol } });
+  };
 
-  const onStartClick = async() => {
+  const onStartClick = async () => {
     if (check1 && pubCheck) {
       const body = {
-        "color": RefCol,
-        "kakaoId": "kakaoID어쩌구",
-        "nickname": nickName
-      }
-      createRef(pubSel, body).then(r => {
-          setUserID({ref: r.id, kakao: r.kakaoId, link: r.link});
-          navigate(`/refrigerator/${r.link}`, {state: {isFirst:true}});
+        color: RefCol,
+        kakaoId: kakaoId,
+        nickname: nickName,
+      };
+      createRef(pubSel, body).then((r) => {
+        setUserID({ ref: r.id, kakao: r.kakaoId, link: r.link });
+        navigate(`/refrigerator/${r.link}`, { state: { isFirst: true } });
       });
     }
-  }
+  };
 
 
   return (
     <styled.Container>
       <styled.TitleDiv>덕담 개수 공개 여부</styled.TitleDiv>
       <styled.TextDiv fontSize={16}>
-        다른 사람에게<br/>받은 덕담의 개수를 공개할까요?
+        다른 사람에게
+        <br />
+        받은 덕담의 개수를 공개할까요?
       </styled.TextDiv>
 
       <styled.FlexBox gap={6} margin={"6px 0px 20px 0px"}>
-        <styled.ExMarkImg/>
-        <styled.TextDiv fontSize={12}>
+        <styled.ExMarkImg />
+        <styled.TextDiv fontSize={11}>
           공개할 때만 남이 내 냉장고를 열어볼 수 있어요.
         </styled.TextDiv>
       </styled.FlexBox>
@@ -90,10 +92,10 @@ const MySetting = () => {
         </styled.PubPrvBtn>
       </styled.FlexBox>
 
-      <styled.CenterLine/>
+      <styled.CenterLine />
 
       <styled.TitleDiv>약관 동의</styled.TitleDiv>
-      <styled.FlexBox gap={10}>
+      <styled.CheckBoxContainer>
         <styled.CheckBtn
           onClick={() => {
             if (check1) {
@@ -107,19 +109,13 @@ const MySetting = () => {
           isChecked={check1}
         />
         <styled.TextDiv>전체 동의</styled.TextDiv>
-      </styled.FlexBox>
 
-      <styled.FlexBox gap={10} margin={"20px 0px 6px 0px"}>
         <styled.CheckBtn
           onClick={() => setCheck2(!check2)}
           isChecked={check2}
         />
-        <styled.TextDiv>
-          (필수) 만 14세 이상이에요.
-        </styled.TextDiv>
-      </styled.FlexBox>
+        <styled.TextDiv>(필수) 만 14세 이상이에요.</styled.TextDiv>
 
-      <styled.FlexBox gap={10} margin={"0 0 40px"}>
         <styled.CheckBtn
           onClick={() => setCheck3(!check3)}
           isChecked={check3}
@@ -128,19 +124,13 @@ const MySetting = () => {
           (필수) <a href="https://www.notion.so/login" target="_blank">이용약관</a>
            및 <a href="https://www.notion.so/login" target="_blank">개인정보 수집 이용</a>에 동의해요.
         </styled.TextDiv>
-      </styled.FlexBox>
+      </styled.CheckBoxContainer>
 
       <styled.ButtonWrapper>
-        <styled.PrevBtn
-          active={true}
-          onClick={onBackClick}
-        >
+        <styled.PrevBtn active={true} onClick={onBackClick}>
           이전
         </styled.PrevBtn>
-        <styled.NextBtn
-          active={check1 && pubCheck}
-          onClick={onStartClick}
-        >
+        <styled.NextBtn active={check1 && pubCheck} onClick={onStartClick}>
           시작하기
         </styled.NextBtn>
       </styled.ButtonWrapper>

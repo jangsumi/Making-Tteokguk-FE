@@ -11,8 +11,10 @@ import secretIngredient from "../../images/secretIngredient.svg";
 const Message = ({message}) => {
     const ingredientImage = {0: tteok, 1: gim, 2: gyeranjidan,
                              3: daepa, 4: yakgwa, 5: sanjeok, 6: secretIngredient};
-
-    return (
+    if (!message?.length) return (
+        <styled.Container>받은 덕담이 없습니다 ٩(๑•̀o•́๑)و</styled.Container>
+    )
+    else return (
         <styled.Wrapper>
             {message.map((item, index) => {
                 return <styled.MessageContainer key={`message-${item.title}-${item.ingredient}-${index}`}>

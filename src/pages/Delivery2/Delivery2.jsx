@@ -21,7 +21,7 @@ const Delivery2 = () => {
   useEffect(() => {
     console.log("내 정보: ", userID);
     console.log("Data: ", { friendRef, ingredient });
-    if (!friendRef || !ingredient) navigate("/delivery");
+    if (!friendRef || ingredient===undefined) navigate("/delivery");
   }, []);
 
   const onChangeName = (e) => setUserName(e.target.value.trimStart().slice(0, 6));
@@ -55,10 +55,10 @@ const Delivery2 = () => {
   };
 
   return (
-    <styled.Container>
+    <styled.Wrapper>
       <TopBar titleName={"떡국 재료 선물하기"} />
       <styled.Container>
-        <div style={{ marginTop: 30 }}>
+        <div style={{ marginTop: 30, width: "100%" }}>
           <styled.FontDiv fontSize="20px">별명을 정해주세요.</styled.FontDiv>
           <styled.NameInput
             type="text"
@@ -71,7 +71,7 @@ const Delivery2 = () => {
           />
         </div>
 
-        <div>
+        <div style={{width: "100%" }}>
           <styled.FontDiv fontSize="20px">덕담을 작성해주세요.</styled.FontDiv>
           <styled.TextContainer>
             <styled.MsgTxtArea
@@ -84,8 +84,9 @@ const Delivery2 = () => {
               onChange={onChangeMessage}
               onBlur={onBlurMessage}
             />
-            <styled.TextCounter>({textMessage.length}/50)</styled.TextCounter>
+            <styled.TextCounter visible={textMessage}>({textMessage.length}/50)</styled.TextCounter>
           </styled.TextContainer>
+
           <styled.FlexDiv gap="6px" margin="0 0 36px">
             <img src={bang} />
             <styled.FontDiv fontSize="12px">
@@ -95,15 +96,15 @@ const Delivery2 = () => {
         </div>
 
         <Button
-          onClickEvent={onButtonClick}
-          text={"떡국 재료 선물하기"}
-          active={userName.trim() !== "" && textMessage.trim() !== ""}
+            onClickEvent={onButtonClick}
+            text={"떡국 재료 선물하기"}
+            active={userName.trim() !== "" && textMessage.trim() !== ""}
         />
         {showModal && (
-          <MessageModal onConfirmClick={confirmEvent} secret={userID.ref} />
+            <MessageModal onConfirmClick={confirmEvent} secret={userID.ref} />
         )}
       </styled.Container>
-    </styled.Container>
+    </styled.Wrapper>
   );
 };
 

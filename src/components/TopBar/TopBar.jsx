@@ -2,13 +2,13 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import * as styled from "./styles";
 
-const TopBar = ({titleName, setDisplayRecipe, onRecipe}) => {
+const TopBar = ({titleName, onRecipe}) => {
     const navigate = useNavigate()
 
     return (
         <styled.TopBarContainer>
-            <styled.ButtonBack
-                onClick={() => {
+            <styled.ButtonBack visible={onRecipe}
+                               onClick={() => {
                     navigate(-1);
                 }}
             />

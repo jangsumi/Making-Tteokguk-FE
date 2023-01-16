@@ -33,14 +33,8 @@ const Menu = ({setMenuOpen}) => {
         };
     }, []);
 
-    const confirmEvent = (type) => {
+    const cancelEvent = () => {
         setShowModal(false);
-        console.log(type + ": confirm")
-    }
-
-    const cancelEvent = (type) => {
-        setShowModal(false);
-        console.log(type + ": cancel")
     }
 
     const closeMenu=()=>{
@@ -56,11 +50,11 @@ const Menu = ({setMenuOpen}) => {
             alert('로그인 모달로 대체할 예정');
         }
     }
-    
-    const logOut = () => {
+
+    const LogOut = () => {
         console.log('로그아웃');
         // atom 값 초기화 (실제 출시에서는 default가 null일 것)
-        logoutState;
+        logoutState(IDState);
         // 카카오 로그아웃 api 관련 코드 작성 예정
         navigate('/');
     }
@@ -68,7 +62,7 @@ const Menu = ({setMenuOpen}) => {
     return (
             <styled.background>
             <styled.menuBar>
-                <img className='xButton'onClick={closeMenu} src={x}/>
+                <img className='xButton' onClick={closeMenu} src={x}/>
                 <styled.menuButton onClick={()=>setShowModal(true)}><img src={manual}/>떡국 만들기 설명서</styled.menuButton>
                 {showModal &&
                 <MenualModal close={()=>cancelEvent('info')}/>}
@@ -77,7 +71,7 @@ const Menu = ({setMenuOpen}) => {
                 <styled.menuButton><img src={question}/>자주 묻는 질문</styled.menuButton>
                 <styled.menuButton><img src={toDeveloper}/>개발자에게 문의</styled.menuButton>
                 <styled.menuButton><img src={developerInfo}/>개발한 사람들 소개</styled.menuButton>
-                <styled.menuButton onClick={() => logOut()}><img src={logout}/>로그아웃</styled.menuButton>
+                <styled.menuButton onClick={LogOut}><img src={logout}/>로그아웃</styled.menuButton>
             </styled.menuBar>
         </styled.background>
     );

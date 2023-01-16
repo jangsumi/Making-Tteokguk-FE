@@ -55,7 +55,6 @@ const Delivery = () => {
   ];
 
   useEffect(()=> {
-    console.log("friendRef 값:", friendRef);
     if (!friendRef) navigate('/cannotfind');
   },[]);
 
@@ -64,11 +63,12 @@ const Delivery = () => {
   };
 
   return (
-    <styled.PageContainer>
+    <styled.Wrapper>
       <TopBar titleName={"떡국 재료 선물하기"} />
-      <styled.PageContainer center={true}>
+      <styled.PageContainer>
         <styled.FontDiv fontSize={"20px"} padding={"30px 0px 30px 0px"}>
-          선물할 떡국 재료를 선택해 주세요.
+          <styled.Enter>선물할 떡국 재료를</styled.Enter>
+          <styled.Enter>선택해 주세요.</styled.Enter>
         </styled.FontDiv>
         <IngredientComponent disabled index={-1} imgBg={currItemSrc} />
         <styled.FontDiv fontSize={"18px"} padding={"14px 0px 14px 0px"}>
@@ -88,14 +88,14 @@ const Delivery = () => {
             />
           ))}
         </styled.GridContainer>
-      </styled.PageContainer>
 
-      <Button
-        text={"다음"}
-        onClickEvent={onButtonClick}
-        active={selectedItem !== -1}
-      />
-    </styled.PageContainer>
+        <Button
+            text={"다음"}
+            onClickEvent={onButtonClick}
+            active={selectedItem !== -1}
+        />
+      </styled.PageContainer>
+    </styled.Wrapper>
   );
 };
 

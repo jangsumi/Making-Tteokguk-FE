@@ -3,7 +3,7 @@ import Modal from "./Modal.jsx"
 import * as styled from './styles.jsx';
 import {KAKAO_AUTH_URL} from "../../pages/Main/Main.jsx";
 
-const LoginModal = ({onCancelClick}) => {
+const RecipeLoginModal = ({onCancelClick}) => {
     const onLoginEvent = () => {
         window.location.href = KAKAO_AUTH_URL;
     }
@@ -11,8 +11,10 @@ const LoginModal = ({onCancelClick}) => {
     return (
         <Modal>
             <styled.Text fontSize={16}>
-                <styled.SpanText>해당 서비스를 이용하려면</styled.SpanText>
-                <styled.SpanText>로그인이 필요해요.</styled.SpanText>
+                <styled.SpanText>로그인하고 덕담을 남기면</styled.SpanText>
+                <styled.SpanText><styled.ColorText fontSize={16}>‘비밀의 재료’</styled.ColorText>를 얻을 수 있어요!<br/></styled.SpanText>
+                <styled.SpanText>로그인해도 덕담은 </styled.SpanText>
+                <styled.SpanText>익명으로 보내져요.</styled.SpanText>
             </styled.Text>
             <styled.ButtonWrapper>
                 <styled.Button onClick={onLoginEvent} background={"#FDDC3F"} width={185}>
@@ -25,4 +27,4 @@ const LoginModal = ({onCancelClick}) => {
     );
 };
 
-export default LoginModal;
+export default RecipeLoginModal;

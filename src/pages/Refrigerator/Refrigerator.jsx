@@ -17,9 +17,12 @@ import Toast from '../../components/Toast/Toast';
 import {getFridgeWithLink} from "../../axios/refrigerator-service.jsx";
 import {useRecoilValue} from "recoil";
 import {IDState} from "../../atom.jsx";
-import LoginModal from "../../components/Modal/LoginModal";
+import RecipeLoginModal from "../../components/Modal/RecipeLoginModal.jsx";
 import CreateRefModal from '../../components/Modal/CreateRefModal.jsx';
 import {getUnusedIngredients} from '../../axios/ingredient-service.jsx';
+import {createTteokguk} from "../../axios/tteokguk-service.jsx";
+import tgLove from "../../images/tgLove.svg";
+import LoginModal from "../../components/Modal/LoginModal.jsx";
 
 const Refrigerator = () => {
     // 주소 복사 Toast 관리 State
@@ -41,10 +44,11 @@ const Refrigerator = () => {
 
     const [openOrClose, setOpenOrClose] = useState("close")
     const [buttonText, setButtonText] = useState("냉장고 열어보기")
-    const [canMake, setCanMake] = useState(true)
+    const [canMake, setCanMake] = useState(false)
     const [menuOpen, setMenuOpen] = useState(false)
     const [todayActive, setTodayActive] = useState(false);
-    const [showLogin, setShowLogin] = useState(false); // 로그인한 사용자 = true, 비로그인 = false
+    const [showRecipeLogin, setShowRecipeLogin] = useState(false); // 로그인한 사용자 = true, 비로그인 = false
+    const [showLogin, setShowLogin] = useState(false);
     const [showCreateRef, setShowCreateRef] = useState(false);
     const [ingredientNums, setIngredientNums] = useState([0, 1, 5, 10, 100, 17, 50])
     const refColorList = [
@@ -53,6 +57,7 @@ const Refrigerator = () => {
         {close: closeRefrigeratorYellow, open: openRefrigeratorYellow},
         {close: closeRefrigeratorBlue, open: openRefrigeratorBlue},
     ]
+    const ingredientList = ['떡', '김', '계란지단', '대파', '약과', '산적', '비밀의 재료'];
 
     useEffect(() => {
         getFridgeWithLink(linkInfo).then(r => {
@@ -66,12 +71,19 @@ const Refrigerator = () => {
             setUserOpen(secret);
             setCloseRefrigerator(refColorList[color].close);
             openCloseRefrigerator(refColorList[color].open);
-            if (userSelf) {
-                if (isFirst) setShowCreateRef(true);
+
+            getUnusedIngredients(id).then(res => {
+                console.log(id,"에서 가져온 재료 ", res);
+                setIngredientNums(res);
                 const now = new Date().toLocaleDateString();
-                const newDay = new Date('2023-01-22').toLocaleDateString();
-                setTodayActive(now === newDay);
-            }
+                const newDay = new Date('2023-01-14').toLocaleDateString();
+                const sum = res.reduce((a, b) => a + b, 0);
+                if (userSelf) {
+                    if (isFirst) setShowCreateRef(true);
+                    if (now === newDay) setTodayActive(sum !== 0);
+                    if (sum >= 4) setCanMake(true);
+                }
+            });
         });
     }, []);
 
@@ -85,15 +97,7 @@ const Refrigerator = () => {
         setShowCreateRef(false);
     }
 
-    const openMenu = () => {
-        setMenuOpen(true)
-    }
-
     const openTheDoor = () => {
-        getUnusedIngredients(friendID).then(r => {
-            console.log(friendID,"에서 가져온 재료 ",r);
-            setIngredientNums(r);
-        })
         if (openOrClose === "open") {
             setRefrigeratorImg(closeRefrigerator)
             setButtonText("냉장고 열어보기")
@@ -106,19 +110,28 @@ const Refrigerator = () => {
         }
     }
 
-    const onSelectIngredient = (value) => {
-        navigate('/selectIngredient', {state: {today: value}});
+    const onActiveConfirmClick = () => {
+        const allIngredient = [ingredientNums.map((v, index) => Array(v).fill(index))].flat(2);
+        console.log(allIngredient);
+
+        const body = {
+            ingredientList: allIngredient,
+            soupType: 1, // 사랑이 담긴 떡국
+        }
+        const loveTg = {text: '사랑이 가득 담긴 떡국', imageUrl: tgLove};
+        createTteokguk(userID.ref, body).then(r => {
+            navigate("/making", {state: {message: r, tgType: loveTg}});
+        });
     }
 
-    const isShowLoginModal = () => {
+    const isShowMenuModal = () => {
         if (!userID.ref) setShowLogin(true);
-        else onDeliveryPage();
+        else setMenuOpen(true);
     }
 
-    const onLoginEvent = () => {
-        // kakao login 코드 작성
-
-        onDeliveryPage();
+    const isShowRecipeLoginModal = () => {
+        if (!userID.ref) setShowRecipeLogin(true);
+        else onDeliveryPage();
     }
 
     const onDeliveryPage = () => {
@@ -128,78 +141,90 @@ const Refrigerator = () => {
     //user 본인
     if (userSelf) {
         return (
-            <styled.container>
-                {todayActive && <ActiveModal onConfirmClick={()=>onSelectIngredient(true)} onCancelClick={()=> setTodayActive(false)}/>}
-                {showCreateRef && <CreateRefModal onConfirmClick={()=>copyClipBoard()} onCancelClick={()=> setShowCreateRef(false)}/>}
+            <>
                 <styled.floor/>
-                <styled.menu src={menu} onClick={openMenu}/>
-                <styled.title>{userName} 님의 냉장고</styled.title>
-                <styled.info>떡국 재료를 4개 모아보세요.<br/>떡국을 끓이면 덕담을 볼 수 있답니다!</styled.info>
-                {openOrClose === "open" &&
-                    <styled.ingredientNums>
-                        {['떡', '김', '계란지단', '대파', '약과', '산적', '비밀의 재료'].map((text, index) => {
-                            return <styled.ingredientText
-                                key={`ref-${text}-${index}`}>{text} x {ingredientNums[index]}<br/>
-                            </styled.ingredientText>
-                        })}
-                    </styled.ingredientNums>
-                }
-                <styled.refri className={openOrClose === "open" ? 'open' : ''} src={refrigeratorImg}/>
-                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
-                <styled.ButtonWrapper>
-                    {openOrClose === "open" ?
-                        <styled.bottonBox>
-                            <styled.customButton className="make" disabled={!canMake}
-                                                 onClick={() => onSelectIngredient(false)}>
-                                {canMake ? '' : <img className="lock" src={lock}/>}
-                                떡국 끓이기
-                            </styled.customButton>
-                            <styled.customButton className="cancle" onClick={openTheDoor}>닫기</styled.customButton>
-                        </styled.bottonBox>
-                        :
-                        <styled.customButton onClick={openTheDoor}>{buttonText}</styled.customButton>
-                    }
-                    <styled.customButton last onClick={() => copyClipBoard()}>나의 냉장고 주소 복사하기</styled.customButton>
-                </styled.ButtonWrapper>
-                <styled.FlexBox>
-                    <Toast
-                        isActive={isActive}
-                        setIsActive={setIsActive}
-                        message={`주소 복사 완료!\n친구에게 내 냉장고를 공유해 보세요.`}
-                    />
-                </styled.FlexBox>
-            </styled.container>
-
+                <styled.container>
+                    {todayActive && <ActiveModal onConfirmClick={onActiveConfirmClick}
+                                                 onCancelClick={() => setTodayActive(false)}/>}
+                    {showCreateRef && <CreateRefModal onConfirmClick={() => copyClipBoard()}
+                                                      onCancelClick={() => setShowCreateRef(false)}/>}
+                    <styled.menu src={menu} onClick={()=>setMenuOpen(true)}/>
+                    <styled.title>{userName} 님의 냉장고</styled.title>
+                    <styled.info>떡국 재료를 4개 모아보세요.<br/>떡국을 끓이면 덕담을 볼 수 있답니다!</styled.info>
+                    <styled.RefriContainer>
+                        {openOrClose === "open" &&
+                            <styled.ingredientNums className={openOrClose}>
+                                {ingredientList.map((text, index) => {
+                                    return <styled.ingredientText
+                                        key={`ref-${text}-${index}`}>{text} x {ingredientNums[index]}<br/>
+                                    </styled.ingredientText>
+                                })}
+                            </styled.ingredientNums>
+                        }
+                        <styled.refri className={openOrClose} src={refrigeratorImg}/>
+                    </styled.RefriContainer>
+                    {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
+                    <styled.ButtonWrapper>
+                        {openOrClose === "open" ?
+                            <styled.bottonBox>
+                                <styled.customButton className="make" disabled={!canMake}
+                                                     onClick={() => navigate('/selectIngredient')}>
+                                    {canMake ? '' : <img className="lock" src={lock}/>}
+                                    떡국 끓이기
+                                </styled.customButton>
+                                <styled.customButton className="cancel" onClick={openTheDoor}>닫기</styled.customButton>
+                            </styled.bottonBox>
+                            :
+                            <styled.customButton onClick={openTheDoor}>{buttonText}</styled.customButton>
+                        }
+                        <styled.customButton last onClick={() => copyClipBoard()}>나의 냉장고 주소 복사하기</styled.customButton>
+                    </styled.ButtonWrapper>
+                    <styled.FlexBox>
+                        <Toast
+                            isActive={isActive}
+                            setIsActive={setIsActive}
+                            message={`주소 복사 완료!\n친구에게 내 냉장고를 공유해 보세요.`}
+                        />
+                    </styled.FlexBox>
+                </styled.container>
+            </>
         )
     }
     //user 타인 & 열기 허용
     else {
         return (
-            <styled.container>
-                {showLogin && <LoginModal onConfirmClick={onLoginEvent} onCancelClick={onDeliveryPage}/>}
+            <>
                 <styled.floor/>
-                <styled.menu src={menu} onClick={openMenu}/>
-                <styled.title>{userName} 님의 냉장고</styled.title>
-                <styled.info>떡국 재료를 4개 모아보세요.<br/>떡국을 끓이면 덕담을 볼 수 있답니다!</styled.info>
-                <styled.refri className={openOrClose === "open" ? 'open' : ''} src={refrigeratorImg}/>
-                {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
-                {openOrClose === "open" &&
-                    <styled.ingredientNums>
-                        {['떡', '김', '계란지단', '대파', '약과', '산적', '비밀의 재료'].map((text, index) => {
-                            return <styled.ingredientText
-                                key={`ref-${text}-${index}`}>{text} x {ingredientNums[index]}<br/>
-                            </styled.ingredientText>
-                        })}
-                    </styled.ingredientNums>
-                }
-                <styled.ButtonWrapper>
-                    <styled.customButton onClick={openTheDoor} disabled={!userOpen}>
-                        {userOpen ? '' : <img className="lock" src={lock}/>}
-                        {buttonText}
-                    </styled.customButton>
-                    <styled.customButton last onClick={isShowLoginModal}>떡국 재료 선물하기</styled.customButton>
-                </styled.ButtonWrapper>
-            </styled.container>
+                <styled.container>
+                    {showRecipeLogin && <RecipeLoginModal onCancelClick={onDeliveryPage}/>}
+                    {showLogin && <LoginModal onCancelClick={()=>setShowLogin(false)}/>}
+                    {menuOpen && <Menu setMenuOpen={setMenuOpen}/>}
+                    <styled.menu src={menu} onClick={isShowMenuModal}/>
+                    <styled.title>{userName} 님의 냉장고</styled.title>
+                    <styled.info>떡국 재료를 4개 모아보세요.<br/>떡국을 끓이면 덕담을 볼 수 있답니다!</styled.info>
+
+                    <styled.RefriContainer>
+                        {openOrClose === "open" &&
+                            <styled.ingredientNums className={openOrClose}>
+                                {ingredientList.map((text, index) => {
+                                    return <styled.ingredientText
+                                        key={`ref-${text}-${index}`}>{text} x {ingredientNums[index]}<br/>
+                                    </styled.ingredientText>
+                                })}
+                            </styled.ingredientNums>
+                        }
+                        <styled.refri className={openOrClose} src={refrigeratorImg}/>
+                    </styled.RefriContainer>
+
+                    <styled.ButtonWrapper>
+                        <styled.customButton onClick={openTheDoor} disabled={!userOpen}>
+                            {userOpen ? '' : <img className="lock" src={lock}/>}
+                            {buttonText}
+                        </styled.customButton>
+                        <styled.customButton last onClick={isShowRecipeLoginModal}>떡국 재료 선물하기</styled.customButton>
+                    </styled.ButtonWrapper>
+                </styled.container>
+            </>
         )
     }
 };

@@ -9,7 +9,7 @@ export const Background = styled.div`
   position: fixed;
   top:0;
   left: 0;
-  z-index: 1000000;
+  z-index: 100000;
   min-height: 100vh;
   @supports (-webkit-appearance:none) and (stroke-color: transparent) {
     min-height: -webkit-fill-available;
@@ -40,6 +40,7 @@ export const NoModalContainer = styled(ModalContainer)`
   padding: 48px 20px 30px;
   width: calc(100vw - 80px);
   min-width: 200px;
+  z-index: 100000;
 `
 export const CloseImg = styled.div`
   position: absolute;

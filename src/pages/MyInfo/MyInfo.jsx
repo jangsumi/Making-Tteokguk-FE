@@ -67,11 +67,11 @@ const MyInfo = () => {
             console.log(r);
             setUnLock(r.unlockedRCS);
         })
-    }, [])
+    }, []);
 
 
     return (
-        <styled.FlexBox direction="column" padding="0px 20px 40px">
+        <styled.FlexBox direction="column" padding="40px 20px 120px">
             <TopBar titleName={"나의 떡국"}/>
             <styled.FlexBox aCenter={true}>
                 <styled.NaviItem onClick={() => setCurrPage(0)} isCurr={currPage === 0}>

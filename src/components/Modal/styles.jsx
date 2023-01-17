@@ -6,11 +6,14 @@ export const Background = styled.div`
   min-width: 280px;
   background: rgba(0, 0, 0, 0.3);
   width: 100vw;
-  height: 100vh;
   position: fixed;
   top:0;
   left: 0;
-  z-index: 100;
+  z-index: 1000;
+  min-height: 100vh;
+  @supports (-webkit-appearance:none) and (stroke-color: transparent) {
+    min-height: -webkit-fill-available;
+  }
 `
 
 export const ModalContainer = styled.div`
@@ -35,6 +38,8 @@ export const ModalContainer = styled.div`
 `
 export const NoModalContainer = styled(ModalContainer)`
   padding: 48px 20px 30px;
+  width: calc(100vw - 80px);
+  min-width: 200px;
 `
 export const CloseImg = styled.div`
   position: absolute;

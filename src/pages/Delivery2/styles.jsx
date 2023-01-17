@@ -7,7 +7,8 @@ export const Wrapper = styled.div`
   min-width: 240px;
   width: 100%;
   flex-direction: column;
-  min-height: calc(100vh - 203px);
+  padding: 40px 0 80px;
+  min-height: calc(100vh - 243px);
 `;
 export const Container = styled(Wrapper)`
   align-items: center;

@@ -6,10 +6,10 @@ import ExMark from "../../images/ExMark.svg";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 20px 40px;
+  padding: 40px 20px 120px;
   margin: auto;
   max-width: 320px;
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 160px);
 `
 export const FlexBox = styled.div`
   display: flex;

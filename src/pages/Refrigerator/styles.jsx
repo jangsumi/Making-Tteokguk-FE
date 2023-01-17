@@ -4,18 +4,22 @@ export const container = styled.div`
   max-width: 360px;
   text-align: center;
   margin: auto;
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 160px);
   position: relative;
   overflow: visible;
   background: transparent;
 `;
 
+export const Block = styled.div`
+  height: ${props=>props.long? 80 : 40}px;
+`
+
 export const floor = styled.div`
   width: 100%;
   position: absolute;
   top: 475px;
-  min-height: 258px;
-  height:calc(100vh - 555px);
+  min-height: 298px;
+  height:calc(100vh - 560px);
   background-color: #BEB7A2;
 `;
 

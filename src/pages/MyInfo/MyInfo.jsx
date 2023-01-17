@@ -60,11 +60,9 @@ const MyInfo = () => {
     useEffect(() => {
         if (!userID.ref) return navigate('/');
         getMyMessage(userID.ref, true).then(r => {
-            console.log(r);
             if (r) setUserMessage(r.filter((item) => item.type !== 6));
         });
         getMyFridge(userID.kakao).then(r => {
-            console.log(r);
             setUnLock(r.unlockedRCS);
         })
     }, []);

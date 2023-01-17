@@ -21,7 +21,6 @@ const Menu = ({setMenuOpen}) => {
     const logoutState = useResetRecoilState(IDState);
 
     useEffect(() => {
-        console.log(userID);
         document.body.style.cssText = `
             position: fixed;
             top: -${window.scrollY}px;
@@ -53,7 +52,6 @@ const Menu = ({setMenuOpen}) => {
     }
 
     const LogOut = () => {
-        console.log('로그아웃');
         // atom 값 초기화 (실제 출시에서는 default가 null일 것)
         logoutState(IDState);
         // 카카오 로그아웃 api 관련 코드 작성 예정
@@ -68,8 +66,8 @@ const Menu = ({setMenuOpen}) => {
                 <styled.menuButton onClick={()=>setShowModal(true)}><img src={manual}/>떡국 만들기 설명서</styled.menuButton>
                 <styled.menuButton onClick={() => returnMyRef()}><img src={myRefrigerator}/>내 냉장고로 돌아가기</styled.menuButton>
                 <styled.menuButton onClick={() => navigate('/myinfo')}><img src={riceCakeSoup}/>나의 떡국</styled.menuButton>
-                <styled.menuButton onClick={() => window.open('https://www.notion.so/kkamantokki/9597d7e1708c4bd98f184fc6da6f4a18')}><img src={question}/>자주 묻는 질문</styled.menuButton>
-                <styled.menuButton onClick={() => window.open('https://www.notion.so/kkamantokki/d8b5a61ac5e24c3eb2933efb570bf5d8')}><img src={toDeveloper}/>개발자에게 문의</styled.menuButton>
+                <styled.menuButton onClick={() => window.open('https://kkamantokki.notion.site/9597d7e1708c4bd98f184fc6da6f4a18')}><img src={question}/>자주 묻는 질문</styled.menuButton>
+                <styled.menuButton onClick={() => window.open('https://kkamantokki.notion.site/d8b5a61ac5e24c3eb2933efb570bf5d8')}><img src={toDeveloper}/>개발자에게 문의</styled.menuButton>
                 <styled.menuButton onClick={() => window.open('https://kkamantokki.notion.site/2023-836477e651e24ecb9e76db9ce210e646')}><img src={developerInfo}/>까만토끼 소개</styled.menuButton>
                 <styled.menuButton onClick={LogOut}><img src={logout}/>로그아웃</styled.menuButton>
             </styled.menuBar>

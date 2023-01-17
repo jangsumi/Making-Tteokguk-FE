@@ -61,8 +61,6 @@ const Refrigerator = () => {
 
     useEffect(() => {
         getFridgeWithLink(linkInfo).then(r => {
-            console.log("내 정보: ", userID);
-            console.log("링크 정보", r);
             const {id, color, nickname, secret} = r;
             if (!id) return navigate('/cannotFind');
             setFriendID(id);
@@ -73,7 +71,6 @@ const Refrigerator = () => {
             openCloseRefrigerator(refColorList[color].open);
 
             getUnusedIngredients(id).then(res => {
-                console.log(id,"에서 가져온 재료 ", res);
                 setIngredientNums(res);
                 const now = new Date().toLocaleDateString();
                 const newDay = new Date('2023-01-14').toLocaleDateString();
@@ -104,7 +101,6 @@ const Refrigerator = () => {
             setOpenOrClose("close")
         } else {
             setRefrigeratorImg(openRefrigerator)
-            console.log("openRefrigerator", openRefrigerator);
             setButtonText("냉장고 닫기")
             setOpenOrClose("open")
         }
@@ -112,7 +108,6 @@ const Refrigerator = () => {
 
     const onActiveConfirmClick = () => {
         const allIngredient = [ingredientNums.map((v, index) => Array(v).fill(index))].flat(2);
-        console.log(allIngredient);
 
         const body = {
             ingredientList: allIngredient,

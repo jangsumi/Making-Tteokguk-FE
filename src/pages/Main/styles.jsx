@@ -9,10 +9,12 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin: auto;
-  padding: 30px 0 10px;
   gap: 60px;
-  min-height: calc(100vh - 120px);
   max-width: 322px;
+  min-height: 100vh;
+  @supports (-webkit-appearance:none) and (stroke-color: transparent) {
+    min-height: -webkit-fill-available;
+  }
   @media only screen and (max-width:480px) {
     gap: 40px;
   }

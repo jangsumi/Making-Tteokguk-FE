@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   max-width: 480px;
   width: 100%;
   flex-direction: column;
+  padding: 40px 0;
   min-height: calc(100vh - 203px);
 `;
 export const PageContainer = styled(Wrapper)`

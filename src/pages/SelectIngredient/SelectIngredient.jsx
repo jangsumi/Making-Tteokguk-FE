@@ -88,7 +88,7 @@ const SelectIngredient = () => {
     }
 
     return (
-        <div style={{maxWidth: "480px", margin: "0 auto"}}>
+        <div style={{padding: "40px 0", maxWidth: "480px", margin: "0 auto"}}>
             <TopBar titleName="떡국 만들기" onRecipe={() => setShowRecipe(true)}/>
             <styled.Container>
                 <styled.TitleText>

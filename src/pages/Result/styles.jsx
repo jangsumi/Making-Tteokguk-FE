@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const MakingContainer = styled.div`
-  height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 45px;
+  min-height: 100vh;
+  @supports (-webkit-appearance:none) and (stroke-color: transparent) {
+    min-height: -webkit-fill-available;
+  }
 `
 export const ResultContainer = styled.div`
   display: flex;
@@ -15,7 +18,7 @@ export const ResultContainer = styled.div`
   gap: 30px;
   max-width:440px;
   margin:0 auto;
-  padding: 40px 20px 40px 20px;
+  padding: 80px 20px;
 `
 export const PotImage = styled.div`
   width: 145px;

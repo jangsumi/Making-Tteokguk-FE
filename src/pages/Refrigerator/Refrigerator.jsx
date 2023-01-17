@@ -142,6 +142,7 @@ const Refrigerator = () => {
     if (userSelf) {
         return (
             <>
+                <styled.Block/>
                 <styled.floor/>
                 <styled.container>
                     {todayActive && <ActiveModal onConfirmClick={onActiveConfirmClick}
@@ -187,6 +188,7 @@ const Refrigerator = () => {
                         />
                     </styled.FlexBox>
                 </styled.container>
+                <styled.Block/>
             </>
         )
     }
@@ -194,6 +196,7 @@ const Refrigerator = () => {
     else {
         return (
             <>
+                <styled.Block/>
                 <styled.floor/>
                 <styled.container>
                     {showRecipeLogin && <RecipeLoginModal onCancelClick={onDeliveryPage}/>}
@@ -224,6 +227,7 @@ const Refrigerator = () => {
                         <styled.customButton last onClick={isShowRecipeLoginModal}>떡국 재료 선물하기</styled.customButton>
                     </styled.ButtonWrapper>
                 </styled.container>
+                <styled.Block/>
             </>
         )
     }

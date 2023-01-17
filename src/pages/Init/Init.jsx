@@ -27,15 +27,12 @@ const Init = () => {
     const onBlur = () => setNickName(nickName.trimEnd().slice(0, 6));
 
     useEffect(() => {
-        console.log(kakaoId);
-        console.log(userID);
         if (userID.link) navigate(`/refrigerator/${userID.link}`);
         else if (!kakaoId) navigate("/");
     }, []);
 
     const onButtonClick = () => {
         navigate("/mysetting", {state: {nickName, RefCol, kakaoId}});
-        console.log({nickName, RefCol, kakaoId});
     };
 
     return (

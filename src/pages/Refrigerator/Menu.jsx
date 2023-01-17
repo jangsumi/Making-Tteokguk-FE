@@ -20,7 +20,6 @@ const Menu = ({setMenuOpen}) => {
     const logoutState = useResetRecoilState(IDState);
 
     useEffect(() => {
-        console.log(userID);
         document.body.style.cssText = `
             position: fixed;
             top: -${window.scrollY}px;
@@ -52,7 +51,6 @@ const Menu = ({setMenuOpen}) => {
     }
 
     const LogOut = () => {
-        console.log('로그아웃');
         // atom 값 초기화 (실제 출시에서는 default가 null일 것)
         logoutState(IDState);
         // 카카오 로그아웃 api 관련 코드 작성 예정

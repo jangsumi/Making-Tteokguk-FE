@@ -38,6 +38,8 @@ export const ModalContainer = styled.div`
 `
 export const NoModalContainer = styled(ModalContainer)`
   padding: 48px 20px 30px;
+  width: calc(100vw - 80px);
+  min-width: 200px;
 `
 export const CloseImg = styled.div`
   position: absolute;

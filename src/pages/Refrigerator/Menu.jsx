@@ -15,6 +15,7 @@ import { IDState } from '../../atom';
 
 const Menu = ({setMenuOpen}) => {
     const [showModal, setShowModal] = useState(false);
+    // const [onlyModal, setOnlyModal] = useState(true);
     const navigate = useNavigate();
     const userID = useRecoilValue(IDState)
     const logoutState = useResetRecoilState(IDState);
@@ -37,7 +38,7 @@ const Menu = ({setMenuOpen}) => {
         setShowModal(false);
     }
 
-    const closeMenu=()=>{
+    const closeMenu = () => {
         setMenuOpen(false)
     }
 
@@ -60,12 +61,11 @@ const Menu = ({setMenuOpen}) => {
     }
 
     return (
-            <styled.background>
+        <styled.background>
+            {showModal && <MenualModal close={cancelEvent}/>}
             <styled.menuBar>
                 <img className='xButton' onClick={closeMenu} src={x}/>
                 <styled.menuButton onClick={()=>setShowModal(true)}><img src={manual}/>떡국 만들기 설명서</styled.menuButton>
-                {showModal &&
-                <MenualModal close={()=>cancelEvent('info')}/>}
                 <styled.menuButton onClick={() => returnMyRef()}><img src={myRefrigerator}/>내 냉장고로 돌아가기</styled.menuButton>
                 <styled.menuButton onClick={() => navigate('/myinfo')}><img src={riceCakeSoup}/>나의 떡국</styled.menuButton>
                 <styled.menuButton onClick={() => window.open('https://www.notion.so/kkamantokki/9597d7e1708c4bd98f184fc6da6f4a18')}><img src={question}/>자주 묻는 질문</styled.menuButton>

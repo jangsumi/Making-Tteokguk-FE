@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {RecoilRoot} from 'recoil';
 import * as styled from "./styles";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
@@ -17,6 +17,21 @@ import KakaoAuth from "./pages/Main/KakaoAuth";
 import ScrollToTop from "./ScrollToTop";
 
 const App = () => {
+    useEffect(() => {
+        let ins = document.createElement("ins");
+        let scr = document.createElement("script");
+        ins.className = "kakao_ad_area";
+        ins.style = "display:none; width:100%;";
+        scr.async = "true";
+        scr.type = "text/javascript";
+        scr.src = "//t1.daumcdn.net/kas/static/ba.min.js";
+        ins.setAttribute("data-ad-width", "320");
+        ins.setAttribute("data-ad-height", "50");
+        ins.setAttribute("data-ad-unit", "DAN-Upl9wVgl6ssGX0TT");
+        document.querySelector(".adfit").appendChild(ins);
+        document.querySelector(".adfit").appendChild(scr);
+    }, []);
+
     return (
         <RecoilRoot>
             <styled.Container id="scrollbar">
@@ -40,6 +55,7 @@ const App = () => {
                 </BrowserRouter>
                 <styled.BottomLine/>
             </styled.Container>
+            <div className="adfit" style={{margin: '0px'}} />
         </RecoilRoot>
     );
 };

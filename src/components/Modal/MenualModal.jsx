@@ -34,7 +34,7 @@ const MenualModal = ({close}) => {
                         Q. 저는 떡국에 뭐가 들어가는지 모르는데... 만들 수 있을까요?
                     </styled.LongText>
                     <styled.LongText fontSize={14}>
-                        <styled.ColorText>‘떡국 조리법’을</styled.ColorText>참고해 보세요.
+                        <styled.ColorText>‘떡국 조리법’</styled.ColorText>을 참고해 보세요.
                         재료에 따라 떡국의 모습이 달라진답니다. 여러 가지 떡국을 모아보세요!
                     </styled.LongText>
                 </div>

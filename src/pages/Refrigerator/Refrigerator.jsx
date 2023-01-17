@@ -188,7 +188,7 @@ const Refrigerator = () => {
                         />
                     </styled.FlexBox>
                 </styled.container>
-                <styled.Block/>
+                <styled.Block long/>
             </>
         )
     }
@@ -227,7 +227,7 @@ const Refrigerator = () => {
                         <styled.customButton last onClick={isShowRecipeLoginModal}>떡국 재료 선물하기</styled.customButton>
                     </styled.ButtonWrapper>
                 </styled.container>
-                <styled.Block/>
+                <styled.Block long/>
             </>
         )
     }

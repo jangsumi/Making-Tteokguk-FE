@@ -54,8 +54,8 @@ const App = () => {
                     </Routes>
                 </BrowserRouter>
                 <styled.BottomLine/>
+                <styled.BottomAD className="adfit" />
             </styled.Container>
-            <div className="adfit" style={{margin: '0px'}} />
         </RecoilRoot>
     );
 };

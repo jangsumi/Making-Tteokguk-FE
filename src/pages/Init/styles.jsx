@@ -7,8 +7,8 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin: auto;
-  padding: 80px 20px;
-  min-height: calc(100vh - 160px);
+  padding: 80px 20px 120px;
+  min-height: calc(100vh - 200px);
 `;
 
 export const MainText = styled.div`

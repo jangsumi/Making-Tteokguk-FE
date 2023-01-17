@@ -42,3 +42,9 @@ export const TopLine = styled.div`
   z-index: 10000;
 `;
 
+export const BottomAD = styled.div`
+  position: fixed;
+  bottom: 40px;
+  width: 100%;
+  z-index: 1000;
+`

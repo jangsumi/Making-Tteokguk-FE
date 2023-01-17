@@ -18,7 +18,7 @@ export const ResultContainer = styled.div`
   gap: 30px;
   max-width:440px;
   margin:0 auto;
-  padding: 80px 20px;
+  padding: 80px 20px 120px;
 `
 export const PotImage = styled.div`
   width: 145px;

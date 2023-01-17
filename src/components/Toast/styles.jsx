@@ -15,7 +15,7 @@ export const ToastBox = styled.div`
   flex-direction: column;
   z-index: 100;
   position: fixed;
-  bottom: 72px;
+  bottom: 112px;
   visibility: ${(props) => (props.show ? "visible" : "hidden")};
   background-color: #ffffff;
   border: 1px solid #000000;

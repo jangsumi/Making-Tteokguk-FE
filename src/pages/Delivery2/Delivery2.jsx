@@ -19,8 +19,6 @@ const Delivery2 = () => {
   const userID = useRecoilValue(IDState);
 
   useEffect(() => {
-    console.log("내 정보: ", userID);
-    console.log("Data: ", { friendRef, ingredient });
     if (!friendRef || ingredient===undefined) navigate("/delivery");
   }, []);
 
@@ -35,12 +33,6 @@ const Delivery2 = () => {
   };
 
   const onButtonClick = () => {
-    console.log({
-      friendRef,
-      ingredient: ingredient,
-      name: userName,
-      message: textMessage,
-    });
     setShowModal(true);
     const body = {
       content: textMessage,

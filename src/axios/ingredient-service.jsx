@@ -18,11 +18,10 @@ export const getUnusedIngredients = async(id) => {
 }
 
 export const deliveryIngredients = async(id, args) => {
-    console.log(args);
     try {
         const result = await baseService.post(`/ingredient/create/${id}`, args);
         return result.status;
     } catch (e) {
-        console.log('!', e.response);
+        console.log(e.response);
     }
 }

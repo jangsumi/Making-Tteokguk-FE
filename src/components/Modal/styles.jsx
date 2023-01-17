@@ -9,7 +9,7 @@ export const Background = styled.div`
   position: fixed;
   top:0;
   left: 0;
-  z-index: 1000;
+  z-index: 1000000;
   min-height: 100vh;
   @supports (-webkit-appearance:none) and (stroke-color: transparent) {
     min-height: -webkit-fill-available;
@@ -28,7 +28,7 @@ export const ModalContainer = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, calc(-50% - 30px));
   padding: ${props=>props.close? "48px 20px 30px":"40px 20px 30px"};
   display: flex;
   flex-direction: column;
@@ -124,7 +124,6 @@ export const SpanButton = styled.span`
 `
 export const RecipeWrapper = styled.div`
   background: #FFFFFF;
-  overflow: auto;
   width: 100%;
 `
 export const RecipeBox = styled.div`

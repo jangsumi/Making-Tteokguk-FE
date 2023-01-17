@@ -38,7 +38,7 @@ export const background = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 4;
+  z-index: 10000;
   @media only screen and (max-width: 480px) {
     left: 0;
   }
@@ -46,16 +46,17 @@ export const background = styled.div`
 
 export const menuBar = styled.div`
   width: 264px;
-  height: 390px;
+  height: calc(100vh - 160px);
+  max-height: 390px;
+  overflow: auto;
   background-color: #ffffff;
-  position: relative;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, calc(-50% - 20px));
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px 10px 10px 10px;
-
   .xButton {
     width: 16px;
     height: 16px;

@@ -28,8 +28,8 @@ export const BottomLine = styled.div`
   background-image: url(${line});
   background-repeat: repeat-x;
   position: fixed;
-  bottom: 0;
-  z-index: 10000;
+  bottom: 55px;
+  z-index: 1000;
 `;
 export const TopLine = styled.div`
   height: 40px;
@@ -39,12 +39,12 @@ export const TopLine = styled.div`
   background-repeat: repeat-x;
   position: fixed;
   top: 0;
-  z-index: 10000;
+  z-index: 1000;
 `;
 
 export const BottomAD = styled.div`
   position: fixed;
-  bottom: 40px;
+  bottom: 0;
   width: 100%;
   z-index: 1000;
 `

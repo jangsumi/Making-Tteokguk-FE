@@ -18,12 +18,15 @@ import closeRefPink from '../../images/closeRefPink.png'
 import closeRefGold from '../../images/closeRefGold.png'
 import closeRefSilver from '../../images/closeRefSilver.png'
 import closeRefText from '../../images/closeRefText.png'
+import closeRefNoDev from '../../images/closeRefNoDev.png'
+import openRefSamsung from '../../images/openRefSamsung.png'
 import openRefFlowerText from '../../images/openRefFlowerText.png'
 import openRefFlower from '../../images/openRefFlower.png'
 import openRefPink from '../../images/openRefPink.png'
 import openRefGold from '../../images/openRefGold.png'
 import openRefSilver from '../../images/openRefSilver.png'
 import openRefText from '../../images/openRefText.png'
+import openRefNoDev from '../../images/openRefNoDev.png'
 import menu from '../../images/menu.png'
 import lock from '../../images/lock.png'
 import Toast from '../../components/Toast/Toast';
@@ -69,13 +72,14 @@ const Refrigerator = () => {
         {close: closeRefrigeratorBlack, open: openRefrigeratorBlack},
         {close: closeRefrigeratorYellow, open: openRefrigeratorYellow},
         {close: closeRefrigeratorBlue, open: openRefrigeratorBlue},
-        {close: closeRefSamsung, open: openRefSilver},
+        {close: closeRefSamsung, open: openRefSamsung},
         {close: closeRefFlower, open: openRefFlower},
         {close: closeRefFlowerText, open: openRefFlowerText},
         {close: closeRefPink, open: openRefPink},
         {close: closeRefSilver, open: openRefSilver},
         {close: closeRefGold, open: openRefGold},
         {close: closeRefText, open: openRefText},
+        {close: closeRefNoDev, open: openRefNoDev},
     ]
     const ingredientList = ['떡', '김', '계란지단', '대파', '약과', '산적', '비밀의 재료'];
 

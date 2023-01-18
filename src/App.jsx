@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-import {RecoilRoot} from 'recoil';
 import * as styled from "./styles";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Delivery from "./pages/Delivery/Delivery";
@@ -33,30 +32,28 @@ const App = () => {
     }, []);
 
     return (
-        <RecoilRoot>
-            <styled.Container id="scrollbar">
-                <styled.TopLine/>
-                <BrowserRouter>
-                    <ScrollToTop/>
-                    <Routes>
-                        <Route path="/" element={<Main/>}/>
-                        <Route path="/myinfo" element={<MyInfo/>}/>
-                        <Route path="/selectIngredient" element={<SelectIngredient/>}/>
-                        <Route path="/refrigerator/:id" element={<Refrigerator/>}/>
-                        <Route path="/making" element={<Making/>}/>
-                        <Route path="/result" element={<Result/>}/>
-                        <Route path="/delivery" element={<Delivery/>}/>
-                        <Route path="/delivery2" element={<Delivery2/>}/>
-                        <Route path="/init" element={<Init/>}/>
-                        <Route path="/mysetting" element={<MySetting/>}/>
-                        <Route path="/api/user/kakao/callback/" element={<KakaoAuth/>}/>
-                        <Route path="*" element={<CannotFind/>}/>
-                    </Routes>
-                </BrowserRouter>
-                <styled.BottomLine/>
-                <styled.BottomAD className="adfit" />
-            </styled.Container>
-        </RecoilRoot>
+        <styled.Container id="scrollbar">
+            <styled.TopLine/>
+            <BrowserRouter>
+                <ScrollToTop/>
+                <Routes>
+                    <Route path="/" element={<Main/>}/>
+                    <Route path="/myinfo" element={<MyInfo/>}/>
+                    <Route path="/selectIngredient" element={<SelectIngredient/>}/>
+                    <Route path="/refrigerator/:id" element={<Refrigerator/>}/>
+                    <Route path="/making" element={<Making/>}/>
+                    <Route path="/result" element={<Result/>}/>
+                    <Route path="/delivery" element={<Delivery/>}/>
+                    <Route path="/delivery2" element={<Delivery2/>}/>
+                    <Route path="/init" element={<Init/>}/>
+                    <Route path="/mysetting" element={<MySetting/>}/>
+                    <Route path="/api/user/kakao/callback/" element={<KakaoAuth/>}/>
+                    <Route path="*" element={<CannotFind/>}/>
+                </Routes>
+            </BrowserRouter>
+            <styled.BottomLine/>
+            <styled.BottomAD className="adfit"/>
+        </styled.Container>
     );
 };
 

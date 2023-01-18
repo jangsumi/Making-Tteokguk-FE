@@ -7,13 +7,14 @@ export const Wrapper = styled.div`
   max-width: 480px;
   width: 100%;
   flex-direction: column;
-  min-height: calc(100vh - 203px);
+  padding: 40px 0;
+  min-height: calc(100vh - 243px);
 `;
 export const PageContainer = styled(Wrapper)`
   align-items: center;
   width: calc(100vw - 40px);
   min-width: 240px;
-  padding: 0 20px 40px;
+  padding: 0 20px 80px;
 `
 export const CheckMark = styled.div`
   width: 30px;

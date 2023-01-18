@@ -4,18 +4,22 @@ export const container = styled.div`
   max-width: 360px;
   text-align: center;
   margin: auto;
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 160px);
   position: relative;
   overflow: visible;
   background: transparent;
 `;
 
+export const Block = styled.div`
+  height: ${props=>props.long? 80 : 40}px;
+`
+
 export const floor = styled.div`
   width: 100%;
   position: absolute;
   top: 475px;
-  min-height: 258px;
-  height:calc(100vh - 555px);
+  min-height: 298px;
+  height:calc(100vh - 560px);
   background-color: #BEB7A2;
 `;
 
@@ -34,7 +38,7 @@ export const background = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 4;
+  z-index: 10000;
   @media only screen and (max-width: 480px) {
     left: 0;
   }
@@ -42,16 +46,17 @@ export const background = styled.div`
 
 export const menuBar = styled.div`
   width: 264px;
-  height: 390px;
+  height: calc(100vh - 160px);
+  max-height: 390px;
+  overflow: auto;
   background-color: #ffffff;
-  position: relative;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, calc(-50% - 20px));
   border: 1px solid #000000;
   box-sizing: border-box;
   border-radius: 10px 10px 10px 10px;
-
   .xButton {
     width: 16px;
     height: 16px;

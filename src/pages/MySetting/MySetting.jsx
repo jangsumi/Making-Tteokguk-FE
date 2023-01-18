@@ -121,8 +121,8 @@ const MySetting = () => {
           isChecked={check3}
         />
         <styled.TextDiv>
-          (필수) <a href="https://www.notion.so/login" target="_blank">이용약관</a>
-           및 <a href="https://www.notion.so/login" target="_blank">개인정보 수집 이용</a>에 동의해요.
+          (필수) <a href="https://kkamantokki.notion.site/64f46691e1b24c11aa25daab4e3faa3d" target="_blank">이용약관</a>
+           및 <a href="https://kkamantokki.notion.site/2c0f24c4a6e7454b8d67e7821914688b" target="_blank">개인정보 수집 이용</a>에 동의해요.
         </styled.TextDiv>
       </styled.CheckBoxContainer>
 

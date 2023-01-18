@@ -23,12 +23,9 @@ const KakaoAuth = () => {
     axios
       .get(`${import.meta.env.VITE_APP_API_URI}?code=${code}`)
       .then((res) => {
-        console.log(res);
         if (res.status === 200) {
-          console.log("debug 1", res.data);
           // 카카오계정 연결에 성공한 경우, 회원 정보 유무 확인
           getMyFridge(res.data.toString()).then((data) => {
-            console.log(data);
             if (!data) {
               navigate("/init", { state: { kakaoId: res.data } });
             } else {

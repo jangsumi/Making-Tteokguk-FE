@@ -19,8 +19,6 @@ const Delivery2 = () => {
   const userID = useRecoilValue(IDState);
 
   useEffect(() => {
-    console.log("내 정보: ", userID);
-    console.log("Data: ", { friendRef, ingredient });
     if (!friendRef || ingredient===undefined) navigate("/delivery");
   }, []);
 
@@ -35,12 +33,6 @@ const Delivery2 = () => {
   };
 
   const onButtonClick = () => {
-    console.log({
-      friendRef,
-      ingredient: ingredient,
-      name: userName,
-      message: textMessage,
-    });
     setShowModal(true);
     const body = {
       content: textMessage,
@@ -92,6 +84,15 @@ const Delivery2 = () => {
             <styled.FontDiv fontSize="12px">
               상대를 비방하는 내용 작성 시 법적 처벌을 받을 수 있습니다.
             </styled.FontDiv>
+            
+          </styled.FlexDiv>
+          <styled.FlexDiv gap="6px" margin="0 0 36px">
+            <img src={bang} />
+            <styled.FontDiv fontSize="12px">
+              덕담에 개인정보 (전화번호, 주소 등) 작성을 지양해 주세요. 
+              정보 유출의 위험이 있습니다.
+            </styled.FontDiv>
+            
           </styled.FlexDiv>
         </div>
 

@@ -3,11 +3,14 @@ import logo from '../../images/logo.svg';
 
 export const CannotFindContainer = styled.div`
   width: 100%;
-  height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  @supports (-webkit-appearance:none) and (stroke-color: transparent) {
+    min-height: -webkit-fill-available;
+  }
 `
 export const LogoImage = styled.div`
   width: 200px;

@@ -11,6 +11,22 @@ import openRefrigeratorGray from '../../images/openRefrigeratorGray.svg'
 import openRefrigeratorBlack from '../../images/openRefrigeratorBlack.svg'
 import openRefrigeratorYellow from '../../images/openRefrigeratorYellow.svg'
 import openRefrigeratorBlue from '../../images/openRefrigeratorBlue.svg'
+import closeRefSamsung from '../../images/closeRefSamsung.png'
+import closeRefFlowerText from '../../images/closeRefFlowerText.png'
+import closeRefFlower from '../../images/closeRefFlower.png'
+import closeRefPink from '../../images/closeRefPink.png'
+import closeRefGold from '../../images/closeRefGold.png'
+import closeRefSilver from '../../images/closeRefSilver.png'
+import closeRefText from '../../images/closeRefText.png'
+import closeRefNoDev from '../../images/closeRefNoDev.png'
+import openRefSamsung from '../../images/openRefSamsung.png'
+import openRefFlowerText from '../../images/openRefFlowerText.png'
+import openRefFlower from '../../images/openRefFlower.png'
+import openRefPink from '../../images/openRefPink.png'
+import openRefGold from '../../images/openRefGold.png'
+import openRefSilver from '../../images/openRefSilver.png'
+import openRefText from '../../images/openRefText.png'
+import openRefNoDev from '../../images/openRefNoDev.png'
 import menu from '../../images/menu.png'
 import lock from '../../images/lock.png'
 import Toast from '../../components/Toast/Toast';
@@ -56,13 +72,19 @@ const Refrigerator = () => {
         {close: closeRefrigeratorBlack, open: openRefrigeratorBlack},
         {close: closeRefrigeratorYellow, open: openRefrigeratorYellow},
         {close: closeRefrigeratorBlue, open: openRefrigeratorBlue},
+        {close: closeRefSamsung, open: openRefSamsung},
+        {close: closeRefFlower, open: openRefFlower},
+        {close: closeRefFlowerText, open: openRefFlowerText},
+        {close: closeRefPink, open: openRefPink},
+        {close: closeRefSilver, open: openRefSilver},
+        {close: closeRefGold, open: openRefGold},
+        {close: closeRefText, open: openRefText},
+        {close: closeRefNoDev, open: openRefNoDev},
     ]
     const ingredientList = ['떡', '김', '계란지단', '대파', '약과', '산적', '비밀의 재료'];
 
     useEffect(() => {
         getFridgeWithLink(linkInfo).then(r => {
-            console.log("내 정보: ", userID);
-            console.log("링크 정보", r);
             const {id, color, nickname, secret} = r;
             if (!id) return navigate('/cannotFind');
             setFriendID(id);
@@ -73,7 +95,6 @@ const Refrigerator = () => {
             openCloseRefrigerator(refColorList[color].open);
 
             getUnusedIngredients(id).then(res => {
-                console.log(id,"에서 가져온 재료 ", res);
                 setIngredientNums(res);
                 const now = new Date().toLocaleDateString();
                 const newDay = new Date('2023-01-14').toLocaleDateString();
@@ -104,7 +125,6 @@ const Refrigerator = () => {
             setOpenOrClose("close")
         } else {
             setRefrigeratorImg(openRefrigerator)
-            console.log("openRefrigerator", openRefrigerator);
             setButtonText("냉장고 닫기")
             setOpenOrClose("open")
         }
@@ -112,7 +132,6 @@ const Refrigerator = () => {
 
     const onActiveConfirmClick = () => {
         const allIngredient = [ingredientNums.map((v, index) => Array(v).fill(index))].flat(2);
-        console.log(allIngredient);
 
         const body = {
             ingredientList: allIngredient,
@@ -142,6 +161,7 @@ const Refrigerator = () => {
     if (userSelf) {
         return (
             <>
+                <styled.Block/>
                 <styled.floor/>
                 <styled.container>
                     {todayActive && <ActiveModal onConfirmClick={onActiveConfirmClick}
@@ -187,6 +207,7 @@ const Refrigerator = () => {
                         />
                     </styled.FlexBox>
                 </styled.container>
+                <styled.Block long/>
             </>
         )
     }
@@ -194,6 +215,7 @@ const Refrigerator = () => {
     else {
         return (
             <>
+                <styled.Block/>
                 <styled.floor/>
                 <styled.container>
                     {showRecipeLogin && <RecipeLoginModal onCancelClick={onDeliveryPage}/>}
@@ -224,6 +246,7 @@ const Refrigerator = () => {
                         <styled.customButton last onClick={isShowRecipeLoginModal}>떡국 재료 선물하기</styled.customButton>
                     </styled.ButtonWrapper>
                 </styled.container>
+                <styled.Block long/>
             </>
         )
     }

@@ -9,10 +9,12 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin: auto;
-  padding: 30px 0 10px;
   gap: 60px;
-  min-height: calc(100vh - 120px);
   max-width: 322px;
+  min-height: 100vh;
+  @supports (-webkit-appearance:none) and (stroke-color: transparent) {
+    min-height: -webkit-fill-available;
+  }
   @media only screen and (max-width:480px) {
     gap: 40px;
   }
@@ -44,6 +46,18 @@ export const MainLogo = styled.div`
   right: -20px;
   background: url(${Logo}) no-repeat;
   background-size: cover;
+  @media only screen and (min-height:1100px) {
+    width: 170px;
+    height: 170px;
+    top: -165px;
+    right: -20px;
+  }
+  @media only screen and (max-height:800px) {
+    width: 170px;
+    height: 170px;
+    top: -165px;
+    right: -20px;
+  }
   @media only screen and (max-width: 480px) {
     width: 170px;
     height: 170px;

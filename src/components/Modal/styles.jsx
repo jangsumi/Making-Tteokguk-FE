@@ -6,11 +6,14 @@ export const Background = styled.div`
   min-width: 280px;
   background: rgba(0, 0, 0, 0.3);
   width: 100vw;
-  height: 100vh;
   position: fixed;
   top:0;
   left: 0;
-  z-index: 100;
+  z-index: 100000;
+  min-height: 100vh;
+  @supports (-webkit-appearance:none) and (stroke-color: transparent) {
+    min-height: -webkit-fill-available;
+  }
 `
 
 export const ModalContainer = styled.div`
@@ -25,7 +28,7 @@ export const ModalContainer = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, calc(-50% - 30px));
   padding: ${props=>props.close? "48px 20px 30px":"40px 20px 30px"};
   display: flex;
   flex-direction: column;
@@ -35,6 +38,9 @@ export const ModalContainer = styled.div`
 `
 export const NoModalContainer = styled(ModalContainer)`
   padding: 48px 20px 30px;
+  width: calc(100vw - 80px);
+  min-width: 200px;
+  z-index: 100000;
 `
 export const CloseImg = styled.div`
   position: absolute;
@@ -119,7 +125,6 @@ export const SpanButton = styled.span`
 `
 export const RecipeWrapper = styled.div`
   background: #FFFFFF;
-  overflow: auto;
   width: 100%;
 `
 export const RecipeBox = styled.div`

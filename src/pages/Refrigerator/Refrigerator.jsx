@@ -97,7 +97,7 @@ const Refrigerator = () => {
             getUnusedIngredients(id).then(res => {
                 setIngredientNums(res);
                 const now = new Date().toLocaleDateString();
-                const newDay = new Date('2023-01-14').toLocaleDateString();
+                const newDay = new Date('2023-01-22').toLocaleDateString();
                 const sum = res.reduce((a, b) => a + b, 0);
                 if (userSelf) {
                     if (isFirst) setShowCreateRef(true);

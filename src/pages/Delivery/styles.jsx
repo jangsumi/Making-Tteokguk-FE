@@ -59,6 +59,7 @@ export const FontDiv = styled.div`
 `;
 
 export const Enter = styled.span`
+  margin: 0 3px;
   @media only screen and (max-width: 340px) {
     display: block;
   }
